@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 weeblu.co LLC. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "SharedTaskViewController.h"
 
-@interface SecondViewController ()
+@interface SharedTaskViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation SharedTaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

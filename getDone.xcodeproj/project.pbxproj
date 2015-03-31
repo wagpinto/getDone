@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
+		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
+		BCBDDCF21AC606E600B61301 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF11AC606E600B61301 /* User.m */; };
+		BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF41AC606F300B61301 /* GroupTask.m */; };
+		BCBDDCFB1AC8B72200B61301 /* TaskCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */; };
+		BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */; };
+		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
+		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
-		BCF7FEFA1AC3D5980073E3B1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* FirstViewController.m */; };
-		BCF7FEFD1AC3D5980073E3B1 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEFC1AC3D5980073E3B1 /* SecondViewController.m */; };
+		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
+		BCF7FEFD1AC3D5980073E3B1 /* SharedTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */; };
 		BCF7FF001AC3D5980073E3B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */; };
 		BCF7FF021AC3D5980073E3B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF011AC3D5980073E3B1 /* Images.xcassets */; };
 		BCF7FF051AC3D5980073E3B1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */; };
@@ -47,15 +55,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
+		BCBDDCEB1AC601B500B61301 /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskController.m; path = ../TaskController.m; sourceTree = "<group>"; };
+		BCBDDCED1AC6041200B61301 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		BCBDDCEE1AC6041200B61301 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		BCBDDCF01AC606E600B61301 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BCBDDCF11AC606E600B61301 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BCBDDCF31AC606F300B61301 /* GroupTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTask.h; sourceTree = "<group>"; };
+		BCBDDCF41AC606F300B61301 /* GroupTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTask.m; sourceTree = "<group>"; };
+		BCBDDCF91AC8B72200B61301 /* TaskCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCustomTableViewCell.h; sourceTree = "<group>"; };
+		BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCustomTableViewCell.m; sourceTree = "<group>"; };
+		BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ../SettingsViewController.h; sourceTree = "<group>"; };
+		BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ../SettingsViewController.m; sourceTree = "<group>"; };
+		BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTaskViewController.h; sourceTree = "<group>"; };
+		BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewController.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BCF7FEF81AC3D5980073E3B1 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		BCF7FEF91AC3D5980073E3B1 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		BCF7FEFB1AC3D5980073E3B1 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		BCF7FEFC1AC3D5980073E3B1 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myTaskViewController.h; sourceTree = "<group>"; };
+		BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myTaskViewController.m; sourceTree = "<group>"; };
+		BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTaskViewController.h; sourceTree = "<group>"; };
+		BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedTaskViewController.m; sourceTree = "<group>"; };
 		BCF7FEFF1AC3D5980073E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCF7FF011AC3D5980073E3B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BCF7FF041AC3D5980073E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -90,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */,
 				BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */,
 				BCF7FF391AC3D6AF0073E3B1 /* libz.dylib in Frameworks */,
 				BCF7FF371AC3D6A60073E3B1 /* SystemConfiguration.framework in Frameworks */,
@@ -120,6 +144,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCBDDCD31AC5F9ED00B61301 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCBDDCED1AC6041200B61301 /* Task.h */,
+				BCBDDCEE1AC6041200B61301 /* Task.m */,
+				BCBDDCF01AC606E600B61301 /* User.h */,
+				BCBDDCF11AC606E600B61301 /* User.m */,
+				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
+				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BCBDDCD41AC5F9F500B61301 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
+				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
+				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
+				BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */,
+				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
+				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
+				BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */,
+				BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */,
+				BCBDDCF91AC8B72200B61301 /* TaskCustomTableViewCell.h */,
+				BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */,
+				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
+				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		BCF7FEE51AC3D5980073E3B1 = {
 			isa = PBXGroup;
 			children = (
@@ -141,15 +197,11 @@
 		BCF7FEF01AC3D5980073E3B1 /* getDone */ = {
 			isa = PBXGroup;
 			children = (
-				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
-				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
-				BCF7FEF81AC3D5980073E3B1 /* FirstViewController.h */,
-				BCF7FEF91AC3D5980073E3B1 /* FirstViewController.m */,
-				BCF7FEFB1AC3D5980073E3B1 /* SecondViewController.h */,
-				BCF7FEFC1AC3D5980073E3B1 /* SecondViewController.m */,
+				BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */,
+				BCBDDCD41AC5F9F500B61301 /* View */,
+				BCBDDCD31AC5F9ED00B61301 /* Model */,
 				BCF7FF401AC3D76A0073E3B1 /* Controller */,
 				BCF7FF011AC3D5980073E3B1 /* Images.xcassets */,
-				BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */,
 				BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */,
 				BCF7FEF11AC3D5980073E3B1 /* Supporting Files */,
 			);
@@ -186,6 +238,7 @@
 		BCF7FF3C1AC3D6CD0073E3B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */,
 				BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */,
 				BCF7FF381AC3D6AF0073E3B1 /* libz.dylib */,
 				BCF7FF361AC3D6A60073E3B1 /* SystemConfiguration.framework */,
@@ -211,6 +264,8 @@
 		BCF7FF401AC3D76A0073E3B1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
+				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
 				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
 			);
 			name = Controller;
@@ -276,6 +331,7 @@
 				TargetAttributes = {
 					BCF7FEED1AC3D5980073E3B1 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = WF9EJFRLZP;
 					};
 					BCF7FF091AC3D5980073E3B1 = {
 						CreatedOnToolsVersion = 6.2;
@@ -327,12 +383,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF7FEFD1AC3D5980073E3B1 /* SecondViewController.m in Sources */,
+				BCF7FEFD1AC3D5980073E3B1 /* SharedTaskViewController.m in Sources */,
+				BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */,
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
+				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
+				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
-				BCF7FEFA1AC3D5980073E3B1 /* FirstViewController.m in Sources */,
+				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
+				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
+				BCBDDCFB1AC8B72200B61301 /* TaskCustomTableViewCell.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
+				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
+				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +519,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/wagppinto/Downloads/parse-library-1",
@@ -463,6 +528,7 @@
 				INFOPLIST_FILE = getDone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -470,6 +536,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/wagppinto/Downloads/parse-library-1",
@@ -477,6 +545,7 @@
 				INFOPLIST_FILE = getDone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -533,6 +602,7 @@
 				BCF7FF161AC3D5980073E3B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCF7FF171AC3D5980073E3B1 /* Build configuration list for PBXNativeTarget "getDoneTests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +611,7 @@
 				BCF7FF191AC3D5980073E3B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

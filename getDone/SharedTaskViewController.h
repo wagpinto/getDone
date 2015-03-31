@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  SecondViewController.h
 //  getDone
 //
 //  Created by Wagner Pinto on 3/25/15.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 
-@interface FirstViewController : UIViewController
+@interface SharedTaskViewController : UIViewController
 
 
 @end
