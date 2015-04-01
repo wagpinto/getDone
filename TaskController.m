@@ -15,7 +15,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [TaskController new];
-        //[sharedInstance loadTasks];
+        [sharedInstance loadTasks];
         
     });
     return sharedInstance;
@@ -28,35 +28,12 @@
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
     return [query findObjects];
     
-    
-//    NSMutableArray *tasksArray = [NSMutableArray new];
-//        PFQuery *loadTask = [Task query];
-//        [loadTask whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
-//        
-//        [loadTask findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            for (Task *task in objects) {
-//                [tasksArray addObject:task];
-//                NSLog(@"user:%@, -- taskName:%@",[PFUser currentUser].username,task.objectId);
-//            }
-//        }];
-//        return tasksArray;
-    
 }
 - (NSArray *)loadAssingedTasks {
 
-    NSMutableArray *tasks = [NSMutableArray new];
-    
-    PFQuery *loadTask = [Task query];
-    [loadTask whereKey:@"taskAssingee" equalTo:[PFUser currentUser]];
-    [loadTask findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        for (Task *task in objects) {
-            //[task pin];
-            //TDD - testing the userName requirement
-            [tasks addObject:task];
-            NSLog(@"Assignee:%@, taskName:%@",[PFUser currentUser].username,task.taskName);
-        }
-    }];
-    return tasks;
+    PFQuery*query = [Task query];
+    [query whereKey:@"taskAssingee" equalTo:[PFUser currentUser]];
+    return [query findObjects];
 }
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description

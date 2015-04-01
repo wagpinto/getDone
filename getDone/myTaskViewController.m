@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"%@",[[TaskController sharedInstance]taskArray]);
 
 }
 - (IBAction)Logout:(id)sender {
@@ -26,15 +25,17 @@
     [self performSegueWithIdentifier:@"logout"sender:self];
     
 }
-
 - (IBAction)createTask:(id)sender {
-//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-//    [createVC.view setBackgroundColor:[UIColor clearColor]];
-//    [self presentViewController:createVC animated:YES completion:nil];
-    [self presentCreateModal];
-}
+    //create and present a small view on top of the current view.
+    //instaciate the new view as the one created on the storyboard.
+    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
 
+    //present the new view (from storyboard) modal and Over Current Context
+    createVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [createVC.view setBackgroundColor:[UIColor clearColor]];
+    
+    [self.parentViewController presentViewController:createVC animated:YES completion:nil];
+    ;}
 
 - (IBAction)deleteTask:(id)sender {
 
@@ -55,26 +56,25 @@
     
 }
 
--(void)presentCreateModal
-{
-    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-    [self addChildViewController:createVC];
-    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:createVC.view];
-    [self parentViewController];
-    [UIView animateWithDuration:1.0 animations:^{
-        createVC.view.center = self.view.center;
-        
-    }];
-}
+//- (void)presentCreateModal {
+//    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
+//    [self addChildViewController:createVC];
+//    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+//    [self.view addSubview:createVC.view];
+//    [self parentViewController];
+//    [UIView animateWithDuration:1.0 animations:^{
+//        createVC.view.center = self.view.center;
+//        
+//    }];
+//} //check if is necessary
 
 #pragma mark - TABLEVIEW TADASOURCE
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TaskCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
     
-    //formar the taskDueDate:
+    //format date on the taskDueDate:
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM/dd"];
     NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
@@ -85,18 +85,12 @@
     
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //loadSelectedTask
     
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [TaskController sharedInstance].loadTasks.count;
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
