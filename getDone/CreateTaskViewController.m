@@ -10,6 +10,9 @@
 #import "TaskController.h"
 
 @interface CreateTaskViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *taskNameField;
+@property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
+@property (weak, nonatomic) IBOutlet UISwitch *ImportantToggle;
 
 @end
 
@@ -17,16 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
-- (IBAction)submitPressed:(id)sender {
+- (IBAction)SaveTask:(id)sender {
+    //save task
+    [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text Desc:self.taskDescriptionField.text DueDate:[NSDate date] Owner:[PFUser currentUser] Assignee:nil Important:self.ImportantToggle.state];
     
-    [self SaveTask];
     //create a custom delegate to allow the close button to dismiss the view.
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)SaveTask {
-    [[TaskController sharedInstance]addTaskWithName:@"TEST 1" Desc:@"this is a creation test" DueDate:[NSDate date] Owner:[PFUser currentUser] Assignee:nil Important:YES];
-} //working =)
 
 @end

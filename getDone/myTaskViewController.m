@@ -56,17 +56,17 @@
     
 }
 
-//- (void)presentCreateModal {
-//    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-//    [self addChildViewController:createVC];
-//    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-//    [self.view addSubview:createVC.view];
-//    [self parentViewController];
-//    [UIView animateWithDuration:1.0 animations:^{
-//        createVC.view.center = self.view.center;
-//        
-//    }];
-//} //check if is necessary
+- (void)presentCreateModal {
+    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
+    [self addChildViewController:createVC];
+    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:createVC.view];
+    [self parentViewController];
+    [UIView animateWithDuration:1.0 animations:^{
+        createVC.view.center = self.view.center;
+        
+    }];
+} //check if is necessary
 
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

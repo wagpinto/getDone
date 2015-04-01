@@ -136,37 +136,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pi-7j-jRY">
-                                <rect key="frame" x="16" y="41" width="568" height="300"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pi-7j-jRY">
+                                <rect key="frame" x="0.0" y="82" width="600" height="376"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAP-00-Erv">
-                                        <rect key="frame" x="452" y="262" width="102" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="102" id="t6a-SR-hhD"/>
-                                        </constraints>
-                                        <state key="normal" title="Button">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAP-00-Erv">
+                                        <rect key="frame" x="325" y="172" width="57" height="50"/>
+                                        <state key="normal" image="Go_Save">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitPressed:" destination="pB6-Uu-CSj" eventType="touchUpInside" id="cqo-aT-xYR"/>
+                                            <action selector="SaveTask:" destination="pB6-Uu-CSj" eventType="touchUpInside" id="iYF-Mq-kNf"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-Sh-DGH">
+                                        <rect key="frame" x="218" y="8" width="164" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-IB-KDc">
+                                        <rect key="frame" x="218" y="46" width="164" height="126"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kab-4l-KW1">
+                                        <rect key="frame" x="273" y="173" width="55" height="50"/>
+                                        <state key="normal" image="location">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="PriceTag_ON" offImage="PriceTag_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="dde-bw-dpb">
+                                        <rect key="frame" x="213" y="273" width="51" height="31"/>
+                                    </switch>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="kAP-00-Erv" firstAttribute="bottom" secondItem="0Pi-7j-jRY" secondAttribute="bottomMargin" id="UxA-Vz-Xr6"/>
-                                    <constraint firstAttribute="trailing" secondItem="kAP-00-Erv" secondAttribute="trailing" constant="14" id="nfR-bH-UCG"/>
-                                </constraints>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="71Q-lw-g53" firstAttribute="top" secondItem="0Pi-7j-jRY" secondAttribute="bottom" constant="259" id="0ej-2V-9Nb"/>
-                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="trailing" secondItem="UMY-LK-X63" secondAttribute="trailingMargin" id="hah-ur-Qme"/>
-                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="top" secondItem="zwq-7X-Lyl" secondAttribute="bottom" constant="21" id="hcM-sr-IO1"/>
-                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="leading" secondItem="UMY-LK-X63" secondAttribute="leadingMargin" id="vJM-AU-REr"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ImportantToggle" destination="dde-bw-dpb" id="EIf-aT-Lf3"/>
+                        <outlet property="taskDescriptionField" destination="uLr-IB-KDc" id="ctf-UT-bp9"/>
+                        <outlet property="taskNameField" destination="9x1-Sh-DGH" id="KtU-7y-Tuu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGK-UK-v7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -515,10 +528,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Go_Save" width="50" height="50"/>
         <image name="Group Filled-50" width="25" height="25"/>
         <image name="Menu Filled-50" width="25" height="25"/>
         <image name="Plus-50" width="25" height="25"/>
+        <image name="PriceTag_OFF" width="25" height="25"/>
+        <image name="PriceTag_ON" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
+        <image name="location" width="50" height="50"/>
         <image name="me" width="410" height="404"/>
     </resources>
     <inferredMetricsTieBreakers>
