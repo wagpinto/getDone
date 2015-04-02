@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import <UIKit/UIKit.h>
-#import "TaskCustomTableViewCell.h"
+#import "CustomTableViewCell.h"
 
 @interface myTaskViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

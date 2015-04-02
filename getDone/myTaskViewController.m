@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 }
 - (IBAction)Logout:(id)sender {
     [PFUser logOut];
@@ -35,27 +35,7 @@
     [createVC.view setBackgroundColor:[UIColor clearColor]];
     
     [self.parentViewController presentViewController:createVC animated:YES completion:nil];
-    ;}
-
-- (IBAction)deleteTask:(id)sender {
-
-//    PFQuery *loadTask = [Task query];
-//    [loadTask whereKey:@"objectId" equalTo:@"85d11qz593"];
-//
-//    [[TaskController sharedInstance]deleteTask:loadTask];
-    
 }
-- (IBAction)loadAllTasksFromUser:(id)sender {
-    
-    [[TaskController sharedInstance]loadTasks];
-
-}
-- (IBAction)loadAssignedTasks:(id)sender {
-
-    [[TaskController sharedInstance]loadAssingedTasks];
-    
-}
-
 - (void)presentCreateModal {
     CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
     [self addChildViewController:createVC];
@@ -68,21 +48,36 @@
     }];
 } //check if is necessary
 
+- (IBAction)loadAllTasksFromUser:(id)sender {
+    
+    [[TaskController sharedInstance]loadTasks];
+    
+}
+- (IBAction)loadAssignedTasks:(id)sender {
+    
+    [[TaskController sharedInstance]loadAssingedTasks];
+    
+}
+
+
+
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TaskCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
     
-    //format date on the taskDueDate:
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"MM/dd"];
-    NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-    
-    cell.taskNameLabel.text = task.taskName;
-    cell.taskDescriptionLabel.text = task.taskDescription;
-    cell.dueDateLabel.text = dateString;
-    
+    if (cell != nil) {
+        //format date on the taskDueDate:
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM/dd"];
+        NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+        
+        cell.taskNameLabel.text = task.taskName;
+        //cell.taskDescriptionLabel.text = task.taskDescription;
+        cell.dueDateLabel.text = dateString;
+
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,5 +87,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [TaskController sharedInstance].loadTasks.count;
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        
+        Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
+        [[TaskController sharedInstance]deleteTask:task];
+        
+        [tableView reloadData];
+        
+    
+    }
+    
+}
 @end

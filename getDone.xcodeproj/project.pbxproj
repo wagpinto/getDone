@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
 		BCBDDCF21AC606E600B61301 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF11AC606E600B61301 /* User.m */; };
 		BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF41AC606F300B61301 /* GroupTask.m */; };
-		BCBDDCFB1AC8B72200B61301 /* TaskCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */; };
 		BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */; };
 		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
@@ -55,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
 		BCBDDCEB1AC601B500B61301 /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskController.m; path = ../TaskController.m; sourceTree = "<group>"; };
 		BCBDDCED1AC6041200B61301 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -63,8 +65,6 @@
 		BCBDDCF11AC606E600B61301 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BCBDDCF31AC606F300B61301 /* GroupTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTask.h; sourceTree = "<group>"; };
 		BCBDDCF41AC606F300B61301 /* GroupTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTask.m; sourceTree = "<group>"; };
-		BCBDDCF91AC8B72200B61301 /* TaskCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCustomTableViewCell.h; sourceTree = "<group>"; };
-		BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ../SettingsViewController.h; sourceTree = "<group>"; };
 		BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ../SettingsViewController.m; sourceTree = "<group>"; };
 		BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -164,12 +164,12 @@
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
 				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
 				BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */,
+				BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */,
+				BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */,
 				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
 				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
 				BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */,
 				BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */,
-				BCBDDCF91AC8B72200B61301 /* TaskCustomTableViewCell.h */,
-				BCBDDCFA1AC8B72200B61301 /* TaskCustomTableViewCell.m */,
 				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
 				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
 			);
@@ -392,10 +392,10 @@
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
-				BCBDDCFB1AC8B72200B61301 /* TaskCustomTableViewCell.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
 				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
+				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
