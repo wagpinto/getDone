@@ -78,7 +78,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Get it Done" id="K0V-1d-i6S">
-                        <barButtonItem key="leftBarButtonItem" image="Settings-thin50" id="fMP-tA-UR0"/>
+                        <barButtonItem key="leftBarButtonItem" image="Settings-thin50" id="fMP-tA-UR0">
+                            <connections>
+                                <segue destination="RX7-pf-97B" kind="presentation" id="azI-ir-1wT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Plus-50" id="UEa-W5-YiS">
                             <connections>
                                 <action selector="createTask:" destination="9pv-A4-QxB" id="jxe-QW-il9"/>
@@ -108,27 +112,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pi-7j-jRY">
                                 <rect key="frame" x="0.0" y="82" width="600" height="376"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-Sh-DGH">
-                                        <rect key="frame" x="218" y="8" width="164" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="164" id="DCs-sc-NBF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-Sh-DGH">
+                                        <rect key="frame" x="49" y="8" width="502" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="pB6-Uu-CSj" id="1By-25-sBp"/>
+                                        </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-IB-KDc">
-                                        <rect key="frame" x="218" y="46" width="164" height="126"/>
+                                        <rect key="frame" x="49" y="46" width="502" height="87"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="126" id="kCg-Tv-tiu"/>
+                                            <constraint firstAttribute="height" constant="87" id="1wY-qK-m5y"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="pB6-Uu-CSj" id="O51-S2-9zp"/>
+                                        </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAP-00-Erv">
-                                        <rect key="frame" x="327" y="180" width="57" height="50"/>
+                                        <rect key="frame" x="535" y="318" width="57" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="57" id="CAa-oC-cDv"/>
+                                            <constraint firstAttribute="width" constant="57" id="eN6-6k-Cbh"/>
                                         </constraints>
                                         <state key="normal" image="Go_Save">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,41 +145,68 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kab-4l-KW1">
-                                        <rect key="frame" x="275" y="181" width="55" height="50"/>
+                                        <rect key="frame" x="8" y="141" width="33" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="x3w-tr-Byx"/>
+                                            <constraint firstAttribute="height" constant="30" id="HTe-f6-jTc"/>
                                         </constraints>
                                         <state key="normal" image="location">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="PriceTag_ON" offImage="PriceTag_OFF" translatesAutoresizingMaskIntoConstraints="NO" id="dde-bw-dpb">
-                                        <rect key="frame" x="218" y="190" width="51" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VV-Um-t4c">
+                                        <rect key="frame" x="8" y="318" width="54" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="Og9-Yf-0p1"/>
+                                        </constraints>
+                                        <state key="normal" image="Close-50">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Cancel:" destination="pB6-Uu-CSj" eventType="touchUpInside" id="LBv-aW-ipS"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6co-ID-ce1">
+                                        <rect key="frame" x="49" y="141" width="502" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="pB6-Uu-CSj" id="8Nd-eF-Cnm"/>
+                                        </connections>
+                                    </textField>
+                                    <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dde-bw-dpb">
+                                        <rect key="frame" x="61" y="196" width="51" height="31"/>
                                     </switch>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="kAP-00-Erv" firstAttribute="leading" secondItem="dde-bw-dpb" secondAttribute="trailing" constant="60" id="AHs-9c-WAz"/>
-                                    <constraint firstItem="kab-4l-KW1" firstAttribute="leading" secondItem="dde-bw-dpb" secondAttribute="trailing" constant="8" symbolic="YES" id="F0n-3o-No6"/>
-                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="centerX" secondItem="0Pi-7j-jRY" secondAttribute="centerX" id="I5W-5d-bAr"/>
-                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="leading" secondItem="9x1-Sh-DGH" secondAttribute="leading" id="JBv-G1-Jse"/>
-                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="top" secondItem="0Pi-7j-jRY" secondAttribute="topMargin" id="JNU-qR-yKK"/>
-                                    <constraint firstItem="kAP-00-Erv" firstAttribute="top" secondItem="uLr-IB-KDc" secondAttribute="bottom" constant="8" symbolic="YES" id="ZLz-aU-cz5"/>
-                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="top" secondItem="9x1-Sh-DGH" secondAttribute="bottom" constant="8" symbolic="YES" id="kI4-aZ-uIF"/>
-                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="leading" secondItem="dde-bw-dpb" secondAttribute="leading" id="knU-EX-jQ6"/>
-                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="trailing" secondItem="uLr-IB-KDc" secondAttribute="trailing" id="otL-J3-LOz"/>
-                                    <constraint firstItem="dde-bw-dpb" firstAttribute="centerY" secondItem="kAP-00-Erv" secondAttribute="centerY" id="vXC-GE-qAo"/>
-                                    <constraint firstItem="kab-4l-KW1" firstAttribute="top" secondItem="uLr-IB-KDc" secondAttribute="bottom" constant="9" id="z1C-Fm-22D"/>
+                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="trailing" secondItem="6co-ID-ce1" secondAttribute="trailing" id="05B-GZ-Uh2"/>
+                                    <constraint firstItem="6co-ID-ce1" firstAttribute="top" secondItem="uLr-IB-KDc" secondAttribute="bottom" constant="8" symbolic="YES" id="4AW-wE-YLM"/>
+                                    <constraint firstItem="dde-bw-dpb" firstAttribute="leading" secondItem="0Pi-7j-jRY" secondAttribute="leading" constant="61" id="5Ss-tj-SMj"/>
+                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="top" secondItem="0Pi-7j-jRY" secondAttribute="topMargin" id="AL6-1D-Zjv"/>
+                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="leading" secondItem="0Pi-7j-jRY" secondAttribute="leading" constant="49" id="CKx-kl-rpc"/>
+                                    <constraint firstItem="9VV-Um-t4c" firstAttribute="top" secondItem="kAP-00-Erv" secondAttribute="top" id="LAg-RO-e3r"/>
+                                    <constraint firstItem="9VV-Um-t4c" firstAttribute="leading" secondItem="0Pi-7j-jRY" secondAttribute="leadingMargin" id="M5j-Qh-lTA"/>
+                                    <constraint firstItem="kAP-00-Erv" firstAttribute="trailing" secondItem="0Pi-7j-jRY" secondAttribute="trailingMargin" id="N9M-hf-1l7"/>
+                                    <constraint firstItem="dde-bw-dpb" firstAttribute="top" secondItem="6co-ID-ce1" secondAttribute="bottom" constant="25" id="Rbg-Sl-rsU"/>
+                                    <constraint firstItem="9VV-Um-t4c" firstAttribute="bottom" secondItem="0Pi-7j-jRY" secondAttribute="bottomMargin" id="dk9-wr-Q0R"/>
+                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="trailing" secondItem="uLr-IB-KDc" secondAttribute="trailing" id="e5t-YE-ezH"/>
+                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="leading" secondItem="uLr-IB-KDc" secondAttribute="leading" id="gSj-Vn-BhC"/>
+                                    <constraint firstItem="kab-4l-KW1" firstAttribute="leading" secondItem="9VV-Um-t4c" secondAttribute="leading" id="gkG-T1-StW"/>
+                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="leading" secondItem="6co-ID-ce1" secondAttribute="leading" id="hLy-JN-Mn8"/>
+                                    <constraint firstItem="9x1-Sh-DGH" firstAttribute="centerX" secondItem="0Pi-7j-jRY" secondAttribute="centerX" id="nQl-FH-UOh"/>
+                                    <constraint firstItem="6co-ID-ce1" firstAttribute="leading" secondItem="kab-4l-KW1" secondAttribute="trailing" constant="8" symbolic="YES" id="rM5-hT-42l"/>
+                                    <constraint firstItem="uLr-IB-KDc" firstAttribute="top" secondItem="9x1-Sh-DGH" secondAttribute="bottom" constant="8" symbolic="YES" id="rS5-xV-9kQ"/>
+                                    <constraint firstItem="6co-ID-ce1" firstAttribute="top" secondItem="kab-4l-KW1" secondAttribute="top" id="yD7-CN-laZ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0Pi-7j-jRY" secondAttribute="trailing" id="Jow-Pv-qLL"/>
-                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="top" secondItem="zwq-7X-Lyl" secondAttribute="bottom" constant="62" id="fCl-i8-4Ek"/>
-                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="leading" secondItem="UMY-LK-X63" secondAttribute="leading" id="gnI-Tu-be7"/>
-                            <constraint firstItem="71Q-lw-g53" firstAttribute="top" secondItem="0Pi-7j-jRY" secondAttribute="bottom" constant="142" id="v4k-Gk-cV4"/>
+                            <constraint firstAttribute="trailing" secondItem="0Pi-7j-jRY" secondAttribute="trailing" id="1gF-C2-Ym2"/>
+                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="top" secondItem="zwq-7X-Lyl" secondAttribute="bottom" constant="62" id="9mp-Qb-yWs"/>
+                            <constraint firstItem="0Pi-7j-jRY" firstAttribute="leading" secondItem="UMY-LK-X63" secondAttribute="leading" id="FJx-jg-vdh"/>
+                            <constraint firstItem="71Q-lw-g53" firstAttribute="top" secondItem="0Pi-7j-jRY" secondAttribute="bottom" constant="142" id="y3X-CF-dU6"/>
                         </constraints>
                     </view>
                     <connections>
@@ -544,11 +578,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Close-50" width="50" height="50"/>
         <image name="Go_Save" width="50" height="50"/>
         <image name="Group Filled-50" width="25" height="25"/>
         <image name="Plus-50" width="25" height="25"/>
-        <image name="PriceTag_OFF" width="25" height="25"/>
-        <image name="PriceTag_ON" width="25" height="25"/>
         <image name="Settings-thin50" width="25" height="25"/>
         <image name="location" width="50" height="50"/>
         <image name="me" width="410" height="404"/>

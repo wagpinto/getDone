@@ -12,12 +12,18 @@
 
 @interface myTaskViewController ()
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation myTaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupRefreshControl];
+    
+    
     
 }
 - (IBAction)Logout:(id)sender {
@@ -91,7 +97,6 @@
     // Return YES if you want the specified item to be editable.
     return YES;
 }
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete){
@@ -100,9 +105,21 @@
         [[TaskController sharedInstance]deleteTask:task];
         
         [tableView reloadData];
-        
-    
     }
+}
+
+
+- (void)setupRefreshControl {
+    self.refreshControl = [UIRefreshControl new];
+    [self setRefreshControl:self.refreshControl];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(reloadTableView) forControlEvents:UIControlEventValueChanged];
     
 }
+- (void)reloadTableView {
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+
 @end

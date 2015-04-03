@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
 		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
@@ -19,7 +20,6 @@
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
 		BCF7FEFD1AC3D5980073E3B1 /* SharedTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */; };
-		BCF7FF001AC3D5980073E3B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */; };
 		BCF7FF021AC3D5980073E3B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF011AC3D5980073E3B1 /* Images.xcassets */; };
 		BCF7FF051AC3D5980073E3B1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */; };
 		BCF7FF111AC3D5980073E3B1 /* getDoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF101AC3D5980073E3B1 /* getDoneTests.m */; };
@@ -55,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myTaskViewController.m; sourceTree = "<group>"; };
 		BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTaskViewController.h; sourceTree = "<group>"; };
 		BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedTaskViewController.m; sourceTree = "<group>"; };
-		BCF7FEFF1AC3D5980073E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCF7FF011AC3D5980073E3B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BCF7FF041AC3D5980073E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BCF7FF0A1AC3D5980073E3B1 /* getDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = getDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +160,7 @@
 		BCBDDCD41AC5F9F500B61301 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC699D591ACDDDB300A9989F /* Main.storyboard */,
 				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
 				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
@@ -197,7 +198,6 @@
 		BCF7FEF01AC3D5980073E3B1 /* getDone */ = {
 			isa = PBXGroup;
 			children = (
-				BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */,
 				BCBDDCD41AC5F9F500B61301 /* View */,
 				BCBDDCD31AC5F9ED00B61301 /* Model */,
 				BCF7FF401AC3D76A0073E3B1 /* Controller */,
@@ -363,7 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF7FF001AC3D5980073E3B1 /* Main.storyboard in Resources */,
+				BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */,
 				BCF7FF051AC3D5980073E3B1 /* LaunchScreen.xib in Resources */,
 				BCF7FF021AC3D5980073E3B1 /* Images.xcassets in Resources */,
 			);
@@ -418,14 +418,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BCF7FEFE1AC3D5980073E3B1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCF7FEFF1AC3D5980073E3B1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
