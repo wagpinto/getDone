@@ -10,6 +10,7 @@
 #import "TaskController.h"
 
 @interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITextField *taskNameField;
 @property (weak, nonatomic) IBOutlet UITextField *taskDescriptionField;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -29,10 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     //set the current values:
-    self.statusLabel.text = @"Created";
-    
+    self.statusLabel.text = @"Not Shared";
     
 }
 - (IBAction)SaveTask:(id)sender {
@@ -41,7 +41,8 @@
     //set NSString to a NSDate:
     NSString *taskDueDate = [NSString stringWithFormat:@"%@ - %@",self.dueDateLabel.text, self.dueTimeLabel.text];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-mm-dd hh:mm:ss + 0000"];
+    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"];
+    
     NSDate *dateFromString = [[NSDate alloc] init];
     dateFromString = [dateFormatter dateFromString:taskDueDate];
 
@@ -52,7 +53,7 @@
         //save task
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
-                                                DueDate:[NSDate date]
+                                                DueDate:dateFromString
                                                   Owner:[PFUser currentUser]
                                                Assignee:[PFUser currentUser]
                                               Important:self.importantButton.state
@@ -123,16 +124,16 @@
     
     switch (self.hourSegment.selectedSegmentIndex) {
         case 0:
-            self.dueTimeLabel.text = @"9:00 AM";
+            self.dueTimeLabel.text = @"9:00 am";
             break;
         case 1:
-            self.dueTimeLabel.text = @"12:00 PM";
+            self.dueTimeLabel.text = @"12:00 pm";
             break;
         case 2:
-            self.dueTimeLabel.text = @"3:00 PM";
+            self.dueTimeLabel.text = @"3:00 pm";
             break;
         default:
-            self.dueTimeLabel.text = @"6:00 PM";
+            self.dueTimeLabel.text = @"6:00 pm";
             break;
     }
 }

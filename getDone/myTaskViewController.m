@@ -14,6 +14,7 @@
 @interface myTaskViewController ()
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) Task *selectedTask;
 
 @end
 
@@ -28,11 +29,12 @@
     
 }
 - (IBAction)Logout:(id)sender {
+
     [PFUser logOut];
     [self performSegueWithIdentifier:@"logout"sender:self];
     
 }
-- (IBAction)createTask:(id)sender {
+- (IBAction)addNewTask:(id)sender {
     //create and present a small view on top of the current view.
     //instaciate the new view as the one created on the storyboard.
     CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
@@ -43,17 +45,6 @@
     
     [self.parentViewController presentViewController:createVC animated:YES completion:nil];
 }
-- (void)presentCreateModal {
-    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-    [self addChildViewController:createVC];
-    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:createVC.view];
-    [self parentViewController];
-    [UIView animateWithDuration:1.0 animations:^{
-        createVC.view.center = self.view.center;
-        
-    }];
-} //check if is necessary
 
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,12 +82,21 @@
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    myTaskDetailViewController *detailViewController = [myTaskDetailViewController new];
-    [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
-    [self.navigationController pushViewController:detailViewController animated:YES];
 }//segue push to detail view controller
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
+
+    if ([segue.identifier isEqualToString:@"selectTask"]) {
+        UINavigationController *navController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        myTaskDetailViewController *detailViewController = (myTaskDetailViewController *)([navController viewControllers][0]);
+                // Pass any objects to the view controller here, like...
+        [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
+    }
+}
 
 #pragma mark - Pull-to-Refresh
 - (void)setupRefreshControl {
@@ -111,4 +111,15 @@
     [self.refreshControl endRefreshing];
 }
 
+//- (void)presentCreateModal {
+//    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
+//    [self addChildViewController:createVC];
+//    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+//    [self.view addSubview:createVC.view];
+//    [self parentViewController];
+//    [UIView animateWithDuration:1.0 animations:^{
+//        createVC.view.center = self.view.center;
+//
+//    }];
+//}
 @end

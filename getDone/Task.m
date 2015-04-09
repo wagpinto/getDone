@@ -12,7 +12,6 @@ static NSString * const TaskClassName = @"Task";
 
 @implementation Task
 
-//@dynamic objectID;
 @dynamic taskName;
 @dynamic taskDescription;
 @dynamic taskLocation;
@@ -23,8 +22,6 @@ static NSString * const TaskClassName = @"Task";
 @dynamic taskStatus;
 @dynamic taskRecurring;
 @dynamic taskAddress;
-
-
 
 + (NSString *)parseClassName {
     return TaskClassName;

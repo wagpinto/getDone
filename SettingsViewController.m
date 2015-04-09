@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "TaskController.h"
+#import "User.h"
 
 @interface SettingsViewController ()//<UIGestureRecognizerDelegate>
 
@@ -22,33 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.userNameLabel.text = [PFUser currentUser].username;
-    self.emailLabel.text = [PFUser currentUser].email;
+    User *user = [User new];
+    
+    self.userNameLabel.text = user.userFullName;
+    self.emailLabel.text = user.email;
     
     UISwipeGestureRecognizer *swipeDismiss = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(SwipeToClose)];
     swipeDismiss.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeDismiss];
     
 }
-
 - (void)SwipeToClose {
-    NSLog(@"Done");
-//    [self performSegueWithIdentifier:@"closeSettings" sender:self];
     [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-                                              
-
-//Method that removes duplicates from an array with NSSet.
-- (NSArray *)removeDuplucatesFrom:(NSArray *)array{
-    return [[NSSet setWithArray:array]allObjects];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
 
 @end
