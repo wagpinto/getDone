@@ -10,7 +10,6 @@
 
 @interface Task : PFObject <PFSubclassing>
 
-//@property (nonatomic, strong) NSString *objectID;
 @property (nonatomic, strong) NSString *taskName;
 @property (nonatomic, strong) NSString *taskDescription;
 @property (nonatomic, strong) NSDate *taskDueDate;
@@ -18,6 +17,9 @@
 @property (nonatomic, strong) PFUser *taskAssignee;
 @property (nonatomic, assign) BOOL taskImportant;
 @property (nonatomic, strong) NSString *taskLocation; //get location of the task
+@property (nonatomic, strong) NSString *taskStatus;
+@property (nonatomic, assign) BOOL taskRecurring;
+@property (nonatomic, strong) NSString *taskAddress;
 
 + (NSString *)parseClassName;
 

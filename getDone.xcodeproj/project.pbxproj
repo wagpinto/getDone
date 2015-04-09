@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC0403341AD6474500654F1C /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0403331AD6474500654F1C /* Status.m */; };
 		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
+		BCA618AD1AD58CAC00FD3F42 /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */; };
 		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
@@ -16,6 +18,7 @@
 		BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */; };
 		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
+		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
@@ -55,7 +58,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC0403321AD6474500654F1C /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		BC0403331AD6474500654F1C /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BCA618AB1AD58CAC00FD3F42 /* DateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormat.h; sourceTree = "<group>"; };
+		BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormat.m; sourceTree = "<group>"; };
 		BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
@@ -71,6 +78,8 @@
 		BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTaskViewController.h; sourceTree = "<group>"; };
 		BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewController.m; sourceTree = "<group>"; };
+		BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTaskDetailViewController.h; sourceTree = "<group>"; };
+		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -153,6 +162,8 @@
 				BCBDDCF11AC606E600B61301 /* User.m */,
 				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
 				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
+				BC0403321AD6474500654F1C /* Status.h */,
+				BC0403331AD6474500654F1C /* Status.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -163,10 +174,7 @@
 				BC699D591ACDDDB300A9989F /* Main.storyboard */,
 				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
-				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
-				BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */,
-				BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */,
-				BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */,
+				BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */,
 				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
 				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
 				BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */,
@@ -175,6 +183,19 @@
 				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */,
+				BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */,
+				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
+				BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */,
+				BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */,
+				BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */,
+			);
+			name = "MY Tasks";
 			sourceTree = "<group>";
 		};
 		BCF7FEE51AC3D5980073E3B1 = {
@@ -266,6 +287,8 @@
 			children = (
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
+				BCA618AB1AD58CAC00FD3F42 /* DateFormat.h */,
+				BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */,
 				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
 			);
 			name = Controller;
@@ -390,11 +413,14 @@
 				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
+				BC0403341AD6474500654F1C /* Status.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
+				BCA618AD1AD58CAC00FD3F42 /* DateFormat.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
 				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
+				BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */,
 				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +544,7 @@
 					"/Users/wagppinto/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -535,6 +562,7 @@
 					"/Users/wagppinto/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

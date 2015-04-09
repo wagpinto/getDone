@@ -8,6 +8,15 @@
 
 #import "TaskController.h"
 
+typedef enum : NSUInteger  {
+    TaskCreated,
+    TaskCompleted,
+    TaskAssigned,
+    TaskAccepted,
+    TaskDenied,
+    TaskDeleted,
+} TaskStatus;
+
 @implementation TaskController
 
 + (TaskController *)sharedInstance {
@@ -26,6 +35,8 @@
     
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
+    //[query whereKey:@"StatusName" equalTo:@"u2GsHdneg5"];
+    [query orderByDescending:@"taskDueDate"];
     return [query findObjects];
     
 }
@@ -40,8 +51,10 @@
                 DueDate:(NSDate *)dueDate
                   Owner:(PFUser *)owner
                Assignee:(PFUser *)taskAssignee
-              Important:(BOOL)important {
-    
+              Important:(BOOL)important
+                Current:(BOOL)current
+                Address:(NSString *)address
+                 Status:(NSString *)status{
     
     Task *newTask = [Task new];
     
@@ -52,6 +65,9 @@
     newTask.taskAssignee = taskAssignee;
     newTask.taskImportant = important;
 //    newTask.taskLocation = //location services
+    newTask.taskStatus = @"Created";
+    newTask.taskAddress = address;
+    newTask.taskRecurring = current;
   
     [newTask pinInBackground];
     [newTask save];

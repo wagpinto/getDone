@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateTaskViewController : UIViewController
+@interface CreateTaskViewController : UITableViewController
 
 @end

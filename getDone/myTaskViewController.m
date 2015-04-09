@@ -7,8 +7,9 @@
 //
 
 #import "myTaskViewController.h"
-#import "TaskController.h"
+#import "myTaskDetailViewController.h"
 #import "CreateTaskViewController.h"
+#import "TaskController.h"
 
 @interface myTaskViewController ()
 
@@ -54,41 +55,23 @@
     }];
 } //check if is necessary
 
-- (IBAction)loadAllTasksFromUser:(id)sender {
-    
-    [[TaskController sharedInstance]loadTasks];
-    
-}
-- (IBAction)loadAssignedTasks:(id)sender {
-    
-    [[TaskController sharedInstance]loadAssingedTasks];
-    
-}
-
-
-
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
-    
+
     if (cell != nil) {
         //format date on the taskDueDate:
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MM/dd"];
+        [dateFormat setDateFormat:@"E-MM/dd"];
         NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
         
         cell.taskNameLabel.text = task.taskName;
-        //cell.taskDescriptionLabel.text = task.taskDescription;
         cell.dueDateLabel.text = dateString;
 
     }
     return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //loadSelectedTask
-    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [TaskController sharedInstance].loadTasks.count;
@@ -96,9 +79,9 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
     return YES;
-}
-// Override to support editing the table view.
+}// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
     if (editingStyle == UITableViewCellEditingStyleDelete){
         
         Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
@@ -107,8 +90,15 @@
         [tableView reloadData];
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    myTaskDetailViewController *detailViewController = [myTaskDetailViewController new];
+    [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}//segue push to detail view controller
 
-
+#pragma mark - Pull-to-Refresh
 - (void)setupRefreshControl {
     self.refreshControl = [UIRefreshControl new];
     [self setRefreshControl:self.refreshControl];
@@ -120,6 +110,5 @@
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
-
 
 @end

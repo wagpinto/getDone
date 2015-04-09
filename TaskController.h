@@ -22,9 +22,18 @@
                 DueDate:(NSDate *)dueDate
                   Owner:(PFUser *)owner
                Assignee:(PFUser *)taskAssignee
-              Important:(BOOL)important;
+              Important:(BOOL)important
+                Current:(BOOL)current
+                Address:(NSString *)address
+                 Status:(NSString *)status;
 - (void)updateTask:(Task *)task;
 - (void)deleteTask:(Task *)task;
 - (void)assignTask:(Task *)task ToUser:(PFUser *)user;
+
+@property NSString *taskCreated;
+
+
+
+
 
 @end
