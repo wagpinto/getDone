@@ -138,6 +138,13 @@
     }
 }
 
+
+//- (IBAction)seeUsers:(id)sender {
+//
+//    SearchFriendsViewController * searchController =[self.storyboard instantiateViewControllerWithIdentifier:@"searchController"];
+//    [self.navigationController pushViewController:searchController animated:YES];
+//}
+
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

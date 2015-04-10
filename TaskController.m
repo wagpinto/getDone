@@ -54,35 +54,60 @@
     newTask.taskOwner = owner;
     newTask.taskAssignee = taskAssignee;
     newTask.taskImportant = important;
-    newTask.taskStatus = @"Created";
+    newTask.taskStatus = status;
     newTask.taskAddress = address;
     newTask.taskRecurring = recurring;
   
+    self.recentlyCreatedTask = newTask;
     [newTask pinInBackground];
     [newTask save];
     
-}
-- (void)updateTask:(Task *)task {
-    [task pinInBackground];
-    [task save];
 }
 - (void)deleteTask:(Task *)task {
     [task unpinInBackground];
     [task deleteInBackground];
 }
-- (void)assignTask:(Task *)task ToUser:(PFUser *)user {
+
+#pragma mark - USER CONTROLLER
+- (void)assignTask:(Task *)task ToUser:(User *)username {
     
-    Task *assingTask = [Task new];
+    task.taskAssignee = username.objectId;
+
+}
+
+- (NSArray *)loadAllUser {
     
-    assingTask.taskAssignee = user;
+    PFQuery *query = [PFUser query];
     
-    [assingTask pinInBackground];
-    [assingTask save];
+    return [query findObjects];
+}
+- (NSArray *)selectUserWithName:(NSString *)username{
+    
+    PFQuery *findUsers = [PFQuery queryWithClassName:@"User"];
+    [findUsers whereKey:@"username" equalTo:username];
+    
+    return [findUsers findObjects];
 }
 
 #pragma mark - GROUP CONTROLLER
+- (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr {
 
-//create group - get an array of tasks and create a group with Titlle and Description.
-//remove task from group - remove one/a number of tasks form a group.
+    GroupTask *group = [GroupTask new];
+    
+    group.groupTitle = groupName;
+    group.groupDescription = groupDescr;
+    
+    [group saveInBackground];
+    [group save];
+    
+}
+- (GroupTask *)loadGroupWithName:(NSString *)groupName {
+    
+    PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTasl"];
+    [getGroup whereKey:@"groupTitle" equalTo:groupName];
+    
+    return groupName;
+}
+
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "TaskController.h"
 
-@interface SharedTaskViewController : UIViewController
+@interface FindFriendViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate>
 
 
 @end

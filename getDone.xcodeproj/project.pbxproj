@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC0403341AD6474500654F1C /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0403331AD6474500654F1C /* Status.m */; };
 		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
-		BCA618AD1AD58CAC00FD3F42 /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */; };
+		BC8767D61AD779A000DCB968 /* GroupTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */; };
 		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
@@ -22,7 +22,7 @@
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
-		BCF7FEFD1AC3D5980073E3B1 /* SharedTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */; };
+		BCF7FEFD1AC3D5980073E3B1 /* FindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */; };
 		BCF7FF021AC3D5980073E3B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF011AC3D5980073E3B1 /* Images.xcassets */; };
 		BCF7FF051AC3D5980073E3B1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */; };
 		BCF7FF111AC3D5980073E3B1 /* getDoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF101AC3D5980073E3B1 /* getDoneTests.m */; };
@@ -61,8 +61,8 @@
 		BC0403321AD6474500654F1C /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		BC0403331AD6474500654F1C /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BCA618AB1AD58CAC00FD3F42 /* DateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormat.h; sourceTree = "<group>"; };
-		BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormat.m; sourceTree = "<group>"; };
+		BC8767D41AD779A000DCB968 /* GroupTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTaskViewController.h; sourceTree = "<group>"; };
+		BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTaskViewController.m; sourceTree = "<group>"; };
 		BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 		BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myTaskViewController.h; sourceTree = "<group>"; };
 		BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myTaskViewController.m; sourceTree = "<group>"; };
-		BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTaskViewController.h; sourceTree = "<group>"; };
-		BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedTaskViewController.m; sourceTree = "<group>"; };
+		BCF7FEFB1AC3D5980073E3B1 /* FindFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindFriendViewController.h; sourceTree = "<group>"; };
+		BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindFriendViewController.m; sourceTree = "<group>"; };
 		BCF7FF011AC3D5980073E3B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BCF7FF041AC3D5980073E3B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BCF7FF0A1AC3D5980073E3B1 /* getDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = getDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,13 +174,13 @@
 				BC699D591ACDDDB300A9989F /* Main.storyboard */,
 				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
+				BCF7FEFB1AC3D5980073E3B1 /* FindFriendViewController.h */,
+				BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */,
 				BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */,
 				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
 				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
-				BCF7FEFB1AC3D5980073E3B1 /* SharedTaskViewController.h */,
-				BCF7FEFC1AC3D5980073E3B1 /* SharedTaskViewController.m */,
-				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
-				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
+				BC8767D41AD779A000DCB968 /* GroupTaskViewController.h */,
+				BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -287,8 +287,6 @@
 			children = (
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
-				BCA618AB1AD58CAC00FD3F42 /* DateFormat.h */,
-				BCA618AC1AD58CAC00FD3F42 /* DateFormat.m */,
 				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
 			);
 			name = Controller;
@@ -297,6 +295,8 @@
 		BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */ = {
 			isa = PBXGroup;
 			children = (
+				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
+				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
 				BCF7FF3D1AC3D7630073E3B1 /* CustomLoginViewController.h */,
 				BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */,
 				BCF7FF411AC3DCDB0073E3B1 /* SignUpViewController.h */,
@@ -406,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF7FEFD1AC3D5980073E3B1 /* SharedTaskViewController.m in Sources */,
+				BCF7FEFD1AC3D5980073E3B1 /* FindFriendViewController.m in Sources */,
 				BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */,
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
 				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
@@ -416,11 +416,11 @@
 				BC0403341AD6474500654F1C /* Status.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
-				BCA618AD1AD58CAC00FD3F42 /* DateFormat.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
 				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
 				BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */,
+				BC8767D61AD779A000DCB968 /* GroupTaskViewController.m in Sources */,
 				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

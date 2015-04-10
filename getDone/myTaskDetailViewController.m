@@ -25,18 +25,22 @@
 
 @implementation myTaskDetailViewController
 
+@synthesize importantSwitch;
+@synthesize recurringSwitch;
 
--(void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
+    [self.importantSwitch setOn:NO];
+    [self.recurringSwitch setOn:NO];
+
     [self.tableView reloadData];
 }
 
-- (void)updateWithTask:(Task *)task{
+- (void)updateWithTask:(Task *)task {
 
     self.task = task;
     
@@ -47,8 +51,21 @@
 }
 - (IBAction)save:(id)sender {
     
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    Task *saveTask = [query getObjectWithId:self.task.objectId];
     
-    [[TaskController sharedInstance]updateTask:self.task];
+    saveTask.taskName = self.taskTitleField.text;
+    saveTask.taskAddress = self.taskAddressField.text;
+    saveTask.taskDescription = self.taskDescriptionField.text;
+    saveTask.taskImportant = self.importantSwitch.state;
+    saveTask.taskRecurring = self.recurringSwitch.state;
+//    saveTask.taskDueDate =
+//    saveTask.taskStatus =
+    
+    [saveTask pinInBackground];
+    [saveTask save];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)shareTask:(id)sender {
 

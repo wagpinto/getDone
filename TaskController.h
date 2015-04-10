@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "Task.h"
 #import "User.h"
+#import "GroupTask.h"
+#import "Status.h"
 
 @interface TaskController : NSObject
 
@@ -26,14 +28,14 @@
                 Current:(BOOL)current
                 Address:(NSString *)address
                  Status:(NSString *)status;
-- (void)updateTask:(Task *)task;
 - (void)deleteTask:(Task *)task;
-- (void)assignTask:(Task *)task ToUser:(PFUser *)user;
+- (void)assignTask:(Task *)task ToUser:(User *)user;
+- (NSArray *)selectUserWithName:(NSString *)username;
+- (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;
+- (NSArray *)loadAllUser;
+
+@property(nonatomic,strong) Task *recentlyCreatedTask;
 
 @property NSString *taskCreated;
-
-
-
-
 
 @end
