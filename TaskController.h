@@ -25,9 +25,11 @@
                   Owner:(PFUser *)owner
                Assignee:(PFUser *)taskAssignee
               Important:(BOOL)important
-                Current:(BOOL)current
+                Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(NSString *)status;
+                 Status:(Status *)status
+                  Group:(GroupTask *)group;
+
 - (void)deleteTask:(Task *)task;
 - (void)assignTask:(Task *)task ToUser:(User *)user;
 - (NSArray *)selectUserWithName:(NSString *)username;

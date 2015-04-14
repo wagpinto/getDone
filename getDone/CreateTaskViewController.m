@@ -32,7 +32,11 @@
     [super viewDidLoad];
 
     //set the current values:
-    self.statusLabel.text = @"Not Shared";
+    if (self.assignedUser == nil) {
+        self.statusLabel.text = @"Not Shared";
+    }else {
+        self.statusLabel.text = self.assignedUser.username;
+    }
     
 }
 - (IBAction)SaveTask:(id)sender {
@@ -46,21 +50,19 @@
     NSDate *dateFromString = [[NSDate alloc] init];
     dateFromString = [dateFormatter dateFromString:taskDueDate];
 
-    //Teste date Format
-    NSLog(@"date formated from String to NSDate: %@ NSDate %@", dateFromString, [NSDate date]);
-    
+#warning - PARSE POINTER PROBLEM.
     if (self.taskNameField.text != nil) {
         //save task
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
                                                 DueDate:dateFromString
                                                   Owner:[PFUser currentUser]
-                                               Assignee:[PFUser currentUser]
+                                               Assignee:self.assignedUser
                                               Important:self.importantButton.state
                                                 Current:self.recurrentButton.state
                                                 Address:self.taskAddressField.text
-                                                 Status:nil];
-        
+                                                 Status:nil // <<<< POINTER of the STATUS CLASS in PARSE
+                                                  Group:nil];
         //create a custom delegate to allow the close button to dismiss the view.
         [self dismissViewControllerAnimated:YES completion:nil];
     }else {
@@ -69,6 +71,10 @@
     }
     
 } //create the task and sabe in backgroun
+- (void)updateUserAssigned:(PFUser *)user {
+    self.assignedUser = user;
+} //update the
+
 - (IBAction)Cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -138,12 +144,6 @@
     }
 }
 
-
-//- (IBAction)seeUsers:(id)sender {
-//
-//    SearchFriendsViewController * searchController =[self.storyboard instantiateViewControllerWithIdentifier:@"searchController"];
-//    [self.navigationController pushViewController:searchController animated:YES];
-//}
 
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

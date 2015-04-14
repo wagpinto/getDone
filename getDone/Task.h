@@ -7,6 +7,8 @@
 //
 
 #import <Parse/Parse.h>
+#import "Status.h"
+#import "GroupTask.h"
 
 @interface Task : PFObject <PFSubclassing>
 
@@ -16,8 +18,9 @@
 @property (nonatomic, strong) PFUser *taskOwner;
 @property (nonatomic, strong) PFUser *taskAssignee;
 @property (nonatomic, assign) BOOL taskImportant;
-@property (nonatomic, strong) NSString *taskLocation; //get location of the task
-@property (nonatomic, strong) NSString *taskStatus;
+@property (nonatomic, strong) NSString *taskLocation;
+@property (nonatomic, strong) Status *TaskStatus; // >>> This one should be pointer:
+@property (nonatomic, strong) GroupTask *taskGRoup;
 @property (nonatomic, assign) BOOL taskRecurring;
 @property (nonatomic, strong) NSString *taskAddress;
 

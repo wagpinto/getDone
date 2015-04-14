@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
 @property (weak, nonatomic) IBOutlet UIView *customCell;
+@property (weak, nonatomic) IBOutlet UIImageView *importantIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *sharedIcon;
 
 @end

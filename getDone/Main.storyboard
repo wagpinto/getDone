@@ -17,49 +17,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-mh-FmS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-mh-FmS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="60" id="60V-kb-EMW" customClass="CustomTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="70" id="60V-kb-EMW" customClass="CustomTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="60V-kb-EMW" id="ImM-kd-Udd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOA-g7-hzV">
-                                                    <rect key="frame" x="8" y="14" width="292" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="292" id="Hv8-IB-7XF"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TaskName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOA-g7-hzV">
+                                                    <rect key="frame" x="8" y="8" width="292" height="52"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DueDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxH-SR-sIq">
-                                                    <rect key="frame" x="536" y="8" width="56" height="39"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="56" id="0o2-Ns-7DN">
-                                                            <variation key="widthClass=compact" constant="130"/>
-                                                        </constraint>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DueDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxH-SR-sIq">
+                                                    <rect key="frame" x="521" y="10" width="71" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User-off-50" highlightedImage="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="png-hv-W83">
+                                                    <rect key="frame" x="396" y="10" width="50" height="50"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Important-low-60" highlightedImage="Important-high-60" translatesAutoresizingMaskIntoConstraints="NO" id="bQC-mT-YOe">
+                                                    <rect key="frame" x="463" y="10" width="50" height="50"/>
+                                                </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UxH-SR-sIq" firstAttribute="top" secondItem="ImM-kd-Udd" secondAttribute="topMargin" id="Per-iV-toh"/>
-                                                <constraint firstItem="MOA-g7-hzV" firstAttribute="top" secondItem="ImM-kd-Udd" secondAttribute="topMargin" constant="6" id="WzA-lH-ozA"/>
-                                                <constraint firstItem="MOA-g7-hzV" firstAttribute="leading" secondItem="ImM-kd-Udd" secondAttribute="leadingMargin" id="YoC-aZ-qdz"/>
-                                                <constraint firstItem="MOA-g7-hzV" firstAttribute="baseline" secondItem="UxH-SR-sIq" secondAttribute="baseline" id="ahW-DL-SAH"/>
-                                                <constraint firstItem="UxH-SR-sIq" firstAttribute="trailing" secondItem="ImM-kd-Udd" secondAttribute="trailingMargin" id="k5i-iL-Kdr"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MOA-g7-hzV" secondAttribute="bottom" constant="4.5" id="rKI-Co-6Qp"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="customCell" destination="ImM-kd-Udd" id="2Zo-3i-TCB"/>
                                             <outlet property="dueDateLabel" destination="UxH-SR-sIq" id="oY0-a3-sqT"/>
+                                            <outlet property="importantIcon" destination="bQC-mT-YOe" id="qeB-8t-iej"/>
+                                            <outlet property="sharedIcon" destination="png-hv-W83" id="WWv-KK-xW9"/>
                                             <outlet property="taskNameLabel" destination="MOA-g7-hzV" id="Tgr-SR-P2a"/>
                                             <segue destination="e7N-Fb-0t9" kind="presentation" identifier="selectTask" id="d6w-Ei-KoB"/>
                                         </connections>
@@ -73,12 +65,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="V9f-mh-FmS" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="8zR-eq-HaT"/>
-                            <constraint firstItem="V9f-mh-FmS" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="BsS-4j-gBu"/>
-                            <constraint firstAttribute="trailing" secondItem="V9f-mh-FmS" secondAttribute="trailing" id="eJr-dM-uF8"/>
-                            <constraint firstAttribute="bottom" secondItem="V9f-mh-FmS" secondAttribute="bottom" id="hFA-4N-USW"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To Do" id="K0V-1d-i6S">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="fMP-tA-UR0">
@@ -104,7 +90,7 @@
         <!--New Task-->
         <scene sceneID="LGy-dd-rKY">
             <objects>
-                <tableViewController id="ha4-tw-P2M" customClass="CreateTaskViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="createTask" id="ha4-tw-P2M" customClass="CreateTaskViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pwf-s1-7c6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -398,14 +384,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="riX-8C-3Eb">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="riX-8C-3Eb">
                                 <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="MfA-2u-UUJ" id="Mfp-RX-Kci"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dAb-WA-LeU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dAb-WA-LeU">
                                 <rect key="frame" x="0.0" y="88" width="600" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -440,6 +426,12 @@
                                 <action selector="cancel:" destination="MfA-2u-UUJ" id="8Am-Zd-xAA"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="Svp-XT-cQD">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="ha4-tw-P2M" kind="show" id="Hqo-Im-NwW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="riX-8C-3Eb" id="3R9-IO-yog"/>
@@ -458,7 +450,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3633" y="-1423"/>
+            <point key="canvasLocation" x="2875" y="-1459"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ZWq-iZ-TC5">
@@ -1157,16 +1149,21 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lla-1I-yKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2821" y="-1423"/>
+            <point key="canvasLocation" x="2805" y="-1459"/>
         </scene>
     </scenes>
     <resources>
         <image name="3.User" width="32" height="32"/>
         <image name="Group Filled-50" width="25" height="25"/>
+        <image name="Important-high-60" width="60" height="60"/>
+        <image name="Important-low-60" width="60" height="60"/>
+        <image name="User-off-50" width="50" height="50"/>
+        <image name="User-on-50" width="50" height="50"/>
         <image name="me" width="410" height="404"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mvz-aU-642"/>
+        <segue reference="swn-vC-gNV"/>
         <segue reference="u7Y-xg-7CH"/>
+        <segue reference="Mvz-aU-642"/>
     </inferredMetricsTieBreakers>
 </document>

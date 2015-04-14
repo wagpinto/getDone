@@ -44,7 +44,8 @@
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(NSString *)status{
+                 Status:(Status *)status
+                  Group:(GroupTask *)group {
     
     Task *newTask = [Task new];
     
@@ -54,10 +55,11 @@
     newTask.taskOwner = owner;
     newTask.taskAssignee = taskAssignee;
     newTask.taskImportant = important;
-    newTask.taskStatus = status;
+    newTask.TaskStatus = status;
     newTask.taskAddress = address;
     newTask.taskRecurring = recurring;
-  
+    newTask.taskGRoup = group;
+    
     self.recentlyCreatedTask = newTask;
     [newTask pinInBackground];
     [newTask save];
@@ -70,6 +72,7 @@
 
 #pragma mark - USER CONTROLLER
 - (void)assignTask:(Task *)task ToUser:(User *)username {
+    
     
     task.taskAssignee = username.objectId;
 

@@ -61,6 +61,14 @@
         cell.taskNameLabel.text = task.taskName;
         cell.dueDateLabel.text = dateString;
 
+        //set the cell icons to reflect the importance and status:
+        if (task.taskImportant == YES) {cell.importantIcon.highlighted = YES;}else {cell.importantIcon.highlighted = NO;}
+        if ([task.TaskStatus isEqual:@"31fZP3RC4m"] || [task.TaskStatus isEqual:@"wFq3q8H7Qn"]){
+            cell.sharedIcon.highlighted = YES;
+        }else{
+            cell.sharedIcon.highlighted = NO;
+        }
+        
     }
     return cell;
 }

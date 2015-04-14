@@ -7,6 +7,7 @@
 //
 
 #import "FindFriendViewController.h"
+#import "CreateTaskViewController.h"
 
 static NSString *cellID = @"cellID";
 
@@ -39,8 +40,8 @@ static NSString *cellID = @"cellID";
 
 #pragma mark - TABLE VIEW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+    CreateTaskViewController *createTaskVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
+    [createTaskVC updateUserAssigned:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,7 +64,6 @@ static NSString *cellID = @"cellID";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
     }else {
-//        cell.textLabel.text = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
         PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
         NSString *userName = [NSString stringWithFormat:@"%@",user[@"userFullName"]];
         cell.textLabel.text = userName;
