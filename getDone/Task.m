@@ -19,7 +19,7 @@ static NSString * const TaskClassName = @"Task";
 @dynamic taskAssignee;
 @dynamic taskDueDate;
 @dynamic taskImportant;
-@dynamic TaskStatus;
+@dynamic Status;
 @dynamic taskGRoup;
 @dynamic taskRecurring;
 @dynamic taskAddress;

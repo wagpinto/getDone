@@ -11,7 +11,6 @@
 #import "Task.h"
 #import "User.h"
 #import "GroupTask.h"
-#import "Status.h"
 
 @interface TaskController : NSObject
 
@@ -23,15 +22,14 @@
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
                   Owner:(PFUser *)owner
-               Assignee:(PFUser *)taskAssignee
+               Assignee:(User *)taskAssignee
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(Status *)status
+                 Status:(NSString *)status
                   Group:(GroupTask *)group;
 
 - (void)deleteTask:(Task *)task;
-- (void)assignTask:(Task *)task ToUser:(User *)user;
 - (NSArray *)selectUserWithName:(NSString *)username;
 - (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;
 - (NSArray *)loadAllUser;

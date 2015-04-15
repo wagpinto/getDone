@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Status.h"
 
 @interface CustomTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;

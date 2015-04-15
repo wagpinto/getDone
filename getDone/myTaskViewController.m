@@ -63,7 +63,8 @@
 
         //set the cell icons to reflect the importance and status:
         if (task.taskImportant == YES) {cell.importantIcon.highlighted = YES;}else {cell.importantIcon.highlighted = NO;}
-        if ([task.TaskStatus isEqual:@"31fZP3RC4m"] || [task.TaskStatus isEqual:@"wFq3q8H7Qn"]){
+
+        if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
             cell.sharedIcon.highlighted = YES;
         }else{
             cell.sharedIcon.highlighted = NO;

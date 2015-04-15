@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC0403341AD6474500654F1C /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0403331AD6474500654F1C /* Status.m */; };
 		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
 		BC8767D61AD779A000DCB968 /* GroupTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */; };
 		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
@@ -45,6 +44,7 @@
 		BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */; };
 		BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */; };
 		BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF421AC3DCDB0073E3B1 /* SignUpViewController.m */; };
+		BCFDBFE81ADEDCF7000983CB /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC0403321AD6474500654F1C /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		BC0403331AD6474500654F1C /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BC8767D41AD779A000DCB968 /* GroupTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTaskViewController.h; sourceTree = "<group>"; };
 		BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTaskViewController.m; sourceTree = "<group>"; };
@@ -115,6 +113,8 @@
 		BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLoginViewController.m; sourceTree = "<group>"; };
 		BCF7FF411AC3DCDB0073E3B1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		BCF7FF421AC3DCDB0073E3B1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		BCFDBFE61ADEDCF7000983CB /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
+		BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,12 +169,12 @@
 			children = (
 				BCBDDCED1AC6041200B61301 /* Task.h */,
 				BCBDDCEE1AC6041200B61301 /* Task.m */,
+				BCFDBFE61ADEDCF7000983CB /* TaskStatus.h */,
+				BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */,
 				BCBDDCF01AC606E600B61301 /* User.h */,
 				BCBDDCF11AC606E600B61301 /* User.m */,
 				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
 				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
-				BC0403321AD6474500654F1C /* Status.h */,
-				BC0403331AD6474500654F1C /* Status.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -415,13 +415,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF7FEFD1AC3D5980073E3B1 /* FindFriendViewController.m in Sources */,
+				BCFDBFE81ADEDCF7000983CB /* TaskStatus.m in Sources */,
 				BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */,
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
 				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
 				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
-				BC0403341AD6474500654F1C /* Status.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,

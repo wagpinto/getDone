@@ -7,6 +7,7 @@
 //
 
 #import "TaskController.h"
+#import "TaskStatus.h"
 
 @implementation TaskController
 
@@ -22,7 +23,7 @@
 }
 
 #pragma mark - TASK CONTROLLER
-- (NSArray *)loadTasks {
+- (NSArray *)loadTasks { //loads current user tasks ordered by dueDate.
     
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
@@ -44,7 +45,7 @@
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(Status *)status
+                 Status:(NSString *)status
                   Group:(GroupTask *)group {
     
     Task *newTask = [Task new];
@@ -55,7 +56,7 @@
     newTask.taskOwner = owner;
     newTask.taskAssignee = taskAssignee;
     newTask.taskImportant = important;
-    newTask.TaskStatus = status;
+    newTask.Status = status;
     newTask.taskAddress = address;
     newTask.taskRecurring = recurring;
     newTask.taskGRoup = group;
@@ -71,17 +72,9 @@
 }
 
 #pragma mark - USER CONTROLLER
-- (void)assignTask:(Task *)task ToUser:(User *)username {
-    
-    
-    task.taskAssignee = username.objectId;
-
-}
-
 - (NSArray *)loadAllUser {
     
     PFQuery *query = [PFUser query];
-    
     return [query findObjects];
 }
 - (NSArray *)selectUserWithName:(NSString *)username{
@@ -109,6 +102,16 @@
     PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTask"];
     return [getGroup findObjects];
 }
+
+#pragma mark - STATUS CONTROLLE
+- (void)setStatus:(NSUInteger)status{
+    
+    
+
+    
+    
+}
+
 
 
 @end

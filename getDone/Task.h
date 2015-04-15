@@ -7,7 +7,6 @@
 //
 
 #import <Parse/Parse.h>
-#import "Status.h"
 #import "User.h"
 #import "GroupTask.h"
 
@@ -20,7 +19,7 @@
 @property (nonatomic, strong) User *taskAssignee;
 @property (nonatomic, assign) BOOL taskImportant;
 @property (nonatomic, strong) NSString *taskLocation;
-@property (nonatomic, strong) Status *TaskStatus; // >>> This one should be pointer:
+@property (nonatomic, strong) NSString *Status;
 @property (nonatomic, strong) GroupTask *taskGRoup;
 @property (nonatomic, assign) BOOL taskRecurring;
 @property (nonatomic, strong) NSString *taskAddress;

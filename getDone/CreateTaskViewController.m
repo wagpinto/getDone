@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
-//@property (nonatomic, strong) Status *status;
+@property (nonatomic,strong) NSString *status;
 
 @end
 
@@ -32,16 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
-
--(void)didSelectFriend:(User *)user{
+- (void)didSelectFriend:(User *)user{
     
     self.assignedUser = user;
-    
-    NSLog(@"DELEGATE CUSTOM");
-}
-
-
+} //custom delegate
 - (IBAction)SaveTask:(id)sender {
     
     //combine date and hour for dueDate value
@@ -53,18 +49,11 @@
     NSDate *dateFromString = [[NSDate alloc] init];
     dateFromString = [dateFormatter dateFromString:taskDueDate];
     
-    //set task status as Created or Assinged:
-    PFQuery *Created = [PFQuery queryWithClassName:@"TaskStatus"];
-    [Created whereKey:@"StatusName" equalTo:@"Created"];
-    
-    PFQuery *Assigned = [PFQuery queryWithClassName:@"TaskStatus"];
-    [Assigned whereKey:@"StatusName" equalTo:@"Assigned"];
-    Status *status = [Status new];
-    
-    if (self.assignedUser == nil ) {
-        [status isEqual:Created];
+    //set the status
+    if (self.assignedUser == nil) {
+        self.status = @"Created";
     }else {
-        [status isEqual:Assigned];
+        self.status = @"Assinged";
     }
     
     //save task
@@ -77,8 +66,8 @@
                                               Important:self.importantButton.state
                                                 Current:self.recurrentButton.state
                                                 Address:self.taskAddressField.text
-                                                 Status:status//[queryStatus valueForKey:@"ObjectId"] // <<<< POINTER of the STATUS CLASS in PARSE
-                                                  Group:nil]; // <<<< POINTER of the STATUS CLASS in PARSE
+                                                 Status:self.status
+                                                  Group:nil];
         //create a custom delegate to allow the close button to dismiss the view.
         [self dismissViewControllerAnimated:YES completion:nil];
     }else {
@@ -143,16 +132,16 @@
     
     switch (self.hourSegment.selectedSegmentIndex) {
         case 0:
-            self.dueTimeLabel.text = @"9:00 AM";
+            self.dueTimeLabel.text = @"9:00 am";
             break;
         case 1:
-            self.dueTimeLabel.text = @"12:00 PM";
+            self.dueTimeLabel.text = @"12:00 pm";
             break;
         case 2:
-            self.dueTimeLabel.text = @"3:00 PM";
+            self.dueTimeLabel.text = @"3:00 pm";
             break;
         default:
-            self.dueTimeLabel.text = @"6:00 PM";
+            self.dueTimeLabel.text = @"6:00 pm";
             break;
     }
 }

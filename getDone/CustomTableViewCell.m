@@ -14,7 +14,7 @@
     // Initialization code
 }
 
-- (void)setImageView:(BOOL)important recurring:(BOOL)recurring status:(Status *)status {
+- (void)setImageView:(BOOL)important recurring:(BOOL)recurring status:(NSString *)status {
 //this method will change the imageview as the parameter is called
     
 
