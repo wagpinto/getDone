@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "TaskController.h"
+#import "User.h"
+
+@protocol FindFriendsDelegate;
 
 @interface FindFriendViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate>
 
+@property (nonatomic, strong) id <FindFriendsDelegate> delegate;
 
 @end
 
+@protocol FindFriendsDelegate <NSObject>
+
+- (void)didSelectFriend:(User *)user;
+
+
+@end

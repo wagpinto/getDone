@@ -28,5 +28,8 @@ static NSString * const TaskClassName = @"Task";
     return TaskClassName;
 }
 
++ (void)load {
+    [self registerSubclass];
+}
 
 @end

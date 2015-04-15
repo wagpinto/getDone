@@ -40,7 +40,7 @@
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
                   Owner:(PFUser *)owner
-               Assignee:(PFUser *)taskAssignee
+               Assignee:(User *)taskAssignee
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
@@ -104,12 +104,10 @@
     [group save];
     
 }
-- (GroupTask *)loadGroupWithName:(NSString *)groupName {
+- (NSArray *)loadGroup:(GroupTask *)group {
     
-    PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTasl"];
-    [getGroup whereKey:@"groupTitle" equalTo:groupName];
-    
-    return groupName;
+    PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTask"];
+    return [getGroup findObjects];
 }
 
 

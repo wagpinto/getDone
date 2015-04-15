@@ -8,7 +8,7 @@
 
 #import <Parse/Parse.h>
 
-@interface GroupTask : PFObject
+@interface GroupTask : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSString *groupTitle;
 @property (nonatomic, strong) NSString *groupDescription;

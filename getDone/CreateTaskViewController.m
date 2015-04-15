@@ -8,12 +8,12 @@
 
 #import "CreateTaskViewController.h"
 #import "TaskController.h"
+#import "FindFriendViewController.h"
 
-@interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, FindFriendsDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *taskNameField;
 @property (weak, nonatomic) IBOutlet UITextField *taskDescriptionField;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UITextField *taskAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *dueDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dueTimeLabel;
@@ -24,35 +24,51 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
+//@property (nonatomic, strong) Status *status;
+
 @end
 
 @implementation CreateTaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //set the current values:
-    if (self.assignedUser == nil) {
-        self.statusLabel.text = @"Not Shared";
-    }else {
-        self.statusLabel.text = self.assignedUser.username;
-    }
-    
 }
+
+-(void)didSelectFriend:(User *)user{
+    
+    self.assignedUser = user;
+    
+    NSLog(@"DELEGATE CUSTOM");
+}
+
+
 - (IBAction)SaveTask:(id)sender {
     
     //combine date and hour for dueDate value
     //set NSString to a NSDate:
     NSString *taskDueDate = [NSString stringWithFormat:@"%@ - %@",self.dueDateLabel.text, self.dueTimeLabel.text];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"];
+    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
     
     NSDate *dateFromString = [[NSDate alloc] init];
     dateFromString = [dateFormatter dateFromString:taskDueDate];
-
-#warning - PARSE POINTER PROBLEM.
-    if (self.taskNameField.text != nil) {
-        //save task
+    
+    //set task status as Created or Assinged:
+    PFQuery *Created = [PFQuery queryWithClassName:@"TaskStatus"];
+    [Created whereKey:@"StatusName" equalTo:@"Created"];
+    
+    PFQuery *Assigned = [PFQuery queryWithClassName:@"TaskStatus"];
+    [Assigned whereKey:@"StatusName" equalTo:@"Assigned"];
+    Status *status = [Status new];
+    
+    if (self.assignedUser == nil ) {
+        [status isEqual:Created];
+    }else {
+        [status isEqual:Assigned];
+    }
+    
+    //save task
+    if (![self.taskNameField.text  isEqual: @""]) {
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
                                                 DueDate:dateFromString
@@ -61,8 +77,8 @@
                                               Important:self.importantButton.state
                                                 Current:self.recurrentButton.state
                                                 Address:self.taskAddressField.text
-                                                 Status:nil // <<<< POINTER of the STATUS CLASS in PARSE
-                                                  Group:nil];
+                                                 Status:status//[queryStatus valueForKey:@"ObjectId"] // <<<< POINTER of the STATUS CLASS in PARSE
+                                                  Group:nil]; // <<<< POINTER of the STATUS CLASS in PARSE
         //create a custom delegate to allow the close button to dismiss the view.
         [self dismissViewControllerAnimated:YES completion:nil];
     }else {
@@ -71,9 +87,6 @@
     }
     
 } //create the task and sabe in backgroun
-- (void)updateUserAssigned:(PFUser *)user {
-    self.assignedUser = user;
-} //update the
 
 - (IBAction)Cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -130,20 +143,23 @@
     
     switch (self.hourSegment.selectedSegmentIndex) {
         case 0:
-            self.dueTimeLabel.text = @"9:00 am";
+            self.dueTimeLabel.text = @"9:00 AM";
             break;
         case 1:
-            self.dueTimeLabel.text = @"12:00 pm";
+            self.dueTimeLabel.text = @"12:00 PM";
             break;
         case 2:
-            self.dueTimeLabel.text = @"3:00 pm";
+            self.dueTimeLabel.text = @"3:00 PM";
             break;
         default:
-            self.dueTimeLabel.text = @"6:00 pm";
+            self.dueTimeLabel.text = @"6:00 PM";
             break;
     }
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FindFriendViewController *friendsVC = [segue destinationViewController];
+    friendsVC.delegate = self;
+}
 
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

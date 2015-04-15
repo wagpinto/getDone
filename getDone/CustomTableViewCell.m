@@ -14,10 +14,17 @@
     // Initialization code
 }
 
+- (void)setImageView:(BOOL)important recurring:(BOOL)recurring status:(Status *)status {
+//this method will change the imageview as the parameter is called
+    
+
+    
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

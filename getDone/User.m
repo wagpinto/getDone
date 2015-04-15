@@ -22,4 +22,8 @@ static NSString * const UserClassName = @"User";
     return UserClassName;
 }
 
++ (void)load {
+    [self registerSubclass];
+}
+
 @end

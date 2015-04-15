@@ -35,6 +35,7 @@
 - (NSArray *)selectUserWithName:(NSString *)username;
 - (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;
 - (NSArray *)loadAllUser;
+- (NSArray *)loadGroup:(GroupTask *)group;
 
 @property(nonatomic,strong) Task *recentlyCreatedTask;
 

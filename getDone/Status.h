@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-@interface Status : NSObject
+@interface Status : PFObject <PFSubclassing>
+
 
 @property (nonatomic, strong) NSString * StatusName;
 

@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *recurringSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *dateField;
 @property (weak, nonatomic) IBOutlet UITextField *hourField;
+@property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
 
@@ -31,15 +33,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupViewController];
+    
+}
+
+- (void)setupViewController {
+    //setup the image:
+    self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
+    self.userPhotoImageView.clipsToBounds = YES;
+    //self.userPhotoImageView.layer.borderColor = [UIColor redColor].CGColor;
+    //self.userPhotoImageView.layer.borderWidth = 1.0f;
+    
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
     [self.importantSwitch setOn:NO];
     [self.recurringSwitch setOn:NO];
-
+    
     [self.tableView reloadData];
 }
-
 - (void)updateWithTask:(Task *)task {
 
     self.task = task;

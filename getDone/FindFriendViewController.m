@@ -20,7 +20,6 @@ static NSString *cellID = @"cellID";
 @end
 
 @implementation FindFriendViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -30,7 +29,13 @@ static NSString *cellID = @"cellID";
 
 }
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:Nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)selectFriendButton:(id)sender {
+    
+//    [self.delegate didSelectFriend];
+//    [self popoverPresentationController];
+
 }
 
 #pragma mark - SEARCH BAR
@@ -40,8 +45,9 @@ static NSString *cellID = @"cellID";
 
 #pragma mark - TABLE VIEW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CreateTaskViewController *createTaskVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-    [createTaskVC updateUserAssigned:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
+    
+    [self.delegate didSelectFriend:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -65,11 +71,11 @@ static NSString *cellID = @"cellID";
         cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
     }else {
         PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
-        NSString *userName = [NSString stringWithFormat:@"%@",user[@"userFullName"]];
+        NSString *userName = [NSString stringWithFormat:@"%@  (%@)",user[@"userFullName"], user[@"username"]];
         cell.textLabel.text = userName;
     }
     PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
-    NSString *userName = [NSString stringWithFormat:@"%@",user[@"userFullName"]];
+    NSString *userName = [NSString stringWithFormat:@"%@ - (%@)",user[@"userFullName"], user[@"username"]];
     cell.textLabel.text = userName;
     return cell;
     

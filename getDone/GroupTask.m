@@ -19,4 +19,8 @@ static NSString * const GroupClassName = @"GroupTask";
     return GroupClassName;
 }
 
++ (void)load {
+    [self registerSubclass];
+}
+
 @end

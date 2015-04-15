@@ -8,14 +8,20 @@
 
 #import "Status.h"
 
-static NSString * const StatusClassName = @"taskStatus";
+static NSString * const StatusClassName = @"TaskStatus";
 
 @implementation Status
+
 
 @dynamic StatusName;
 
 + (NSString *)parseClassName {
     return StatusClassName ;
 }
+
++ (void)load {
+    [self registerSubclass];
+}
+
 
 @end

@@ -153,6 +153,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC0D51C91ADEC37B00CC7B9A /* CreateTask */ = {
+			isa = PBXGroup;
+			children = (
+				BCF7FEFB1AC3D5980073E3B1 /* FindFriendViewController.h */,
+				BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */,
+				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
+				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
+			);
+			name = CreateTask;
+			sourceTree = "<group>";
+		};
 		BCBDDCD31AC5F9ED00B61301 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,13 +185,11 @@
 				BC699D591ACDDDB300A9989F /* Main.storyboard */,
 				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
-				BCF7FEFB1AC3D5980073E3B1 /* FindFriendViewController.h */,
-				BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */,
+				BC0D51C91ADEC37B00CC7B9A /* CreateTask */,
 				BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */,
-				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
-				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
 				BC8767D41AD779A000DCB968 /* GroupTaskViewController.h */,
 				BC8767D51AD779A000DCB968 /* GroupTaskViewController.m */,
+				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -287,7 +296,6 @@
 			children = (
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
-				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

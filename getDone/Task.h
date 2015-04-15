@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "Status.h"
+#import "User.h"
 #import "GroupTask.h"
 
 @interface Task : PFObject <PFSubclassing>
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) NSString *taskDescription;
 @property (nonatomic, strong) NSDate *taskDueDate;
 @property (nonatomic, strong) PFUser *taskOwner;
-@property (nonatomic, strong) PFUser *taskAssignee;
+@property (nonatomic, strong) User *taskAssignee;
 @property (nonatomic, assign) BOOL taskImportant;
 @property (nonatomic, strong) NSString *taskLocation;
 @property (nonatomic, strong) Status *TaskStatus; // >>> This one should be pointer:

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "User.h"
 
 @interface CreateTaskViewController : UITableViewController
-@property (nonatomic,strong) PFUser *assignedUser;
--(void)updateUserAssigned:(PFUser *)user;
+
+@property (nonatomic,strong) User *assignedUser;
+
 
 @end
