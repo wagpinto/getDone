@@ -110,9 +110,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     
     if ([segue.identifier isEqualToString:@"selectTask"]) {
-        UINavigationController *navController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        myTaskDetailViewController *detailViewController = (myTaskDetailViewController *)([navController viewControllers][0]);
+        myTaskDetailViewController *detailViewController = [segue destinationViewController];
         // Pass any objects to the view controller here, like...
         [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
     }

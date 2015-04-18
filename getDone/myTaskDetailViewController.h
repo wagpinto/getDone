@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskController.h"
+#import "importantTableViewCell.h"
+#import "recurringTableViewCell.h"
 
-@interface myTaskDetailViewController : UITableViewController
+@interface myTaskDetailViewController : UITableViewController <UITableViewDelegate>
 
 - (void)updateWithTask:(Task *)task;
 

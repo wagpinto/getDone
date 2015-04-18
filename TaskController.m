@@ -27,6 +27,7 @@
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
     [query orderByAscending:@"taskDueDate"];
+    
     return [query findObjects];
     
 }
