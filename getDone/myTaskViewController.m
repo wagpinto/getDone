@@ -24,21 +24,17 @@
     [super viewDidLoad];
     
     [self setupRefreshControl];
-    
-    
-    
 }
-- (IBAction)Logout:(id)sender {
 
-    [PFUser logOut];
-    [self performSegueWithIdentifier:@"logout"sender:self];
-    
+- (void)viewDidAppear:(BOOL)animated {
+    [self reloadTableView];
 }
+
 - (IBAction)addNewTask:(id)sender {
     //create and present a small view on top of the current view.
     //instaciate the new view as the one created on the storyboard.
     CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-
+    
     //present the new view (from storyboard) modal and Over Current Context
     createVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [createVC.view setBackgroundColor:[UIColor clearColor]];
@@ -51,37 +47,53 @@
     
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
-
+    
     if (cell != nil) {
         //format date on the taskDueDate:
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"E-MM/dd"];
         NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.taskNameLabel.text = task.taskName;
         cell.dueDateLabel.text = dateString;
-
+        
         //set the cell icons to reflect the importance and status:
-        if (task.taskImportant == YES) {cell.importantIcon.highlighted = YES;}else {cell.importantIcon.highlighted = NO;}
-
+        if (task.taskImportant == YES) {
+            cell.importantIcon.highlighted = YES;
+        }
         if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
             cell.sharedIcon.highlighted = YES;
-        }else{
-            cell.sharedIcon.highlighted = NO;
         }
-        
+        if (task.taskRecurring == YES) {
+//            cell.
+        }
     }
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 69;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [TaskController sharedInstance].loadTasks.count;
+    
+    switch (section) {
+        case 0:
+            return [TaskController sharedInstance].loadTasks.count;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
     return YES;
 }// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     if (editingStyle == UITableViewCellEditingStyleDelete){
         
         Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
@@ -91,18 +103,17 @@
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }//segue push to detail view controller
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
-
+    
     if ([segue.identifier isEqualToString:@"selectTask"]) {
         UINavigationController *navController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         myTaskDetailViewController *detailViewController = (myTaskDetailViewController *)([navController viewControllers][0]);
-                // Pass any objects to the view controller here, like...
+        // Pass any objects to the view controller here, like...
         [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
     }
 }
@@ -120,15 +131,4 @@
     [self.refreshControl endRefreshing];
 }
 
-//- (void)presentCreateModal {
-//    CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-//    [self addChildViewController:createVC];
-//    createVC.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-//    [self.view addSubview:createVC.view];
-//    [self parentViewController];
-//    [UIView animateWithDuration:1.0 animations:^{
-//        createVC.view.center = self.view.center;
-//
-//    }];
-//}
 @end

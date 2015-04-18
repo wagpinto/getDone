@@ -9,6 +9,7 @@
 #import "CreateTaskViewController.h"
 #import "TaskController.h"
 #import "FindFriendViewController.h"
+#import "Constants.h"
 
 @interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, FindFriendsDelegate>
 
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *dueDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dueTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *assignedLabel;
 
 @property (weak, nonatomic) IBOutlet UISwitch *importantButton;
 @property (weak, nonatomic) IBOutlet UISwitch *recurrentButton;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
+@property (weak, nonatomic) IBOutlet UIButton *assignedButton;
 @property (nonatomic,strong) NSString *status;
 
 @end
@@ -33,9 +36,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-- (void)didSelectFriend:(User *)user{
+    [self setupViewController];
     
+}
+- (void)setupViewController {
+    
+    //set the dates:
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    NSDate *today = [NSDate date];
+    [dateFormat setDateFormat:@"E-MM/dd"];
+    NSString *todayString = [dateFormat stringFromDate:today];
+    self.dueDateLabel.text = todayString;
+    self.dueTimeLabel.text = @"9:00 am";
+    
+    if (!self.assignedUser) {
+        self.assignedLabel.text = @"Not Assinged";
+    }else {
+        self.assignedLabel.text = self.assignedUser.userFullName;
+    }
+    
+    
+} //setup all the properties as the view load.
+- (void)didSelectFriend:(User *)user {
     self.assignedUser = user;
 } //custom delegate
 - (IBAction)SaveTask:(id)sender {
@@ -51,13 +73,13 @@
     
     //set the status
     if (self.assignedUser == nil) {
-        self.status = @"Created";
+        self.status = StatusCreated;
     }else {
-        self.status = @"Assinged";
+        self.status = StatusAssigned;
     }
     
     //save task
-    if (![self.taskNameField.text  isEqual: @""]) {
+    if (![self.taskNameField.text isEqual: @""]) {
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
                                                 DueDate:dateFromString
@@ -69,16 +91,15 @@
                                                  Status:self.status
                                                   Group:nil];
         //create a custom delegate to allow the close button to dismiss the view.
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }else {
         UIAlertView *error = [[UIAlertView alloc]initWithTitle:@"Task Name" message:@"You need a task name in order to save" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [error show];
     }
     
 } //create the task and sabe in backgroun
-
 - (IBAction)Cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 } //dismiss the screen in case of canceling the action
 
@@ -89,21 +110,21 @@
     
     NSCalendar *theCalendar = [NSCalendar currentCalendar];
     NSDate *nextDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
-
+    
     return nextDate;
-
+    
 }
 - (IBAction)dateSegment:(id)sender {
-
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *today = [NSDate date];
-   
+    
     switch (self.dateSegment.selectedSegmentIndex) {
         case 0:{
             [dateFormat setDateFormat:@"E-MM/dd"];
             NSString *todayString = [dateFormat stringFromDate:today];
             self.dueDateLabel.text = todayString;
-            }
+        }
             break;
         case 1:{
             today = [self formatDate:1];
@@ -155,6 +176,6 @@
     [textField resignFirstResponder];
     return YES;
 }//dismiss the keyboard.
-    
+
 
 @end

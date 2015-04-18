@@ -7,7 +7,6 @@
 //
 
 #import "TaskController.h"
-#import "TaskStatus.h"
 
 @implementation TaskController
 
@@ -31,8 +30,22 @@
     return [query findObjects];
     
 }
-- (NSArray *)loadAssingedTasks {
+- (NSArray *)loadSharedTasks {
+    PFQuery *sharedTasks = [Task query];
+    [sharedTasks whereKey:@"Status" equalTo:@"Assigned"];
+    [sharedTasks orderByDescending:@"taskDueDate"];
+    return [sharedTasks findObjects];
+}
 
+- (NSArray *)loadCompledTasks {
+    PFQuery *doneTasks = [Task query];
+    [doneTasks whereKey:@"Status" equalTo:@"Completed"];
+    [doneTasks orderByDescending:@"taskDueDate"];
+    return [doneTasks findObjects];
+}
+
+- (NSArray *)loadAssingedTasks {
+    
     PFQuery*query = [Task query];
     [query whereKey:@"taskAssingee" equalTo:[PFUser currentUser]];
     return [query findObjects];
@@ -62,12 +75,12 @@
     newTask.taskGRoup = group;
     
     self.recentlyCreatedTask = newTask;
-    [newTask pinInBackground];
+    //    [newTask pinInBackground];
     [newTask save];
     
 }
 - (void)deleteTask:(Task *)task {
-    [task unpinInBackground];
+    //    [task unpinInBackground];
     [task deleteInBackground];
 }
 
@@ -87,7 +100,7 @@
 
 #pragma mark - GROUP CONTROLLER
 - (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr {
-
+    
     GroupTask *group = [GroupTask new];
     
     group.groupTitle = groupName;
@@ -102,16 +115,6 @@
     PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTask"];
     return [getGroup findObjects];
 }
-
-#pragma mark - STATUS CONTROLLE
-- (void)setStatus:(NSUInteger)status{
-    
-    
-
-    
-    
-}
-
 
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "myTaskDetailViewController.h"
-#import "TaskController.h"
+#import "Constants.h"
 
 @interface myTaskDetailViewController ()
 
@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self setupViewController];
     
 }
@@ -53,7 +53,7 @@
     [self.tableView reloadData];
 }
 - (void)updateWithTask:(Task *)task {
-
+    
     self.task = task;
     
 }
@@ -61,6 +61,24 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+- (IBAction)CompleteTask:(id)sender {
+    
+    [[TaskController sharedInstance]addTaskWithName:self.taskTitleField.text
+                                               Desc:self.taskDescriptionField.text
+                                            DueDate:[NSDate date]
+                                              Owner:[PFUser currentUser]
+                                           Assignee:nil
+                                          Important:self.importantSwitch.state
+                                            Current:self.recurringSwitch.state
+                                            Address:self.taskAddressField.text
+                                             Status:StatusCompleted
+                                              Group:nil];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
+
 - (IBAction)save:(id)sender {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
@@ -71,16 +89,16 @@
     saveTask.taskDescription = self.taskDescriptionField.text;
     saveTask.taskImportant = self.importantSwitch.state;
     saveTask.taskRecurring = self.recurringSwitch.state;
-//    saveTask.taskDueDate =
-//    saveTask.taskStatus =
+    //    saveTask.taskDueDate =
+    //    saveTask.taskStatus =
     
     [saveTask pinInBackground];
     [saveTask save];
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)shareTask:(id)sender {
-
+    
 }
 - (IBAction)addDate:(id)sender {
     

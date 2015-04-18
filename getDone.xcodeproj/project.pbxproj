@@ -18,6 +18,7 @@
 		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
 		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
+		BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Constants.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
@@ -78,6 +79,8 @@
 		BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewController.m; sourceTree = "<group>"; };
 		BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTaskDetailViewController.h; sourceTree = "<group>"; };
 		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
+		BCC74C211AE1EC6D00B3613C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BCC74C221AE1EC6D00B3613C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -173,8 +176,6 @@
 				BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */,
 				BCBDDCF01AC606E600B61301 /* User.h */,
 				BCBDDCF11AC606E600B61301 /* User.m */,
-				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
-				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -241,6 +242,8 @@
 		BCF7FEF11AC3D5980073E3B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
+				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
 				BCF7FF3C1AC3D6CD0073E3B1 /* Frameworks */,
 				BCF7FEF21AC3D5980073E3B1 /* Info.plist */,
 				BCF7FEF31AC3D5980073E3B1 /* main.m */,
@@ -294,6 +297,8 @@
 		BCF7FF401AC3D76A0073E3B1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BCC74C211AE1EC6D00B3613C /* Constants.h */,
+				BCC74C221AE1EC6D00B3613C /* Constants.m */,
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
 			);
@@ -422,6 +427,7 @@
 				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
+				BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
@@ -552,7 +558,7 @@
 					"/Users/wagppinto/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -570,7 +576,7 @@
 					"/Users/wagppinto/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

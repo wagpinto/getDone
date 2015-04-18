@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, Status) {
-    StatusNone,
-    StatusCreated,
-    StatusAssigned,
-    StatusCompleted,
-    StatusAccepted,
-    StatusDenied,
-    StatusDeleted
-};
+//typedef NS_ENUM(NSUInteger, Status) {
+//    StatusNone,
+//    StatusCreated,
+//    StatusAssigned,
+//    StatusCompleted,
+//    StatusAccepted,
+//    StatusDenied,
+//    StatusDeleted
+//};
 
 @interface TaskStatus : NSObject
 
-@property (nonatomic) Status stausName;
+//@property (nonatomic) Status stausName;
 
 
 @end

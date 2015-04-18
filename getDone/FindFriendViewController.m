@@ -22,20 +22,14 @@ static NSString *cellID = @"cellID";
 @implementation FindFriendViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     //alocate the search results when view load.
     self.searchResults = [[NSArray alloc]init];
-
-
+    
+    
 }
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (IBAction)selectFriendButton:(id)sender {
-    
-//    [self.delegate didSelectFriend];
-//    [self popoverPresentationController];
-
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - SEARCH BAR
@@ -47,11 +41,11 @@ static NSString *cellID = @"cellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.delegate didSelectFriend:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return self.searchResults.count;
     }else {
@@ -60,7 +54,7 @@ static NSString *cellID = @"cellID";
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     if (cell == nil) {
