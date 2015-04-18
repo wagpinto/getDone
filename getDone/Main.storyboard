@@ -27,18 +27,21 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="60V-kb-EMW" id="ImM-kd-Udd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DueDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxH-SR-sIq">
-                                                    <rect key="frame" x="510" y="1" width="90" height="68"/>
-                                                    <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DueDate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxH-SR-sIq">
+                                                    <rect key="frame" x="519" y="3" width="80" height="64"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="d4Q-l4-nGm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Important-low-60" highlightedImage="Important-high-60" translatesAutoresizingMaskIntoConstraints="NO" id="bQC-mT-YOe">
-                                                    <rect key="frame" x="477" y="5" width="25" height="25"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User-off-50" highlightedImage="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="png-hv-W83">
-                                                    <rect key="frame" x="477" y="39" width="25" height="25"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="importantOFF" highlightedImage="importantON" translatesAutoresizingMaskIntoConstraints="NO" id="bQC-mT-YOe">
+                                                    <rect key="frame" x="8" y="38" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="x3V-Ef-qBP"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOA-g7-hzV">
                                                     <rect key="frame" x="8" y="8" width="223" height="30"/>
@@ -50,12 +53,27 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-off-50" highlightedImage="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="png-hv-W83">
+                                                    <rect key="frame" x="41" y="38" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="HM0-Th-pQI"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="MOA-g7-hzV" secondAttribute="bottom" constant="23" id="8LJ-k8-Mfg"/>
+                                                <constraint firstItem="bQC-mT-YOe" firstAttribute="top" secondItem="MOA-g7-hzV" secondAttribute="bottom" id="Eli-yT-r0f"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bQC-mT-YOe" secondAttribute="bottom" constant="-2" id="G2x-kj-maD"/>
                                                 <constraint firstItem="MOA-g7-hzV" firstAttribute="leading" secondItem="ImM-kd-Udd" secondAttribute="leadingMargin" id="Lal-JC-BT6"/>
+                                                <constraint firstItem="png-hv-W83" firstAttribute="leading" secondItem="bQC-mT-YOe" secondAttribute="trailing" constant="8" symbolic="YES" id="ML7-iL-Ty8"/>
+                                                <constraint firstItem="png-hv-W83" firstAttribute="top" secondItem="bQC-mT-YOe" secondAttribute="top" id="Qbe-EJ-iPA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UxH-SR-sIq" secondAttribute="bottom" constant="-6" id="b2F-jA-kUG"/>
+                                                <constraint firstItem="UxH-SR-sIq" firstAttribute="top" secondItem="ImM-kd-Udd" secondAttribute="topMargin" constant="-5" id="dj9-il-Uhg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UxH-SR-sIq" secondAttribute="trailing" constant="-7" id="dnR-A6-6TO"/>
+                                                <constraint firstItem="png-hv-W83" firstAttribute="bottom" secondItem="bQC-mT-YOe" secondAttribute="bottom" id="mMg-QK-bdP"/>
                                                 <constraint firstItem="MOA-g7-hzV" firstAttribute="leading" secondItem="ImM-kd-Udd" secondAttribute="leadingMargin" id="qTn-wv-ffQ"/>
                                                 <constraint firstItem="MOA-g7-hzV" firstAttribute="top" secondItem="ImM-kd-Udd" secondAttribute="topMargin" id="qYW-DN-ws1"/>
+                                                <constraint firstItem="bQC-mT-YOe" firstAttribute="leading" secondItem="MOA-g7-hzV" secondAttribute="leading" id="yAk-Ds-Bzi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -318,7 +336,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fMz-os-XIf" id="Jpd-3I-rP0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTB-Vb-kBl">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTB-Vb-kBl">
                                                     <rect key="frame" x="16" y="4" width="569" height="35"/>
                                                     <color key="backgroundColor" red="1" green="0.010013922309426992" blue="0.041628300328712453" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -334,6 +352,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="cTB-Vb-kBl" firstAttribute="centerY" secondItem="Jpd-3I-rP0" secondAttribute="centerY" id="Hle-j3-mhZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cTB-Vb-kBl" secondAttribute="trailing" constant="7" id="Vtq-VA-mFJ"/>
                                                 <constraint firstItem="cTB-Vb-kBl" firstAttribute="leading" secondItem="Jpd-3I-rP0" secondAttribute="leadingMargin" constant="8" id="wKG-bU-B0g"/>
                                             </constraints>
@@ -361,6 +380,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateSegment" destination="mrJ-aq-1Ey" id="w6G-6M-KcC"/>
                         <outlet property="dueDateLabel" destination="hbL-o9-NYk" id="hXb-gQ-QjI"/>
@@ -795,11 +815,12 @@
                         <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X6h-ly-nkf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="MenuBackground2" backIndicatorImage="MenuBackground2" backIndicatorTransitionMaskImage="MenuBackground2" id="X6h-ly-nkf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.25373752150000001" green="0.47682969879999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1111,11 +1132,12 @@
     <resources>
         <image name="4.Shared-50" width="25" height="25"/>
         <image name="5.myList-50" width="25" height="25"/>
-        <image name="Important-high-60" width="60" height="60"/>
-        <image name="Important-low-60" width="60" height="60"/>
+        <image name="MenuBackground2" width="1440" height="900"/>
         <image name="Ok-50-2" width="50" height="50"/>
         <image name="User-off-50" width="50" height="50"/>
         <image name="User-on-50" width="50" height="50"/>
+        <image name="importantOFF" width="60" height="60"/>
+        <image name="importantON" width="60" height="60"/>
         <image name="me" width="410" height="404"/>
     </resources>
     <inferredMetricsTieBreakers>
