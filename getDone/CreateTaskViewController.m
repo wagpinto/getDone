@@ -20,11 +20,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *dueTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *assignedLabel;
 
+@property (nonatomic) NSDate *DueDate;
+
 @property (weak, nonatomic) IBOutlet UISwitch *importantButton;
 @property (weak, nonatomic) IBOutlet UISwitch *recurrentButton;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *recurringSegment;
 
 @property (weak, nonatomic) IBOutlet UIButton *assignedButton;
 @property (nonatomic,strong) NSString *status;
@@ -64,7 +67,7 @@
     
     //combine date and hour for dueDate value
     //set NSString to a NSDate:
-    NSString *taskDueDate = [NSString stringWithFormat:@"%@ - %@",self.dueDateLabel.text, self.dueTimeLabel.text];
+    NSString *taskDueDate = [NSString stringWithFormat:@"%@ %@",self.dueDateLabel.text, self.dueTimeLabel.text];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
     
@@ -80,6 +83,8 @@
     
     //save task
     if (![self.taskNameField.text isEqual: @""]) {
+        
+       
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
                                                 DueDate:dateFromString
@@ -166,6 +171,7 @@
             break;
     }
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     FindFriendViewController *friendsVC = [segue destinationViewController];
     friendsVC.delegate = self;
