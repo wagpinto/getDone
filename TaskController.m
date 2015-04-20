@@ -40,6 +40,7 @@
     
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
+    [query whereKey:@"Status" equalTo:@"Created"];
     [query orderByAscending:@"taskDueDate"];
     
     __block NSArray * loadedMyTasks = [[NSArray alloc]init];

@@ -37,7 +37,6 @@
     }];
     
 }
-
 - (IBAction)addNewTask:(id)sender {
     //create and present a small view on top of the current view.
     //instaciate the new view as the one created on the storyboard.
@@ -73,19 +72,14 @@
         if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
             cell.sharedIcon.highlighted = YES;
         }
-        if (task.taskRecurring == YES) {
-//            cell.
-        }
     }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 69;
 }
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
     switch (section) {
         case 0:
             return @"MY TASKS";
@@ -98,7 +92,6 @@
             break;
     }
 }
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
@@ -107,6 +100,12 @@
     switch (section) {
         case 0:
             return [TaskController sharedInstance].loadMyTask.count;
+            break;
+        case 1:
+            return [TaskController sharedInstance].loadAssingedTasks.count;
+            break;
+        case 2:
+            return [TaskController sharedInstance].loadCompledTasks.count;
             break;
         default:
             return 0;

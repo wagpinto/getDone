@@ -20,6 +20,7 @@
 
 - (void)loadTasks:(void (^)(BOOL completion))completion;
 - (NSArray *)loadAssingedTasks;
+- (NSArray *)loadCompledTasks;
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
