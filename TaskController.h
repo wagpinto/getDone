@@ -16,7 +16,9 @@
 
 + (TaskController *)sharedInstance;
 
-- (NSArray *)loadTasks;
+@property (nonatomic,strong) NSArray * loadMyTask;
+
+- (void)loadTasks:(void (^)(BOOL completion))completion;
 - (NSArray *)loadAssingedTasks;
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description
@@ -29,7 +31,7 @@
                  Status:(NSString *)status
                   Group:(GroupTask *)group;
 
-- (void)deleteTask:(Task *)task;
+- (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
 - (NSArray *)selectUserWithName:(NSString *)username;
 - (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;
 - (NSArray *)loadAllUser;

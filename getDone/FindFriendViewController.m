@@ -22,6 +22,9 @@ static NSString *cellID = @"cellID";
 @implementation FindFriendViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+//        [self.tableView reloadData];
+//    }];
     
     //alocate the search results when view load.
     self.searchResults = [[NSArray alloc]init];

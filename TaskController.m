@@ -8,29 +8,61 @@
 
 #import "TaskController.h"
 
+@interface TaskController ()
+
+
+@end
+
 @implementation TaskController
+@synthesize loadMyTask = _loadMyTask;
 
 + (TaskController *)sharedInstance {
     static TaskController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [TaskController new];
-        [sharedInstance loadTasks];
-        
+//        sharedInstance.loadMyTask = [[NSArray alloc]init];
     });
     return sharedInstance;
 }
 
+//- (NSArray *)loadMyTasks {
+//    
+//    [self loadTasks:^(BOOL completion) {
+//        self.loadMyTask = self.loadedMyTasks;
+//    }];
+//    return self.loadMyTask;
+//}
+
 #pragma mark - TASK CONTROLLER
-- (NSArray *)loadTasks { //loads current user tasks ordered by dueDate.
+- (void)loadTasks:(void (^)(BOOL completion))completion
+{ //loads current user tasks ordered by dueDate.
     
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
     [query orderByAscending:@"taskDueDate"];
     
-    return [query findObjects];
+    __block NSArray * loadedMyTasks = [[NSArray alloc]init];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            for (Task *task in objects) {
+                loadedMyTasks = [loadedMyTasks arrayByAddingObject:task];
+            }
+            
+            [TaskController sharedInstance].loadMyTask = loadedMyTasks;
+            completion(YES);
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
 }
+
 - (NSArray *)loadSharedTasks {
     PFQuery *sharedTasks = [Task query];
     [sharedTasks whereKey:@"Status" equalTo:@"Assigned"];
@@ -80,9 +112,10 @@
     [newTask save];
     
 }
-- (void)deleteTask:(Task *)task {
+- (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
     //    [task unpinInBackground];
-    [task deleteInBackground];
+    [[[TaskController sharedInstance].loadMyTask objectAtIndex:index] deleteInBackground];
+    completion(YES);
 }
 
 #pragma mark - USER CONTROLLER

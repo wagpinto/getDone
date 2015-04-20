@@ -23,11 +23,9 @@
 @property (nonatomic) NSDate *DueDate;
 
 @property (weak, nonatomic) IBOutlet UISwitch *importantButton;
-@property (weak, nonatomic) IBOutlet UISwitch *recurrentButton;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *recurringSegment;
 
 @property (weak, nonatomic) IBOutlet UIButton *assignedButton;
 @property (nonatomic,strong) NSString *status;
@@ -40,6 +38,8 @@
     [super viewDidLoad];
     
     [self setupViewController];
+    self.taskNameField.delegate = self;
+    self.taskDescriptionField.delegate = self;
     
 }
 - (void)setupViewController {
@@ -91,7 +91,7 @@
                                                   Owner:[PFUser currentUser]
                                                Assignee:self.assignedUser
                                               Important:self.importantButton.state
-                                                Current:self.recurrentButton.state
+                                                Current:nil
                                                 Address:self.taskAddressField.text
                                                  Status:self.status
                                                   Group:nil];
@@ -182,6 +182,5 @@
     [textField resignFirstResponder];
     return YES;
 }//dismiss the keyboard.
-
 
 @end

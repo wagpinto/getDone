@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-mh-FmS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-mh-FmS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="70" id="60V-kb-EMW" customClass="CustomTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -276,46 +276,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e0Q-PF-KZo">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e0Q-PF-KZo" id="W4J-Hw-BzU">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reccuring:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiU-vK-CQ0">
-                                                    <rect key="frame" x="15" y="1" width="124" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="124" id="Rem-Vr-VWS"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BkH-Z2-P9F">
-                                                    <rect key="frame" x="387" y="7" width="205" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="205" id="E9d-S6-1Ps"/>
-                                                        <constraint firstAttribute="height" constant="28" id="K3K-pL-34m"/>
-                                                    </constraints>
-                                                    <segments>
-                                                        <segment title="Daily"/>
-                                                        <segment title="Weekly"/>
-                                                        <segment title="Monthly"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="recurringSegment:" destination="ha4-tw-P2M" eventType="valueChanged" id="AiE-NW-Wvw"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="JiU-vK-CQ0" firstAttribute="top" secondItem="W4J-Hw-BzU" secondAttribute="topMargin" constant="-7" id="9S7-V1-9aC"/>
-                                                <constraint firstItem="BkH-Z2-P9F" firstAttribute="top" secondItem="W4J-Hw-BzU" secondAttribute="topMargin" constant="-1" id="CrS-DZ-2oQ"/>
-                                                <constraint firstItem="BkH-Z2-P9F" firstAttribute="bottom" secondItem="W4J-Hw-BzU" secondAttribute="bottomMargin" id="TBK-Jg-xc3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JiU-vK-CQ0" secondAttribute="bottom" constant="-10" id="a5r-Gw-qXB"/>
-                                                <constraint firstItem="BkH-Z2-P9F" firstAttribute="trailing" secondItem="W4J-Hw-BzU" secondAttribute="trailingMargin" id="hBz-Xd-SUx"/>
-                                                <constraint firstItem="JiU-vK-CQ0" firstAttribute="leading" secondItem="W4J-Hw-BzU" secondAttribute="leadingMargin" constant="7" id="tAt-Ya-OGd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zem-s8-k7w">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zem-s8-k7w" id="Rtm-08-jHh">
@@ -415,7 +375,6 @@
                         <outlet property="dueTimeLabel" destination="33t-lN-5GJ" id="TdK-ub-PIi"/>
                         <outlet property="hourSegment" destination="SE1-lJ-Ifc" id="bJ1-lc-W97"/>
                         <outlet property="importantButton" destination="I59-Fa-S0u" id="XOh-aI-3wK"/>
-                        <outlet property="recurringSegment" destination="BkH-Z2-P9F" id="pC9-Fr-Cfn"/>
                         <outlet property="taskAddressField" destination="mJZ-nV-xzR" id="I96-Ee-2nw"/>
                         <outlet property="taskDescriptionField" destination="cbD-80-Epn" id="6P3-Bn-WF3"/>
                         <outlet property="taskNameField" destination="1IB-sN-kaA" id="dy1-hQ-WFa"/>
@@ -962,28 +921,6 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ply-rT-glS" customClass="recurringTableViewCell">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ply-rT-glS" id="bqc-Ov-zMq">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recurring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhK-3s-Ko7">
-                                                    <rect key="frame" x="187" y="0.0" width="226" height="43"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="226" id="7mH-Fg-quw"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="lhK-3s-Ko7" firstAttribute="centerX" secondItem="bqc-Ov-zMq" secondAttribute="centerX" id="idi-Kr-vwo"/>
-                                                <constraint firstAttribute="bottom" secondItem="lhK-3s-Ko7" secondAttribute="bottom" id="pT7-bS-fyj"/>
-                                                <constraint firstItem="lhK-3s-Ko7" firstAttribute="top" secondItem="bqc-Ov-zMq" secondAttribute="top" id="xPx-IH-lhX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6LJ-iz-yQS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6LJ-iz-yQS" id="qkb-Gb-m7C">
@@ -1065,7 +1002,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="importantLabel" destination="PmY-NW-eEP" id="1wq-ix-73Z"/>
-                        <outlet property="recurringLabel" destination="lhK-3s-Ko7" id="jM3-rT-J3n"/>
                         <outlet property="statusLabel" destination="THS-lx-Ur1" id="BsR-it-bZP"/>
                         <outlet property="taskAddressField" destination="J96-Ex-1gg" id="tfX-XH-iLy"/>
                         <outlet property="taskDescriptionField" destination="fbq-4O-7vm" id="8ki-vu-fi5"/>

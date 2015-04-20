@@ -24,10 +24,18 @@
     [super viewDidLoad];
     
     [self setupRefreshControl];
+    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self reloadTableView];
+    
+    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
+    
 }
 
 - (IBAction)addNewTask:(id)sender {
@@ -46,7 +54,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
-    Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
+    Task *task = [TaskController sharedInstance].loadMyTask[indexPath.row];
     
     if (cell != nil) {
         //format date on the taskDueDate:
@@ -74,6 +82,23 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 69;
 }
+
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"MY TASKS";
+            break;
+        case 1:
+            return @"ASSIGNED";
+            break;
+        default:
+            return @"COMPLETED";
+            break;
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
@@ -81,7 +106,7 @@
     
     switch (section) {
         case 0:
-            return [TaskController sharedInstance].loadTasks.count;
+            return [TaskController sharedInstance].loadMyTask.count;
             break;
         default:
             return 0;
@@ -95,11 +120,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        
-        Task *task = [TaskController sharedInstance].loadTasks[indexPath.row];
-        [[TaskController sharedInstance]deleteTask:task];
-        
-        [tableView reloadData];
+        [[TaskController sharedInstance] deleteTask:indexPath.row andCompletion:^(BOOL completion) {
+            [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+                [self reloadTableView];
+            }];
+        }];
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -113,7 +138,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         myTaskDetailViewController *detailViewController = [segue destinationViewController];
         // Pass any objects to the view controller here, like...
-        [detailViewController updateWithTask:[TaskController sharedInstance].loadTasks[indexPath.row]];
+        [detailViewController updateWithTask:[TaskController sharedInstance].loadMyTask[indexPath.row]];
     }
 }
 
