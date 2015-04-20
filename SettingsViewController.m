@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *pictureImage;
 
 @end
 
@@ -23,6 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.pictureImage.layer.cornerRadius = self.pictureImage.frame.size.height / 2;
+    self.pictureImage.clipsToBounds = YES;
+    self.pictureImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.pictureImage.layer.borderWidth = 0.5f;
+    
+    
     User *user = [User new];
     
     self.userNameLabel.text = user.userFullName;
@@ -36,6 +43,14 @@
 - (void)SwipeToClose {
     [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)logout:(id)sender {
+    [PFUser logOut];
+}
+- (IBAction)takePicture:(id)sender {
+
+
+
 }
 
 @end
