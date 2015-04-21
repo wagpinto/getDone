@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *sharedIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *colorBarCell;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *shareStatusColorBar;
 
 @end

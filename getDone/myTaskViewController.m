@@ -76,6 +76,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = @"...";
+                cell.shareStatusColorBar.backgroundColor = [UIColor grayColor];
 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
@@ -96,10 +97,12 @@
                 task = [TaskController sharedInstance].loadSharedTasks[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
+                cell.userLabel.text = task.taskAssignee.objectId;
+                
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
-                cell.userLabel.text = task.taskAssignee.userFullName;
-                
+
+                //set the DueDate Coloar Bar
                 if (dateString >= [NSString stringWithFormat:@"%@",[NSDate date]]) {
                     cell.colorBarCell.backgroundColor = [UIColor greenColor];
                 }else {
@@ -109,9 +112,14 @@
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
                 }
-
-                if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
+                if ([task.Status isEqual:@"Assigned"]) {
+                    cell.shareStatusColorBar.backgroundColor = [UIColor orangeColor];
                     cell.sharedIcon.highlighted = YES;
+                }else if ([task.Status isEqual:@"Accepted"]){
+                    cell.shareStatusColorBar.backgroundColor = [UIColor greenColor];
+                    cell.sharedIcon.highlighted = YES;
+                }else if ([task.Status isEqual:@"Denied"]){
+                    cell.shareStatusColorBar.backgroundColor = [UIColor redColor];
                 }
             }
             break;

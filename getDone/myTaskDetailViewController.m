@@ -36,12 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupViewController];
-
-    
 }
-
 - (void)setupViewController {
     //setup the picture image:
     self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
