@@ -79,10 +79,10 @@
 }
 
 - (NSArray *)loadAssingedTasks {
-    
     PFQuery*query = [Task query];
     [query whereKey:@"taskAssingee" equalTo:[PFUser currentUser]];
     return [query findObjects];
+    
 }
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description

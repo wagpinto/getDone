@@ -29,7 +29,6 @@
     }];
     
 }
-
 - (void)viewDidAppear:(BOOL)animated {
     
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
@@ -49,28 +48,79 @@
     [self.parentViewController presentViewController:createVC animated:YES completion:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
+    
+    if ([segue.identifier isEqualToString:@"selectTask"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        myTaskDetailViewController *detailViewController = [segue destinationViewController];
+        // Pass any objects to the view controller here, like...
+        [detailViewController updateWithTask:[TaskController sharedInstance].loadMyTask[indexPath.row]];
+    }
+}
+
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
-    Task *task = [TaskController sharedInstance].loadMyTask[indexPath.row];
+    Task *task = [Task new];
+
+    //format date on the taskDueDate:
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"E-MM/dd"];
+
     
-    if (cell != nil) {
-        //format date on the taskDueDate:
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"E-MM/dd"];
-        NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.taskNameLabel.text = task.taskName;
-        cell.dueDateLabel.text = dateString;
-        
-        //set the cell icons to reflect the importance and status:
-        if (task.taskImportant == YES) {
-            cell.importantIcon.highlighted = YES;
-        }
-        if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
-            cell.sharedIcon.highlighted = YES;
+    switch (indexPath.section) {
+        case 0:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadMyTask[indexPath.row];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.taskNameLabel.text = task.taskName;
+                cell.userLabel.text = @"...";
+
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+                
+                if (dateString >= [NSString stringWithFormat:@"%@",[NSDate date]]) {
+                    cell.colorBarCell.backgroundColor = [UIColor greenColor];
+                }else {
+                    cell.colorBarCell.backgroundColor = [UIColor redColor];
+                }
+                //set the cell icons to reflect the importance and status:
+                if (task.taskImportant == YES) {
+                    cell.importantIcon.highlighted = YES;
+                }
+            }
+            break;
+        case 1:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadSharedTasks[indexPath.row];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.taskNameLabel.text = task.taskName;
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+                cell.userLabel.text = task.taskAssignee.userFullName;
+                
+                if (dateString >= [NSString stringWithFormat:@"%@",[NSDate date]]) {
+                    cell.colorBarCell.backgroundColor = [UIColor greenColor];
+                }else {
+                    cell.colorBarCell.backgroundColor = [UIColor redColor];
+                }
+                //set the cell icons to reflect the importance and status:
+                if (task.taskImportant == YES) {
+                    cell.importantIcon.highlighted = YES;
+                }
+
+                if ([task.Status isEqual:@"Assigned"] || [task.Status isEqual:@"Accepted"]){
+                    cell.sharedIcon.highlighted = YES;
+                }
+            }
+            break;
+        default: {
+            task = [TaskController sharedInstance].loadCompledTasks[indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.taskNameLabel.text = task.taskName;
+            NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+            cell.dueDateLabel.text = dateString;
         }
     }
     return cell;
@@ -102,13 +152,10 @@
             return [TaskController sharedInstance].loadMyTask.count;
             break;
         case 1:
-            return [TaskController sharedInstance].loadAssingedTasks.count;
-            break;
-        case 2:
-            return [TaskController sharedInstance].loadCompledTasks.count;
+            return [TaskController sharedInstance].loadSharedTasks.count; // [nil count]; => 0x0
             break;
         default:
-            return 0;
+            return [TaskController sharedInstance].loadCompledTasks.count;
             break;
     }
 }
@@ -131,15 +178,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }//segue push to detail view controller
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
-    
-    if ([segue.identifier isEqualToString:@"selectTask"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        myTaskDetailViewController *detailViewController = [segue destinationViewController];
-        // Pass any objects to the view controller here, like...
-        [detailViewController updateWithTask:[TaskController sharedInstance].loadMyTask[indexPath.row]];
-    }
-}
 
 #pragma mark - Pull-to-Refresh
 - (void)setupRefreshControl {

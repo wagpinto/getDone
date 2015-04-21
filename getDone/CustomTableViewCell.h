@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *customCell;
 @property (weak, nonatomic) IBOutlet UIImageView *importantIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *sharedIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *colorBarCell;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
 @end

@@ -21,6 +21,7 @@
 - (void)loadTasks:(void (^)(BOOL completion))completion;
 - (NSArray *)loadAssingedTasks;
 - (NSArray *)loadCompledTasks;
+- (NSArray *)loadSharedTasks;
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
