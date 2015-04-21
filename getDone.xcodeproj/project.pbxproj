@@ -24,8 +24,6 @@
 		BCCA53F31AE577BE00508372 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53ED1AE577BE00508372 /* ParseFacebookUtils.framework */; };
 		BCCA53F41AE577BE00508372 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EE1AE577BE00508372 /* ParseFacebookUtilsV4.framework */; };
 		BCCA53F51AE577BE00508372 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EF1AE577BE00508372 /* ParseUI.framework */; };
-		BCE0F9EA1AE2332200B4E88E /* importantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE0F9E91AE2332200B4E88E /* importantTableViewCell.m */; };
-		BCE0F9EE1AE23EAE00B4E88E /* recurringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE0F9ED1AE23EAE00B4E88E /* recurringTableViewCell.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
@@ -86,10 +84,6 @@
 		BCCA53ED1AE577BE00508372 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = getDone/ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		BCCA53EE1AE577BE00508372 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = getDone/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		BCCA53EF1AE577BE00508372 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = getDone/ParseUI.framework; sourceTree = "<group>"; };
-		BCE0F9E81AE2332200B4E88E /* importantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = importantTableViewCell.h; sourceTree = "<group>"; };
-		BCE0F9E91AE2332200B4E88E /* importantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = importantTableViewCell.m; sourceTree = "<group>"; };
-		BCE0F9EC1AE23EAE00B4E88E /* recurringTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recurringTableViewCell.h; sourceTree = "<group>"; };
-		BCE0F9ED1AE23EAE00B4E88E /* recurringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recurringTableViewCell.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -211,10 +205,6 @@
 		BCE0F9EB1AE235B800B4E88E /* Task Details */ = {
 			isa = PBXGroup;
 			children = (
-				BCE0F9E81AE2332200B4E88E /* importantTableViewCell.h */,
-				BCE0F9E91AE2332200B4E88E /* importantTableViewCell.m */,
-				BCE0F9EC1AE23EAE00B4E88E /* recurringTableViewCell.h */,
-				BCE0F9ED1AE23EAE00B4E88E /* recurringTableViewCell.m */,
 				BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */,
 				BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */,
 			);
@@ -432,7 +422,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCE0F9EA1AE2332200B4E88E /* importantTableViewCell.m in Sources */,
 				BCF7FEFD1AC3D5980073E3B1 /* FindFriendViewController.m in Sources */,
 				BCFDBFE81ADEDCF7000983CB /* TaskStatus.m in Sources */,
 				BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */,
@@ -446,7 +435,6 @@
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
 				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
-				BCE0F9EE1AE23EAE00B4E88E /* recurringTableViewCell.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
 				BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */,
 				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,

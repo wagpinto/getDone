@@ -22,13 +22,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
 @property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *importantLabel;
-@property (weak, nonatomic) IBOutlet UILabel *recurringLabel;
 
 @property (nonatomic, assign) BOOL important;
-@property (nonatomic, assign) BOOL recurring;
-@property (nonatomic, strong) importantTableViewCell * impCell;
-@property (nonatomic, strong) recurringTableViewCell * recuCell;
+@property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
 
 @end
 
@@ -36,6 +32,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     [self setupViewController];
 }
 - (void)setupViewController {
@@ -46,9 +45,7 @@
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
-    
-    //set the important tableViewCell value:
-    [self getCellValue];
+//    self.importantSwitch.state = YES;
     
     [self.tableView reloadData];
 }
@@ -68,13 +65,13 @@
                                             DueDate:[NSDate date]
                                               Owner:[PFUser currentUser]
                                            Assignee:nil
-                                          Important:self.important // get the value from tapping the cell.
-                                            Current:self.recurring // get the value from tapping the cell.
+                                          Important:self.important
+                                            Current:nil
                                             Address:self.taskAddressField.text
                                              Status:StatusCompleted
                                               Group:nil];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }
 - (IBAction)save:(id)sender {
@@ -86,7 +83,6 @@
     saveTask.taskAddress = self.taskAddressField.text;
     saveTask.taskDescription = self.taskDescriptionField.text;
     saveTask.taskImportant = self.important;
-    saveTask.taskRecurring = self.recurring;
     
     [saveTask pinInBackground];
     [saveTask save];
@@ -100,33 +96,33 @@
 #pragma mark - TABLEVIEW DELEGATE
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    [self getCellValue];
+//    [self getCellValue];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)getCellValue {
-    //get Important Valeu
-    if (self.task.taskImportant == YES) {
-        [self.impCell setImportantCell:YES];
-        self.important = YES;
-        self.importantLabel.text = @"IMPORTANT";
-    }else{
-        [self.impCell setImportantCell:NO];
-        self.important = NO;
-        self.importantLabel.text = @"TAP FOR IMPORTANT";
-    }
-
-    //get Recurring Value
-    if (self.task.taskRecurring == YES) {
-        [self.recuCell setRecurringCell:YES];
-        self.recurring = YES;
-        self.recurringLabel.text = @"RECURRING TASK";
-    }else {
-        [self.recuCell setRecurringCell:NO];
-        self.recurring = NO;
-        self.recurringLabel.text = @"TAP FOR RECURRING";
-    }
-
-}
+//- (void)getCellValue {
+//    //get Important Valeu
+//    if (self.task.taskImportant == YES) {
+//        [self.impCell setImportantCell:YES];
+//        self.important = YES;
+//        self.importantLabel.text = @"IMPORTANT";
+//    }else{
+//        [self.impCell setImportantCell:NO];
+//        self.important = NO;
+//        self.importantLabel.text = @"TAP FOR IMPORTANT";
+//    }
+//
+//    //get Recurring Value
+//    if (self.task.taskRecurring == YES) {
+//        [self.recuCell setRecurringCell:YES];
+//        self.recurring = YES;
+//        self.recurringLabel.text = @"RECURRING TASK";
+//    }else {
+//        [self.recuCell setRecurringCell:NO];
+//        self.recurring = NO;
+//        self.recurringLabel.text = @"TAP FOR RECURRING";
+//    }
+//
+//}
 
 @end
