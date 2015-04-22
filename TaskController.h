@@ -34,14 +34,11 @@
                   Group:(GroupTask *)group;
 
 - (void)updateTask:(Task *)task andStatus:(NSString *)status;
-
 - (void)deleteMyTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
-
 - (void)deleteSharedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
-
 - (void)deleteCompletedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
 
-
+- (void)updateUserWithName:(User *)user andName:(NSString *)userName andPic:(PFFile *)Picture;
 - (NSArray *)selectUserWithName:(NSString *)username;
 
 @property(nonatomic,strong) Task *recentlyCreatedTask;

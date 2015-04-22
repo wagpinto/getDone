@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationBarDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *userPictureView;
 
 @end

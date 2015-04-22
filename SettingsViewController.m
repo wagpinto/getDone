@@ -10,11 +10,10 @@
 #import "TaskController.h"
 #import "User.h"
 
-@interface SettingsViewController ()//<UIGestureRecognizerDelegate>
+@interface SettingsViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *pictureImage;
 
 @end
 
@@ -24,33 +23,88 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.pictureImage.layer.cornerRadius = self.pictureImage.frame.size.height / 2;
-    self.pictureImage.clipsToBounds = YES;
-    self.pictureImage.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.pictureImage.layer.borderWidth = 0.5f;
+    //check if the device has a camera.
+    [self checkDevice];
     
+    self.userPictureView.layer.cornerRadius = self.userPictureView.frame.size.height / 2;
+    self.userPictureView.clipsToBounds = YES;
+    self.userPictureView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.userPictureView.layer.borderWidth = 0.5f;
     
-    User *user = [User new];
+    User *user = [PFUser currentUser];
     
-    self.userNameLabel.text = user.userFullName;
-    self.emailLabel.text = user.email;
-    
-    UISwipeGestureRecognizer *swipeDismiss = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(SwipeToClose)];
-    swipeDismiss.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipeDismiss];
-    
+    self.userNameLabel.text = user[@"userFullName"];
+    self.emailLabel.text = user[@"email"];
+
+    if (user[@"userPic"] != nil) {
+        self.userPictureView.image = user[@"userPic"];
+    }
 }
-- (void)SwipeToClose {
-    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
 }
 - (IBAction)takePicture:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Choose Source" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //code
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        //picker.delegate = self;
+        picker.allowsEditing = YES; //if you want to edit you need to change the delegate method to allow save the edit image
+        picker.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:picker animated:YES completion:nil];
+        
+    }];
+    
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //code
+        UIImagePickerController *cameraPicker = [[UIImagePickerController alloc]init];
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
+          //  cameraPicker.delegate = self;
+            cameraPicker.allowsEditing = YES;
+            cameraPicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+            cameraPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            
+            [self presentViewController:cameraPicker animated:YES completion:nil];
+        }
+    }];
+    
+    [alertController addAction:libraryAction];
+    [alertController addAction:cameraAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 
+}
 
+- (void)checkDevice {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
+}
 
+#pragma mark - PICKERVIEW DELEGATE
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.userPictureView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 @end

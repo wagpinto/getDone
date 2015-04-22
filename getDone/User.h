@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *passwork;
 @property (nonatomic, strong) NSString *userFullName;
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *userPic;
+@property (nonatomic, strong) PFFile *userPic;
 
 + (NSString *)parseClassName;
 

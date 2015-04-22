@@ -66,21 +66,21 @@
 } //setup all the properties as the view load.
 - (IBAction)SaveTask:(id)sender {
     
-    //combine date and hour for dueDate value
-    //set NSString to a NSDate:
-    NSString *taskDueDate = [NSString stringWithFormat:@"%@ %@",self.dueDateLabel.text, self.dueTimeLabel.text];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
-    
-    NSDate *dateFromString = [dateFormatter dateFromString:taskDueDate];
-//    dateFromString = [dateFormatter dateFromString:taskDueDate];
-    
-    NSDate *date1 = dateFromString;
-    NSDate *date2 = dateFromString; // Made up to get some random date, basically
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    components.hour = 9;
-    NSDate *combinedDate = [NSDate dateByCombiningDay:[NSDate date] time:[[NSCalendar currentCalendar] dateFromComponents:components]];
-    NSLog(@"%@ %@ combined: %@", date1, date2, combinedDate);
+//    //combine date and hour for dueDate value
+//    //set NSString to a NSDate:
+//    NSString *taskDueDate = [NSString stringWithFormat:@"%@ %@",self.dueDateLabel.text, self.dueTimeLabel.text];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
+//    
+//    NSDate *dateFromString = [dateFormatter dateFromString:taskDueDate];
+////    dateFromString = [dateFormatter dateFromString:taskDueDate];
+//    
+//    NSDate *date1 = dateFromString;
+//    NSDate *date2 = dateFromString; // Made up to get some random date, basically
+//    NSDateComponents *components = [[NSDateComponents alloc] init];
+//    components.hour = 9;
+    NSDate *combinedDate = [NSDate dateByCombiningDay:self.dayDate time:[[NSCalendar currentCalendar] dateFromComponents:self.timeDate]];
+//    NSLog(@"%@ %@ combined: %@", date1, date2, combinedDate);
     
     //set the status
     if (self.assignedUser == nil) {
@@ -102,7 +102,7 @@
     if (![self.taskNameField.text isEqual: @""]) {
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
-                                                DueDate:dateFromString
+                                                DueDate:combinedDate
                                                   Owner:[PFUser currentUser]
                                                Assignee:self.assignedUser
                                               Important:importantValue
@@ -170,6 +170,7 @@
             today = [self formatDate:1];
             [dateFormat setDateFormat:@"E-MM/dd"];
             NSString *todayString = [dateFormat stringFromDate:today];
+            self.dayDate = [self formatDate:1];
             self.dueDateLabel.text = todayString;
         }
             break;
@@ -177,6 +178,7 @@
             today = [self formatDate:3];
             [dateFormat setDateFormat:@"E-MM/dd"];
             NSString *todayString = [dateFormat stringFromDate:today];
+            self.dayDate = [self formatDate:3];
             self.dueDateLabel.text = todayString;
         }
             break;
@@ -184,12 +186,14 @@
             today = [self formatDate:7];
             [dateFormat setDateFormat:@"E-MM/dd"];
             NSString *todayString = [dateFormat stringFromDate:today];
+            self.dayDate = [self formatDate:7];
             self.dueDateLabel.text = todayString;
         }
             break;
     }
 }
 - (IBAction)timeSegment:(id)sender {
+
     switch (self.hourSegment.selectedSegmentIndex) {
         case 0:
             self.dueTimeLabel.text = @"9:00 am";
@@ -197,19 +201,24 @@
             break;
         case 1:
             self.dueTimeLabel.text = @"12:00 pm";
+            self.timeDate.hour = 12;
             break;
         case 2:
             self.dueTimeLabel.text = @"3:00 pm";
+            self.timeDate.hour = 15;
             break;
         default:
             self.dueTimeLabel.text = @"6:00 pm";
+            self.timeDate.hour = 18;
             break;
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    FindFriendViewController *friendsVC = [segue destinationViewController];
-    friendsVC.delegate = self;
+    if ([segue.identifier isEqualToString:@"newUserShare"]) {
+        FindFriendViewController *friendsVC = [segue destinationViewController];
+        friendsVC.delegate = self;
+    }
 }
 
 # pragma mark - Custom Delegate (Find Friend)

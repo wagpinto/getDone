@@ -94,8 +94,11 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    FindFriendViewController *friendsVC = [segue destinationViewController];
-    friendsVC.delegate = self;
+    if ([segue.identifier isEqualToString:@"shareTask"]) {
+        FindFriendViewController *friendsVC = [segue destinationViewController];
+        friendsVC.delegate = self;
+    }
+
 }
 # pragma mark - Custom Delegate (Find Friend)
 - (void)didSelectFriend:(User *)user {

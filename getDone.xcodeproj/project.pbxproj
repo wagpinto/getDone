@@ -202,6 +202,8 @@
 				BC699D591ACDDDB300A9989F /* Main.storyboard */,
 				BCF7FEF51AC3D5980073E3B1 /* AppDelegate.h */,
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
+				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
+				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
 				BC0D51C91ADEC37B00CC7B9A /* CreateTask */,
 				BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */,
 				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
@@ -322,8 +324,6 @@
 		BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */ = {
 			isa = PBXGroup;
 			children = (
-				BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */,
-				BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */,
 				BCF7FF3D1AC3D7630073E3B1 /* CustomLoginViewController.h */,
 				BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */,
 				BCF7FF411AC3DCDB0073E3B1 /* SignUpViewController.h */,

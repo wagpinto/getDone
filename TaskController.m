@@ -165,6 +165,15 @@
 }
 
 #pragma mark - USER CONTROLLER
+- (void)updateUserWithName:(User *)user andName:(NSString *)userName andPic:(PFFile *)Picture {
+    
+    user.userFullName = userName;
+    user.userPic = Picture;
+    
+    [user saveInBackground];
+    [user save];
+}
+
 - (void)loadAllUser:(void (^)(BOOL completion))completion {
     PFQuery *query = [PFUser query];
     
