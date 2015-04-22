@@ -24,6 +24,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+- (IBAction)addFriends:(id)sender {
+    
+}
 
 #pragma mark - TABLEVIEW DELEGATE
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -36,8 +39,10 @@
     task = [TaskController sharedInstance].loadAssingedTasks[indexPath.row];
 
     if (cell != nil) {
-        cell.textLabel.text = task.taskName;
-        cell.detailTextLabel.text = task.taskDescription;
+        cell.taskNameLabel.text = task.taskName;
+        cell.taskDescriptionLabel.text = task.taskDescription;
+        cell.taskAddressLabel.text = task.taskAddress;
+        cell.dueDateLabel.text = task.taskDueDate;
     }else {
         NSLog(@"Cell = NIL");
     }

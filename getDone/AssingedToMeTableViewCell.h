@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AssingedToMeTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userFullNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
+
 
 @end
