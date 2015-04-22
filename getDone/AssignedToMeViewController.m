@@ -33,7 +33,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AssingedToMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assignedTask" forIndexPath:indexPath];
     Task *task = [Task new];
-    
+    task = [TaskController sharedInstance].loadAssingedTasks[indexPath.row];
+
     if (cell != nil) {
         cell.textLabel.text = task.taskName;
         cell.detailTextLabel.text = task.taskDescription;

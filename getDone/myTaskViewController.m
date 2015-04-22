@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self setupRefreshControl];
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];

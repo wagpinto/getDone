@@ -7,6 +7,7 @@
 //
 
 #import "TaskController.h"
+#import "Constants.h"
 
 @interface TaskController ()
 
@@ -40,7 +41,7 @@
     
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
-    [query whereKey:@"Status" equalTo:@"Created"];
+    [query whereKey:@"Status" equalTo:StatusCreated];
     [query orderByAscending:@"taskDueDate"];
     
     __block NSArray * loadedMyTasks = [[NSArray alloc]init];
@@ -66,7 +67,7 @@
 
 - (NSArray *)loadSharedTasks {
     PFQuery *sharedTasks = [Task query];
-    [sharedTasks whereKey:@"Status" equalTo:@"Assigned"];
+    [sharedTasks whereKey:@"Status" equalTo:StatusAssigned];
     [sharedTasks whereKey:@"TaskOwner" equalTo:[PFUser currentUser]];
     [sharedTasks orderByDescending:@"taskDueDate"];
     return [sharedTasks findObjects];
@@ -74,14 +75,14 @@
 
 - (NSArray *)loadCompledTasks {
     PFQuery *doneTasks = [Task query];
-    [doneTasks whereKey:@"Status" equalTo:@"Completed"];
+    [doneTasks whereKey:@"Status" equalTo:StatusCompleted];
     [doneTasks orderByDescending:@"taskDueDate"];
     return [doneTasks findObjects];
 }
 
 - (NSArray *)loadAssingedTasks {
     PFQuery*query = [Task query];
-    [query whereKey:@"taskAssingee" equalTo:[PFUser currentUser]];
+    [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
     return [query findObjects];
     
 }
