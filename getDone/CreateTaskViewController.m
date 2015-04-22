@@ -23,11 +23,9 @@
 @property (nonatomic) NSDate *DueDate;
 
 @property (weak, nonatomic) IBOutlet UISwitch *importantButton;
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
-@property (weak, nonatomic) IBOutlet UIButton *assignedButton;
 @property (nonatomic,strong) NSString *status;
 
 @end
@@ -41,6 +39,7 @@
     self.taskNameField.delegate = self;
     self.taskDescriptionField.delegate = self;
     
+
 }
 - (void)setupViewController {
     
@@ -60,9 +59,6 @@
     
     
 } //setup all the properties as the view load.
-- (void)didSelectFriend:(User *)user {
-    self.assignedUser = user;
-} //custom delegate
 - (IBAction)SaveTask:(id)sender {
     
     //combine date and hour for dueDate value
@@ -81,16 +77,23 @@
         self.status = StatusAssigned;
     }
     
+    //set important state:
+    BOOL importantValue;
+    
+    if ([self.importantButton isOn]) {
+        importantValue = YES;
+    }else {
+        importantValue = NO;
+    }
+    
     //save task
     if (![self.taskNameField.text isEqual: @""]) {
-        
-       
         [[TaskController sharedInstance]addTaskWithName:self.taskNameField.text
                                                    Desc:self.taskDescriptionField.text
                                                 DueDate:dateFromString
                                                   Owner:[PFUser currentUser]
                                                Assignee:self.assignedUser
-                                              Important:self.importantButton.state
+                                              Important:importantValue
                                                 Current:nil
                                                 Address:self.taskAddressField.text
                                                  Status:self.status
@@ -104,12 +107,31 @@
     
 } //create the task and sabe in backgroun
 - (IBAction)Cancel:(id)sender {
+
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 } //dismiss the screen in case of canceling the action
 
+#pragma mark - TableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    switch (section) {
+        case 0:
+            return 3;
+            break;
+            
+        default:
+            return 4;
+            break;
+    }
+}
+
 #pragma mark - SegmentControllers
 - (NSDate *)formatDate:(NSInteger)days {
+    
     NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
     dayComponent.day = days;
     
@@ -176,6 +198,12 @@
     FindFriendViewController *friendsVC = [segue destinationViewController];
     friendsVC.delegate = self;
 }
+
+# pragma mark - Custom Delegate (Find Friend)
+- (void)didSelectFriend:(User *)user {
+    self.assignedUser = user;
+} //custom delegate
+
 
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

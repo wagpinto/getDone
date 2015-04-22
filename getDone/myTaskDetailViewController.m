@@ -13,7 +13,7 @@
 #import "myTaskDetailViewController.h"
 #import "Constants.h"
 
-@interface myTaskDetailViewController ()
+@interface myTaskDetailViewController () 
 
 @property (nonatomic, strong) Task *task;
 
@@ -21,9 +21,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskAddressField;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionField;
 @property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *assignedUserLabel;
+@property (weak, nonatomic) IBOutlet UIButton *completeTaskButton;
 
-@property (nonatomic, assign) BOOL important;
+//@property (nonatomic, assign) BOOL important;
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
 
 @end
@@ -32,8 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     [self setupViewController];
 }
@@ -45,7 +44,17 @@
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
-//    self.importantSwitch.state = YES;
+    if (self.task.taskImportant == YES) {
+        [self.importantSwitch setOn:YES];
+    }else {
+        [self.importantSwitch setOn:NO];
+    }
+    
+    if ([self.task.Status isEqual: @"Completed"]) {
+        [self.completeTaskButton setTitle: @"COMPLETED" forState: UIControlStateNormal];
+        self.completeTaskButton.backgroundColor = [UIColor darkGrayColor];
+    }
+    
     
     [self.tableView reloadData];
 }
@@ -55,25 +64,15 @@
     
 }
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 - (IBAction)CompleteTask:(id)sender {
-    
-    [[TaskController sharedInstance]addTaskWithName:self.taskTitleField.text
-                                               Desc:self.taskDescriptionField.text
-                                            DueDate:[NSDate date]
-                                              Owner:[PFUser currentUser]
-                                           Assignee:nil
-                                          Important:self.important
-                                            Current:nil
-                                            Address:self.taskAddressField.text
-                                             Status:StatusCompleted
-                                              Group:nil];
-    
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [[TaskController sharedInstance]updateTask:self.task andStatus:StatusCompleted];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
+
 - (IBAction)save:(id)sender {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
@@ -82,47 +81,31 @@
     saveTask.taskName = self.taskTitleField.text;
     saveTask.taskAddress = self.taskAddressField.text;
     saveTask.taskDescription = self.taskDescriptionField.text;
-    saveTask.taskImportant = self.important;
+
+    if ([self.importantSwitch isOn]) {
+        saveTask.taskImportant = YES;
+    }else {
+        saveTask.taskImportant = NO;
+    }
     
     [saveTask pinInBackground];
     [saveTask save];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-- (IBAction)shareTask:(id)sender {
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FindFriendViewController *friendsVC = [segue destinationViewController];
+    friendsVC.delegate = self;
 }
+# pragma mark - Custom Delegate (Find Friend)
+- (void)didSelectFriend:(User *)user {
+    self.assignedUser = user;
+} //custom delegate
 
 #pragma mark - TABLEVIEW DELEGATE
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-//    [self getCellValue];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-//- (void)getCellValue {
-//    //get Important Valeu
-//    if (self.task.taskImportant == YES) {
-//        [self.impCell setImportantCell:YES];
-//        self.important = YES;
-//        self.importantLabel.text = @"IMPORTANT";
-//    }else{
-//        [self.impCell setImportantCell:NO];
-//        self.important = NO;
-//        self.importantLabel.text = @"TAP FOR IMPORTANT";
-//    }
-//
-//    //get Recurring Value
-//    if (self.task.taskRecurring == YES) {
-//        [self.recuCell setRecurringCell:YES];
-//        self.recurring = YES;
-//        self.recurringLabel.text = @"RECURRING TASK";
-//    }else {
-//        [self.recuCell setRecurringCell:NO];
-//        self.recurring = NO;
-//        self.recurringLabel.text = @"TAP FOR RECURRING";
-//    }
-//
-//}
 
 @end

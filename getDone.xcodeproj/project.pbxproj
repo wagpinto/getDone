@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
+		BC7BA4FF1AE747C900B354AB /* AssingedToMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA4FE1AE747C900B354AB /* AssingedToMeTableViewCell.m */; };
+		BC7BA5031AE748AB00B354AB /* AssignedToMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA5021AE748AB00B354AB /* AssignedToMeViewController.m */; };
 		BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */; };
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
@@ -38,7 +40,6 @@
 		BCF7FF2F1AC3D6790073E3B1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF2E1AC3D6790073E3B1 /* MobileCoreServices.framework */; };
 		BCF7FF311AC3D6840073E3B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF301AC3D6840073E3B1 /* QuartzCore.framework */; };
 		BCF7FF331AC3D68B0073E3B1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF321AC3D68B0073E3B1 /* Security.framework */; };
-		BCF7FF351AC3D69A0073E3B1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF341AC3D69A0073E3B1 /* StoreKit.framework */; };
 		BCF7FF371AC3D6A60073E3B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF361AC3D6A60073E3B1 /* SystemConfiguration.framework */; };
 		BCF7FF391AC3D6AF0073E3B1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF381AC3D6AF0073E3B1 /* libz.dylib */; };
 		BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */; };
@@ -59,6 +60,10 @@
 
 /* Begin PBXFileReference section */
 		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BC7BA4FD1AE747C900B354AB /* AssingedToMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssingedToMeTableViewCell.h; sourceTree = "<group>"; };
+		BC7BA4FE1AE747C900B354AB /* AssingedToMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssingedToMeTableViewCell.m; sourceTree = "<group>"; };
+		BC7BA5011AE748AB00B354AB /* AssignedToMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignedToMeViewController.h; sourceTree = "<group>"; };
+		BC7BA5021AE748AB00B354AB /* AssignedToMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignedToMeViewController.m; sourceTree = "<group>"; };
 		BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		BCBDDCEA1AC601B500B61301 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskController.h; path = ../TaskController.h; sourceTree = "<group>"; };
@@ -105,7 +110,6 @@
 		BCF7FF2E1AC3D6790073E3B1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BCF7FF301AC3D6840073E3B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCF7FF321AC3D68B0073E3B1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		BCF7FF341AC3D69A0073E3B1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BCF7FF361AC3D6A60073E3B1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BCF7FF381AC3D6AF0073E3B1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -122,13 +126,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */,
+				BCF7FF391AC3D6AF0073E3B1 /* libz.dylib in Frameworks */,
 				BCCA53F51AE577BE00508372 /* ParseUI.framework in Frameworks */,
 				BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */,
 				BCCA53F21AE577BE00508372 /* ParseCrashReporting.framework in Frameworks */,
-				BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */,
-				BCF7FF391AC3D6AF0073E3B1 /* libz.dylib in Frameworks */,
 				BCF7FF371AC3D6A60073E3B1 /* SystemConfiguration.framework in Frameworks */,
-				BCF7FF351AC3D69A0073E3B1 /* StoreKit.framework in Frameworks */,
 				BCF7FF331AC3D68B0073E3B1 /* Security.framework in Frameworks */,
 				BCF7FF311AC3D6840073E3B1 /* QuartzCore.framework in Frameworks */,
 				BCCA53F01AE577BE00508372 /* Bolts.framework in Frameworks */,
@@ -164,7 +167,18 @@
 			name = CreateTask;
 			sourceTree = "<group>";
 		};
-		BCBDDCD31AC5F9ED00B61301 /* Model */ = {
+		BC7BA5001AE7481100B354AB /* AssingedToMeTak */ = {
+			isa = PBXGroup;
+			children = (
+				BC7BA5011AE748AB00B354AB /* AssignedToMeViewController.h */,
+				BC7BA5021AE748AB00B354AB /* AssignedToMeViewController.m */,
+				BC7BA4FD1AE747C900B354AB /* AssingedToMeTableViewCell.h */,
+				BC7BA4FE1AE747C900B354AB /* AssingedToMeTableViewCell.m */,
+			);
+			name = AssingedToMeTak;
+			sourceTree = "<group>";
+		};
+		BCBDDCD31AC5F9ED00B61301 /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
 				BCBDDCED1AC6041200B61301 /* Task.h */,
@@ -174,7 +188,7 @@
 				BCBDDCF01AC606E600B61301 /* User.h */,
 				BCBDDCF11AC606E600B61301 /* User.m */,
 			);
-			name = Model;
+			name = MODEL;
 			sourceTree = "<group>";
 		};
 		BCBDDCD41AC5F9F500B61301 /* View */ = {
@@ -185,8 +199,8 @@
 				BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */,
 				BC0D51C91ADEC37B00CC7B9A /* CreateTask */,
 				BCC4EF7D1AD352FD00D7C6DC /* MY Tasks */,
-				BCE0F9EB1AE235B800B4E88E /* Task Details */,
 				BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */,
+				BC7BA5001AE7481100B354AB /* AssingedToMeTak */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -196,19 +210,12 @@
 			children = (
 				BCB967FD1ACCB3E500BC9CC4 /* CustomTableViewCell.h */,
 				BCB967FE1ACCB3E500BC9CC4 /* CustomTableViewCell.m */,
+				BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */,
+				BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */,
 				BCF7FEF81AC3D5980073E3B1 /* myTaskViewController.h */,
 				BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */,
 			);
 			name = "MY Tasks";
-			sourceTree = "<group>";
-		};
-		BCE0F9EB1AE235B800B4E88E /* Task Details */ = {
-			isa = PBXGroup;
-			children = (
-				BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */,
-				BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */,
-			);
-			name = "Task Details";
 			sourceTree = "<group>";
 		};
 		BCF7FEE51AC3D5980073E3B1 = {
@@ -233,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				BCBDDCD41AC5F9F500B61301 /* View */,
-				BCBDDCD31AC5F9ED00B61301 /* Model */,
-				BCF7FF401AC3D76A0073E3B1 /* Controller */,
+				BCBDDCD31AC5F9ED00B61301 /* MODEL */,
+				BCF7FF401AC3D76A0073E3B1 /* CONTROLLER */,
 				BCF7FF011AC3D5980073E3B1 /* Images.xcassets */,
 				BCF7FF031AC3D5980073E3B1 /* LaunchScreen.xib */,
 				BCF7FEF11AC3D5980073E3B1 /* Supporting Files */,
@@ -284,7 +291,6 @@
 				BCCA53EF1AE577BE00508372 /* ParseUI.framework */,
 				BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */,
 				BCF7FF361AC3D6A60073E3B1 /* SystemConfiguration.framework */,
-				BCF7FF341AC3D69A0073E3B1 /* StoreKit.framework */,
 				BCF7FF321AC3D68B0073E3B1 /* Security.framework */,
 				BCF7FF301AC3D6840073E3B1 /* QuartzCore.framework */,
 				BCF7FF2E1AC3D6790073E3B1 /* MobileCoreServices.framework */,
@@ -297,7 +303,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		BCF7FF401AC3D76A0073E3B1 /* Controller */ = {
+		BCF7FF401AC3D76A0073E3B1 /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
 				BCC74C211AE1EC6D00B3613C /* Constants.h */,
@@ -305,7 +311,7 @@
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
 			);
-			name = Controller;
+			name = CONTROLLER;
 			sourceTree = "<group>";
 		};
 		BCF7FF441AC3DCEA0073E3B1 /* Parse-Login */ = {
@@ -371,6 +377,11 @@
 					BCF7FEED1AC3D5980073E3B1 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = WF9EJFRLZP;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					BCF7FF091AC3D5980073E3B1 = {
 						CreatedOnToolsVersion = 6.2;
@@ -428,6 +439,8 @@
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
 				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
 				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
+				BC7BA4FF1AE747C900B354AB /* AssingedToMeTableViewCell.m in Sources */,
+				BC7BA5031AE748AB00B354AB /* AssignedToMeViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
 				BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */,

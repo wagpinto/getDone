@@ -47,7 +47,6 @@
     
     [self.parentViewController presentViewController:createVC animated:YES completion:nil];
 }
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     
     if ([segue.identifier isEqualToString:@"selectTask"]) {
@@ -124,11 +123,17 @@
             }
             break;
         default: {
-            task = [TaskController sharedInstance].loadCompledTasks[indexPath.row];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.taskNameLabel.text = task.taskName;
-            NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-            cell.dueDateLabel.text = dateString;
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadCompledTasks[indexPath.row];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.taskNameLabel.text = task.taskName;
+                cell.userLabel.text = @"COMPLETED";
+                cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
+                cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
+
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+            }
         }
     }
     return cell;
@@ -160,7 +165,7 @@
             return [TaskController sharedInstance].loadMyTask.count;
             break;
         case 1:
-            return [TaskController sharedInstance].loadSharedTasks.count; // [nil count]; => 0x0
+            return [TaskController sharedInstance].loadSharedTasks.count;
             break;
         default:
             return [TaskController sharedInstance].loadCompledTasks.count;
@@ -189,6 +194,7 @@
 
 #pragma mark - Pull-to-Refresh
 - (void)setupRefreshControl {
+    
     self.refreshControl = [UIRefreshControl new];
     [self setRefreshControl:self.refreshControl];
     [self.tableView addSubview:self.refreshControl];

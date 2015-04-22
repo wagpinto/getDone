@@ -33,6 +33,7 @@
                  Status:(NSString *)status
                   Group:(GroupTask *)group;
 
+- (void)updateTask:(Task *)task andStatus:(NSString *)status;
 - (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
 - (NSArray *)selectUserWithName:(NSString *)username;
 - (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;

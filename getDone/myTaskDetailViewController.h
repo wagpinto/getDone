@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskController.h"
+#import "FindFriendViewController.h"
 
-@interface myTaskDetailViewController : UITableViewController
+@interface myTaskDetailViewController : UITableViewController <FindFriendsDelegate>
+
+@property (nonatomic,strong) User *assignedUser;
 
 - (void)updateWithTask:(Task *)task;
 

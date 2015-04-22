@@ -67,6 +67,7 @@
 - (NSArray *)loadSharedTasks {
     PFQuery *sharedTasks = [Task query];
     [sharedTasks whereKey:@"Status" equalTo:@"Assigned"];
+    [sharedTasks whereKey:@"TaskOwner" equalTo:[PFUser currentUser]];
     [sharedTasks orderByDescending:@"taskDueDate"];
     return [sharedTasks findObjects];
 }
@@ -112,6 +113,13 @@
     //    [newTask pinInBackground];
     [newTask save];
     
+}
+- (void)updateTask:(Task *)task andStatus:(NSString *)status {
+    
+    task.Status = status;
+    
+    [task saveInBackground];
+    [task save];
 }
 - (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
     //    [task unpinInBackground];
