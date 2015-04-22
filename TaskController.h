@@ -16,12 +16,12 @@
 
 + (TaskController *)sharedInstance;
 
-@property (nonatomic,strong) NSArray * loadMyTask;
-
 - (void)loadTasks:(void (^)(BOOL completion))completion;
-- (NSArray *)loadAssingedTasks;
-- (NSArray *)loadCompledTasks;
-- (NSArray *)loadSharedTasks;
+- (void)loadSharedTasks:(void (^)(BOOL completion))completion;
+- (void)loadCompletedTasks:(void (^)(BOOL completion))completion;
+- (void)loadAssingedTasks:(void (^)(BOOL completion))completion;
+- (void)loadAllUser:(void (^)(BOOL completion))completion;
+
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
@@ -34,13 +34,22 @@
                   Group:(GroupTask *)group;
 
 - (void)updateTask:(Task *)task andStatus:(NSString *)status;
-- (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
+
+- (void)deleteMyTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
+
+- (void)deleteSharedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
+
+- (void)deleteCompletedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
+
+
 - (NSArray *)selectUserWithName:(NSString *)username;
-- (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr;
-- (NSArray *)loadAllUser;
-- (NSArray *)loadGroup:(GroupTask *)group;
 
 @property(nonatomic,strong) Task *recentlyCreatedTask;
+@property (nonatomic,strong) NSArray * loadMyTask;
+@property (nonatomic,strong) NSArray * loadSharedTask;
+@property (nonatomic,strong) NSArray * loadCompletedTask;
+@property (nonatomic,strong) NSArray * loadAssignedTask;
+@property (nonatomic,strong) NSArray * loadAllUser;
 
 @property NSString *taskCreated;
 

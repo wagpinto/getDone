@@ -22,23 +22,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [TaskController new];
-//        sharedInstance.loadMyTask = [[NSArray alloc]init];
     });
     return sharedInstance;
 }
 
-//- (NSArray *)loadMyTasks {
-//    
-//    [self loadTasks:^(BOOL completion) {
-//        self.loadMyTask = self.loadedMyTasks;
-//    }];
-//    return self.loadMyTask;
-//}
 
 #pragma mark - TASK CONTROLLER
-- (void)loadTasks:(void (^)(BOOL completion))completion
-{ //loads current user tasks ordered by dueDate.
-    
+- (void)loadTasks:(void (^)(BOOL completion))completion { //loads current user tasks ordered by dueDate.
     PFQuery *query = [Task query];
     [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
     [query whereKey:@"Status" equalTo:StatusCreated];
@@ -64,28 +54,65 @@
     }];
     
 }
-
-- (NSArray *)loadSharedTasks {
+- (void)loadSharedTasks:(void (^)(BOOL completion))completion {
     PFQuery *sharedTasks = [Task query];
     [sharedTasks whereKey:@"Status" equalTo:StatusAssigned];
     [sharedTasks whereKey:@"TaskOwner" equalTo:[PFUser currentUser]];
     [sharedTasks orderByDescending:@"taskDueDate"];
-    return [sharedTasks findObjects];
+    
+    __block NSArray *loadSharedTasks = [[NSArray alloc]init];
+    
+    [sharedTasks findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (Task *task in objects) {
+                loadSharedTasks = [loadSharedTasks arrayByAddingObject:task];
+            }
+            [TaskController sharedInstance].loadSharedTask = loadSharedTasks;
+            completion (YES);
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
 }
-
-- (NSArray *)loadCompledTasks {
+- (void)loadCompletedTasks:(void (^)(BOOL completion))completion {
     PFQuery *doneTasks = [Task query];
     [doneTasks whereKey:@"Status" equalTo:StatusCompleted];
     [doneTasks orderByDescending:@"taskDueDate"];
-    return [doneTasks findObjects];
-}
 
-- (NSArray *)loadAssingedTasks {
+    __block NSArray *loadCompletedTasks = [NSArray new];
+
+    [doneTasks findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (Task *task in objects) {
+                loadCompletedTasks = [loadCompletedTasks arrayByAddingObject:task];
+            }
+            [TaskController sharedInstance].loadCompletedTask = loadCompletedTasks;
+            completion(YES);
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+- (void)loadAssingedTasks:(void (^)(BOOL completion))completion {
     PFQuery*query = [Task query];
     [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
-    return [query findObjects];
+
+    __block NSArray *loadAssignedTasks = [NSArray new];
     
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (Task *task in objects) {
+                loadAssignedTasks = [loadAssignedTasks arrayByAddingObject:task];
+            }
+            [TaskController sharedInstance].loadAssignedTask = loadAssignedTasks;
+            completion(YES);
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
+
 - (void)addTaskWithName:(NSString *)taskName
                    Desc:(NSString *)description
                 DueDate:(NSDate *)dueDate
@@ -111,7 +138,7 @@
     newTask.taskGRoup = group;
     
     self.recentlyCreatedTask = newTask;
-    //    [newTask pinInBackground];
+
     [newTask save];
     
 }
@@ -122,17 +149,36 @@
     [task saveInBackground];
     [task save];
 }
-- (void)deleteTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
-    //    [task unpinInBackground];
+- (void)deleteMyTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
     [[[TaskController sharedInstance].loadMyTask objectAtIndex:index] deleteInBackground];
     completion(YES);
 }
 
+- (void)deleteSharedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
+    [[[TaskController sharedInstance].loadSharedTask objectAtIndex:index] deleteInBackground];
+    completion(YES);
+}
+
+- (void)deleteCompletedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion {
+    [[[TaskController sharedInstance].loadCompletedTask objectAtIndex:index] deleteInBackground];
+    completion(YES);
+}
+
 #pragma mark - USER CONTROLLER
-- (NSArray *)loadAllUser {
-    
+- (void)loadAllUser:(void (^)(BOOL completion))completion {
     PFQuery *query = [PFUser query];
-    return [query findObjects];
+    
+    __block NSArray *loadUsers = [NSArray new];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (User *user in objects) {
+                loadUsers = [loadUsers arrayByAddingObject:user];
+            }
+            [TaskController sharedInstance].loadAllUser = loadUsers;
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 - (NSArray *)selectUserWithName:(NSString *)username{
     
@@ -142,23 +188,6 @@
     return [findUsers findObjects];
 }
 
-#pragma mark - GROUP CONTROLLER
-- (void)createGroupWithName:(NSString *)groupName Desc:(NSString *)groupDescr {
-    
-    GroupTask *group = [GroupTask new];
-    
-    group.groupTitle = groupName;
-    group.groupDescription = groupDescr;
-    
-    [group saveInBackground];
-    [group save];
-    
-}
-- (NSArray *)loadGroup:(GroupTask *)group {
-    
-    PFQuery *getGroup = [PFQuery queryWithClassName:@"GroupTask"];
-    return [getGroup findObjects];
-}
 
 
 @end

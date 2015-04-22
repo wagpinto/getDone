@@ -18,6 +18,7 @@
 		BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */; };
 		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
+		BCC31BC21AE82148002E004A /* NSDate+CombiningDates.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */; };
 		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
 		BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Constants.m */; };
 		BCCA53F01AE577BE00508372 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EA1AE577BE00508372 /* Bolts.framework */; };
@@ -79,6 +80,8 @@
 		BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTaskViewController.h; sourceTree = "<group>"; };
 		BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewController.m; sourceTree = "<group>"; };
+		BCC31BC01AE82148002E004A /* NSDate+CombiningDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CombiningDates.h"; sourceTree = "<group>"; };
+		BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CombiningDates.m"; sourceTree = "<group>"; };
 		BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTaskDetailViewController.h; sourceTree = "<group>"; };
 		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
 		BCC74C211AE1EC6D00B3613C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */,
 				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
 				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
+				BCC31BC01AE82148002E004A /* NSDate+CombiningDates.h */,
+				BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */,
 			);
 			name = CreateTask;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
 				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
 				BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */,
+				BCC31BC21AE82148002E004A /* NSDate+CombiningDates.m in Sources */,
 				BC7BA4FF1AE747C900B354AB /* AssingedToMeTableViewCell.m in Sources */,
 				BC7BA5031AE748AB00B354AB /* AssignedToMeViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,

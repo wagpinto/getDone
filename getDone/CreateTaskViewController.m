@@ -10,6 +10,7 @@
 #import "TaskController.h"
 #import "FindFriendViewController.h"
 #import "Constants.h"
+#import "NSDate+CombiningDates.h"
 
 @interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, FindFriendsDelegate>
 
@@ -26,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
+@property (strong, nonatomic) NSDate *dayDate;
+@property (strong, nonatomic) NSDateComponents *timeDate;
 @property (nonatomic,strong) NSString *status;
 
 @end
@@ -38,6 +41,8 @@
     [self setupViewController];
     self.taskNameField.delegate = self;
     self.taskDescriptionField.delegate = self;
+    self.timeDate = [[NSDateComponents alloc] init];
+    self.dayDate = [NSDate date];
     
 
 }
@@ -67,8 +72,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
     
-    NSDate *dateFromString = [[NSDate alloc] init];
-    dateFromString = [dateFormatter dateFromString:taskDueDate];
+    NSDate *dateFromString = [dateFormatter dateFromString:taskDueDate];
+//    dateFromString = [dateFormatter dateFromString:taskDueDate];
+    
+    NSDate *date1 = dateFromString;
+    NSDate *date2 = dateFromString; // Made up to get some random date, basically
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.hour = 9;
+    NSDate *combinedDate = [NSDate dateByCombiningDay:[NSDate date] time:[[NSCalendar currentCalendar] dateFromComponents:components]];
+    NSLog(@"%@ %@ combined: %@", date1, date2, combinedDate);
     
     //set the status
     if (self.assignedUser == nil) {
@@ -150,6 +162,7 @@
         case 0:{
             [dateFormat setDateFormat:@"E-MM/dd"];
             NSString *todayString = [dateFormat stringFromDate:today];
+            self.dayDate = today;
             self.dueDateLabel.text = todayString;
         }
             break;
@@ -177,10 +190,10 @@
     }
 }
 - (IBAction)timeSegment:(id)sender {
-    
     switch (self.hourSegment.selectedSegmentIndex) {
         case 0:
             self.dueTimeLabel.text = @"9:00 am";
+            self.timeDate.hour = 9;
             break;
         case 1:
             self.dueTimeLabel.text = @"12:00 pm";

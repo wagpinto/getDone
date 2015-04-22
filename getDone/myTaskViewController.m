@@ -28,11 +28,24 @@
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
+    [[TaskController sharedInstance] loadCompletedTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
+    [[TaskController sharedInstance] loadSharedTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
     
 }
 - (void)viewDidAppear:(BOOL)animated {
     
+    [self setupRefreshControl];
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
+    [[TaskController sharedInstance] loadCompletedTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
+    [[TaskController sharedInstance] loadSharedTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
     
@@ -94,7 +107,7 @@
             break;
         case 1:
             if (cell != nil) {
-                task = [TaskController sharedInstance].loadSharedTasks[indexPath.row];
+                task = [TaskController sharedInstance].loadSharedTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = task.taskAssignee.objectId;
@@ -125,7 +138,7 @@
             break;
         default: {
             if (cell != nil) {
-                task = [TaskController sharedInstance].loadCompledTasks[indexPath.row];
+                task = [TaskController sharedInstance].loadCompletedTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = @"COMPLETED";
@@ -166,10 +179,10 @@
             return [TaskController sharedInstance].loadMyTask.count;
             break;
         case 1:
-            return [TaskController sharedInstance].loadSharedTasks.count;
+            return [TaskController sharedInstance].loadSharedTask.count;
             break;
         default:
-            return [TaskController sharedInstance].loadCompledTasks.count;
+            return [TaskController sharedInstance].loadCompletedTask.count;
             break;
     }
 }
@@ -180,11 +193,30 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        [[TaskController sharedInstance] deleteTask:indexPath.row andCompletion:^(BOOL completion) {
-            [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
-                [self reloadTableView];
-            }];
-        }];
+        switch (indexPath.section) {
+            {case 0:
+                [[TaskController sharedInstance] deleteMyTask:indexPath.row andCompletion:^(BOOL completion) {
+                    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
+                        [self reloadTableView];
+                    }];
+                }];
+                break;}
+            {case 1:
+                [[TaskController sharedInstance] deleteSharedTask:indexPath.row andCompletion:^(BOOL completion) {
+                    [[TaskController sharedInstance] loadSharedTasks:^(BOOL completion) {
+                        [self reloadTableView];
+                    }];
+                }];
+                break;}
+            {case 2:
+                [[TaskController sharedInstance] deleteCompletedTask:indexPath.row andCompletion:^(BOOL completion) {
+                    [[TaskController sharedInstance] loadCompletedTasks:^(BOOL completion) {
+                        [self reloadTableView];
+                    }];
+                }];
+                break;}
+        }
+
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
