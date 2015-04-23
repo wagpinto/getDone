@@ -11,11 +11,10 @@
 @interface CustomTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dueTimeLabel;
 @property (weak, nonatomic) IBOutlet UIView *customCell;
 @property (weak, nonatomic) IBOutlet UIImageView *importantIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *sharedIcon;
-@property (weak, nonatomic) IBOutlet UIImageView *colorBarCell;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *shareStatusColorBar;
 
 @end

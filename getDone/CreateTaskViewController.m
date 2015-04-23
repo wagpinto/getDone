@@ -65,22 +65,7 @@
     
 } //setup all the properties as the view load.
 - (IBAction)SaveTask:(id)sender {
-    
-//    //combine date and hour for dueDate value
-//    //set NSString to a NSDate:
-//    NSString *taskDueDate = [NSString stringWithFormat:@"%@ %@",self.dueDateLabel.text, self.dueTimeLabel.text];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"e-mm/dd - hh:mm a"]; //this format needs to match Parse Date Format.
-//    
-//    NSDate *dateFromString = [dateFormatter dateFromString:taskDueDate];
-////    dateFromString = [dateFormatter dateFromString:taskDueDate];
-//    
-//    NSDate *date1 = dateFromString;
-//    NSDate *date2 = dateFromString; // Made up to get some random date, basically
-//    NSDateComponents *components = [[NSDateComponents alloc] init];
-//    components.hour = 9;
     NSDate *combinedDate = [NSDate dateByCombiningDay:self.dayDate time:[[NSCalendar currentCalendar] dateFromComponents:self.timeDate]];
-//    NSLog(@"%@ %@ combined: %@", date1, date2, combinedDate);
     
     //set the status
     if (self.assignedUser == nil) {
@@ -119,7 +104,6 @@
     
 } //create the task and sabe in backgroun
 - (IBAction)Cancel:(id)sender {
-
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 } //dismiss the screen in case of canceling the action

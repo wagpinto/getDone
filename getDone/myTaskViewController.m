@@ -81,6 +81,10 @@
     }
 }
 
+- (void)setupDateTime {
+    
+}
+
 #pragma mark - TABLEVIEW TADASOURCE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -88,9 +92,10 @@
     Task *task = [Task new];
 
     //format date on the taskDueDate:
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormat = [NSDateFormatter new];
     [dateFormat setDateFormat:@"E-MM/dd"];
-
+    NSDateFormatter *timeFormat = [NSDateFormatter new];
+    [timeFormat setDateFormat:@"hh:mm a"];
     
     switch (indexPath.section) {
         case 0:
@@ -99,16 +104,13 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = @"";
-                cell.shareStatusColorBar.backgroundColor = [UIColor darkGrayColor];
 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
                 
-                if (dateString >= [NSString stringWithFormat:@"%@",[NSDate date]]) {
-                    cell.colorBarCell.backgroundColor = [UIColor greenColor];
-                }else {
-                    cell.colorBarCell.backgroundColor = [UIColor redColor];
-                }
+                NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
+                cell.dueTimeLabel.text = timeString;
+                
                 //set the cell icons to reflect the importance and status:
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
@@ -126,27 +128,15 @@
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
+                
+                NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
+                cell.dueTimeLabel.text = timeString;
 
-                //set the DueDate Coloar Bar
-                if (dateString >= [NSString stringWithFormat:@"%@",[NSDate date]]) {
-                    cell.colorBarCell.backgroundColor = [UIColor greenColor];
-                }else {
-                    cell.colorBarCell.backgroundColor = [UIColor redColor];
-                }
                 //set the cell icons to reflect the importance and status:
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
                 }else {
                     cell.importantIcon.highlighted = NO;
-                }
-                if ([task.Status isEqual:@"Assigned"]) {
-                    cell.shareStatusColorBar.backgroundColor = [UIColor orangeColor];
-                    cell.sharedIcon.highlighted = YES;
-                }else if ([task.Status isEqual:@"Accepted"]){
-                    cell.shareStatusColorBar.backgroundColor = [UIColor greenColor];
-                    cell.sharedIcon.highlighted = YES;
-                }else if ([task.Status isEqual:@"Denied"]){
-                    cell.shareStatusColorBar.backgroundColor = [UIColor redColor];
                 }
             }
             break;
@@ -157,13 +147,11 @@
                 cell.taskNameLabel.text = task.taskName;
                 cell.taskNameLabel.tintColor = [UIColor grayColor];
                 cell.userLabel.text = @"";
-                cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
-                cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
                 cell.dueDateLabel.text = @"DONE";
+                cell.dueTimeLabel.text = @"";
+                cell.dueTimeLabel.backgroundColor = [UIColor whiteColor];
                 cell.importantIcon.image = nil;
                 cell.sharedIcon.image = nil;
-//                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-//                cell.dueDateLabel.text = dateString;
             }
         }
     }
