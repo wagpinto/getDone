@@ -43,7 +43,7 @@ static NSString *cellID = @"cellID";
 #pragma mark - TABLE VIEW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.delegate didSelectFriend:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
+    [self.delegate didSelectFriend:[[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row]];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -52,7 +52,7 @@ static NSString *cellID = @"cellID";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return self.searchResults.count;
     }else {
-        return [TaskController sharedInstance].loadAllUser.count;
+        return [TaskController sharedInstance].loadUsers.count;
     }
     
 }
@@ -67,11 +67,11 @@ static NSString *cellID = @"cellID";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
     }else {
-        PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
+        PFUser *user = [[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row];
         NSString *userName = [NSString stringWithFormat:@"%@  (%@)",user[@"userFullName"], user[@"username"]];
         cell.textLabel.text = userName;
     }
-    PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
+    PFUser *user = [[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row];
     NSString *userName = [NSString stringWithFormat:@"%@ - (%@)",user[@"userFullName"], user[@"username"]];
     cell.textLabel.text = userName;
     return cell;

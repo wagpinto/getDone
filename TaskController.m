@@ -39,7 +39,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
             for (Task *task in objects) {
                 loadedMyTasks = [loadedMyTasks arrayByAddingObject:task];
             }
@@ -56,8 +55,8 @@
 }
 - (void)loadSharedTasks:(void (^)(BOOL completion))completion {
     PFQuery *sharedTasks = [Task query];
-    [sharedTasks whereKey:@"Status" equalTo:StatusAssigned];
     [sharedTasks whereKey:@"TaskOwner" equalTo:[PFUser currentUser]];
+    [sharedTasks whereKey:@"Status" equalTo:StatusAssigned];
     [sharedTasks orderByDescending:@"taskDueDate"];
     
     __block NSArray *loadSharedTasks = [[NSArray alloc]init];
@@ -81,7 +80,7 @@
     [doneTasks orderByDescending:@"taskDueDate"];
 
     __block NSArray *loadCompletedTasks = [NSArray new];
-
+    
     [doneTasks findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (Task *task in objects) {
@@ -99,7 +98,7 @@
     [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
 
     __block NSArray *loadAssignedTasks = [NSArray new];
-    
+    [query includeKey:@"taskOwner"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (Task *task in objects) {
@@ -173,6 +172,14 @@
     [user saveInBackground];
     [user save];
 }
+
+//**********************
+- (NSArray *)loadUsers {
+    PFQuery *users = [PFUser query];
+    
+    return [users findObjects];
+}
+//**********************
 
 - (void)loadAllUser:(void (^)(BOOL completion))completion {
     PFQuery *query = [PFUser query];

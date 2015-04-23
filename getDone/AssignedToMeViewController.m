@@ -51,20 +51,30 @@
     Task *task = [Task new];
     task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
 
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"E-MM/dd"];
+    NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+
+    
     if (cell != nil) {
         cell.taskNameLabel.text = task.taskName;
         cell.taskDescriptionLabel.text = task.taskDescription;
         cell.taskAddressLabel.text = task.taskAddress;
-        //cell.dueDateLabel.text = task.taskDueDate;
+        cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
+        cell.usernameLabel.text = task[@"taskOwner"][@"username"];
+        cell.dueDateLabel.text = dateString;
     }else {
         NSLog(@"Cell = NIL");
     }
     
     return cell;
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 111;
 }
 

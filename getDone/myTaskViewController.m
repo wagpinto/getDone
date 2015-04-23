@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     [self setupRefreshControl];
+    
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
@@ -37,8 +37,8 @@
     
 }
 - (void)viewDidAppear:(BOOL)animated {
-    
     [self setupRefreshControl];
+    
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
@@ -88,8 +88,8 @@
                 task = [TaskController sharedInstance].loadMyTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
-                cell.userLabel.text = @"...";
-                cell.shareStatusColorBar.backgroundColor = [UIColor grayColor];
+                cell.userLabel.text = @"";
+                cell.shareStatusColorBar.backgroundColor = [UIColor darkGrayColor];
 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
@@ -141,12 +141,15 @@
                 task = [TaskController sharedInstance].loadCompletedTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
-                cell.userLabel.text = @"COMPLETED";
+                cell.taskNameLabel.tintColor = [UIColor grayColor];
+                cell.userLabel.text = @"";
                 cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
                 cell.shareStatusColorBar.backgroundColor = [UIColor whiteColor];
-
-                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-                cell.dueDateLabel.text = dateString;
+                cell.dueDateLabel.text = @"DONE";
+                cell.importantIcon.image = nil;
+                cell.sharedIcon.image = nil;
+//                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+//                cell.dueDateLabel.text = dateString;
             }
         }
     }
@@ -223,7 +226,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-}//segue push to detail view controller
+}
 
 #pragma mark - Pull-to-Refresh
 - (void)setupRefreshControl {
