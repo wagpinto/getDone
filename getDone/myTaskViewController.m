@@ -110,7 +110,7 @@
                 task = [TaskController sharedInstance].loadSharedTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
-                cell.userLabel.text = task.taskAssignee.objectId;
+                cell.userLabel.text = task[@"taskAssignee"][@"userFullName"];
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;

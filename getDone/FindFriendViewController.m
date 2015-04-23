@@ -22,13 +22,10 @@ static NSString *cellID = @"cellID";
 @implementation FindFriendViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
-//        [self.tableView reloadData];
-//    }];
-    
-    //alocate the search results when view load.
     self.searchResults = [[NSArray alloc]init];
-    
+    [[TaskController sharedInstance] loadAllUser:^(BOOL completion) {
+        [self.tableView reloadData];
+    }];
     
 }
 - (IBAction)cancel:(id)sender {
@@ -43,35 +40,20 @@ static NSString *cellID = @"cellID";
 #pragma mark - TABLE VIEW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.delegate didSelectFriend:[[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row]];
+    [self.delegate didSelectFriend:[[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row]];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return self.searchResults.count;
-    }else {
-        return [TaskController sharedInstance].loadUsers.count;
-    }
+
+    return [TaskController sharedInstance].loadAllUser.count;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
-    }else {
-        PFUser *user = [[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row];
-        NSString *userName = [NSString stringWithFormat:@"%@  (%@)",user[@"userFullName"], user[@"username"]];
-        cell.textLabel.text = userName;
-    }
-    PFUser *user = [[TaskController sharedInstance].loadUsers objectAtIndex:indexPath.row];
+    PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
     NSString *userName = [NSString stringWithFormat:@"%@ - (%@)",user[@"userFullName"], user[@"username"]];
     cell.textLabel.text = userName;
     return cell;
