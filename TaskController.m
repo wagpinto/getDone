@@ -176,7 +176,6 @@
         if (!error) {
             for (User *user in objects) {
                 loadUsers = [loadUsers arrayByAddingObject:user];
-                NSLog(@"LOAD USERS >>>>>>>>>>>>>> %@", loadUsers);
             }
             [TaskController sharedInstance].loadAllUser = loadUsers;
             completion (YES);

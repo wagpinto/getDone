@@ -72,7 +72,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
-
 - (IBAction)save:(id)sender {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
@@ -81,7 +80,15 @@
     saveTask.taskName = self.taskTitleField.text;
     saveTask.taskAddress = self.taskAddressField.text;
     saveTask.taskDescription = self.taskDescriptionField.text;
+    saveTask.taskAssignee = self.assignedUser;
 
+    //Save status upon selection
+    if (self.assignedUser != nil) {
+        saveTask.Status = StatusAssigned;
+    }else {
+        saveTask.Status = StatusCreated;
+    }
+    //UISwitch value save.
     if ([self.importantSwitch isOn]) {
         saveTask.taskImportant = YES;
     }else {

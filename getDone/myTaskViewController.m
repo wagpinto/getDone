@@ -37,7 +37,7 @@
     
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [self setupRefreshControl];
+//   [self setupRefreshControl];
     
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];
@@ -102,6 +102,8 @@
                 //set the cell icons to reflect the importance and status:
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
+                }else {
+                    cell.importantIcon.highlighted = NO;
                 }
             }
             break;
@@ -124,6 +126,8 @@
                 //set the cell icons to reflect the importance and status:
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
+                }else {
+                    cell.importantIcon.highlighted = NO;
                 }
                 if ([task.Status isEqual:@"Assigned"]) {
                     cell.shareStatusColorBar.backgroundColor = [UIColor orangeColor];

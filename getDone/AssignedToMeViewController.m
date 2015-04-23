@@ -22,29 +22,36 @@
     [[TaskController sharedInstance] loadAssingedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
--(void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[TaskController sharedInstance] loadAssingedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];
 
-//    [self.tableView reloadData];
-}
-
-- (IBAction)addFriends:(id)sender {
-    
 }
 
 #pragma mark - TABLEVIEW DATASOURCE
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [TaskController sharedInstance].loadAssignedTask.count;
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    switch (section.index) {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AssingedToMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assignedTask" forIndexPath:indexPath];
