@@ -43,8 +43,6 @@
     self.taskDescriptionField.delegate = self;
     self.timeDate = [[NSDateComponents alloc] init];
     self.dayDate = [NSDate date];
-    
-
 }
 - (void)setupViewController {
     
@@ -61,7 +59,6 @@
     }else {
         self.assignedLabel.text = self.assignedUser.userFullName;
     }
-    
     
 } //setup all the properties as the view load.
 - (IBAction)SaveTask:(id)sender {
@@ -199,6 +196,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
     if ([segue.identifier isEqualToString:@"newUserShare"]) {
         FindFriendViewController *friendsVC = [segue destinationViewController];
         friendsVC.delegate = self;
@@ -209,7 +207,6 @@
 - (void)didSelectFriend:(User *)user {
     self.assignedUser = user;
 } //custom delegate
-
 
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

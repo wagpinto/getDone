@@ -9,6 +9,7 @@
 #import "AssignedToMeViewController.h"
 #import "AssingedToMeTableViewCell.h"
 #import "TaskController.h"
+#import "Constants.h"
 
 @interface AssignedToMeViewController ()
 
@@ -20,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [super viewDidLoad];
     [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];
@@ -31,7 +31,6 @@
         [self.tableView reloadData];
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -64,12 +63,11 @@
             break;
     }
 }
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  
     switch (section) {
         case 0:
             return @"ACCEPTED";
@@ -82,7 +80,6 @@
             break;
     }
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AssingedToMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assignedTask" forIndexPath:indexPath];
     Task *task = [Task new];
@@ -131,8 +128,43 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Let's Help!?"  message:@"Please make a selection" preferredStyle:UIAlertControllerStyleActionSheet];
+    Task *task = [Task new];
+    
+    switch (indexPath.section) {
+        case 0:{
+            task = [TaskController sharedInstance].loadAcceptedTask[indexPath.row];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"DONE" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [[TaskController sharedInstance]updateTask:task andStatus:StatusCompleted];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+        }break;
+        case 1:{
+            task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"ACCEPT TASK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [[TaskController sharedInstance]updateTask:task andStatus:StatusAccepted];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"DENY" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [[TaskController sharedInstance]updateTask:task andStatus:StatusCreated];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+        }break;
+        default:{
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }]];
+        }break;
+    }
+        [self presentViewController:alertController animated:YES completion:nil];
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
