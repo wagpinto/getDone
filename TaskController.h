@@ -37,6 +37,8 @@
 - (void)deleteMyTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
 - (void)deleteSharedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
 - (void)deleteCompletedTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;
+- (void)loadAcceptedTasks:(void (^)(BOOL completion))completion;
+- (void)loadDeniedTasks:(void (^)(BOOL completion))completion;
 
 - (void)updateUserWithName:(User *)user andName:(NSString *)userName andPic:(PFFile *)Picture;
 - (NSArray *)selectUserWithName:(NSString *)username;
@@ -45,8 +47,12 @@
 @property (nonatomic,strong) NSArray * loadMyTask;
 @property (nonatomic,strong) NSArray * loadSharedTask;
 @property (nonatomic,strong) NSArray * loadCompletedTask;
-@property (nonatomic,strong) NSArray * loadAssignedTask;
+
 @property (nonatomic,strong) NSArray * loadAllUser;
+
+@property (nonatomic,strong) NSArray * loadAssignedTask;
+@property (nonatomic,strong) NSArray * loadAcceptedTask;
+@property (nonatomic,strong) NSArray * loadDeniedTask;
 
 @property NSString *taskCreated;
 

@@ -93,6 +93,7 @@
 - (void)loadAssingedTasks:(void (^)(BOOL completion))completion {
     PFQuery*query = [Task query];
     [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
+    [query whereKey:@"Status" equalTo:StatusAssigned];
 
     __block NSArray *loadAssignedTasks = [NSArray new];
     [query includeKey:@"taskOwner"];
@@ -102,6 +103,44 @@
                 loadAssignedTasks = [loadAssignedTasks arrayByAddingObject:task];
             }
             [TaskController sharedInstance].loadAssignedTask = loadAssignedTasks;
+            completion(YES);
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+- (void)loadAcceptedTasks:(void (^)(BOOL completion))completion {
+    PFQuery*query = [Task query];
+    [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
+    [query whereKey:@"Status" equalTo:StatusAccepted];
+    
+    __block NSArray *loadTasks = [NSArray new];
+    [query includeKey:@"taskOwner"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (Task *task in objects) {
+                loadTasks = [loadTasks arrayByAddingObject:task];
+            }
+            [TaskController sharedInstance].loadAcceptedTask = loadTasks;
+            completion(YES);
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+- (void)loadDeniedTasks:(void (^)(BOOL completion))completion {
+    PFQuery*query = [Task query];
+    [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
+    [query whereKey:@"Status" equalTo:StatusDenied];
+    
+    __block NSArray *loadTasks = [NSArray new];
+    [query includeKey:@"taskOwner"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (Task *task in objects) {
+                loadTasks = [loadTasks arrayByAddingObject:task];
+            }
+            [TaskController sharedInstance].loadDeniedTask = loadTasks;
             completion(YES);
         }else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);

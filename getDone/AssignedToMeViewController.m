@@ -12,6 +12,7 @@
 
 @interface AssignedToMeViewController ()
 
+@property (nonatomic, strong) NSString *assignedStatus;
 
 @end
 
@@ -19,61 +20,114 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [super viewDidLoad];
+    [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
+        [self.tableView reloadData];
+    }];
     [[TaskController sharedInstance] loadAssingedTasks:^(BOOL completion) {
         [self.tableView reloadData];
-    }];}
+    }];
+    [[TaskController sharedInstance] loadDeniedTasks:^(BOOL completion) {
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [super viewDidLoad];
+    [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
+        [self.tableView reloadData];
+    }];
     [[TaskController sharedInstance] loadAssingedTasks:^(BOOL completion) {
+        [self.tableView reloadData];
+    }];
+    [[TaskController sharedInstance] loadDeniedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];
 
 }
 
 #pragma mark - TABLEVIEW DATASOURCE
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [TaskController sharedInstance].loadAssignedTask.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    switch (section) {
+        case 0:
+            return [TaskController sharedInstance].loadAcceptedTask.count;
+            break;
+        case 1:
+            return [TaskController sharedInstance].loadAssignedTask.count;
+            break;
+        default:
+            return [TaskController sharedInstance].loadDeniedTask.count;
+            break;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    switch (section.index) {
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"ACCEPTED";
+            break;
+        case 1:
+            return @"ASSIGNED TO ME";
+            break;
+        default:
+            return @"DENIED TASKS";
+            break;
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AssingedToMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assignedTask" forIndexPath:indexPath];
     Task *task = [Task new];
-    task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"E-MM/dd"];
-    NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
 
-    
-    if (cell != nil) {
-        cell.taskNameLabel.text = task.taskName;
-        cell.taskDescriptionLabel.text = task.taskDescription;
-        cell.taskAddressLabel.text = task.taskAddress;
-        cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
-        cell.usernameLabel.text = task[@"taskOwner"][@"username"];
-        cell.dueDateLabel.text = dateString;
-    }else {
-        NSLog(@"Cell = NIL");
+    switch (indexPath.section) {
+        case 0:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadAcceptedTask[indexPath.row];
+                cell.taskNameLabel.text = task.taskName;
+                cell.taskDescriptionLabel.text = task.taskDescription;
+                cell.taskAddressLabel.text = task.taskAddress;
+                cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
+                cell.usernameLabel.text = task[@"taskOwner"][@"username"];
+
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+            }
+            break;
+        case 1:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
+                cell.taskNameLabel.text = task.taskName;
+                cell.taskDescriptionLabel.text = task.taskDescription;
+                cell.taskAddressLabel.text = task.taskAddress;
+                cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
+                cell.usernameLabel.text = task[@"taskOwner"][@"username"];
+
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+            }
+            break;
+        default:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadDeniedTask[indexPath.row];
+                cell.taskNameLabel.text = task.taskName;
+                cell.taskDescriptionLabel.text = task.taskDescription;
+                cell.taskAddressLabel.text = task.taskAddress;
+                cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
+                cell.dueDateLabel.text = @"DENIED";
+            }
+            break;
     }
-    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

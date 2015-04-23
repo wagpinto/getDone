@@ -66,8 +66,18 @@
     if ([segue.identifier isEqualToString:@"selectTask"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         myTaskDetailViewController *detailViewController = [segue destinationViewController];
-        // Pass any objects to the view controller here, like...
-        [detailViewController updateWithTask:[TaskController sharedInstance].loadMyTask[indexPath.row]];
+        
+        switch (indexPath.section) {
+            case 0:
+                [detailViewController updateWithTask:[TaskController sharedInstance].loadMyTask[indexPath.row]];
+                break;
+            case 1:
+                [detailViewController updateWithTask:[TaskController sharedInstance].loadSharedTask[indexPath.row]];
+                break;
+            default:
+                [detailViewController updateWithTask:[TaskController sharedInstance].loadCompletedTask[indexPath.row]];
+                break;
+        }
     }
 }
 
@@ -169,7 +179,7 @@
             return @"MY TASKS";
             break;
         case 1:
-            return @"ASSIGNED";
+            return @"SHARED";
             break;
         default:
             return @"COMPLETED";
