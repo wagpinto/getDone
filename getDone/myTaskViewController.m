@@ -25,15 +25,7 @@
     
     [self setupRefreshControl];
     
-    [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
-        [self reloadTableView];
-    }];
-    [[TaskController sharedInstance] loadCompletedTasks:^(BOOL completion) {
-        [self reloadTableView];
-    }];
-    [[TaskController sharedInstance] loadSharedTasks:^(BOOL completion) {
-        [self reloadTableView];
-    }];
+
     
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,7 +96,8 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = @"";
-
+                cell.sharedIcon.highlighted = NO;
+                
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
                 
@@ -125,6 +118,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = task[@"taskAssignee"][@"userFullName"];
+                cell.sharedIcon.highlighted = YES;
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
@@ -167,10 +161,10 @@
             return @"MY TASKS";
             break;
         case 1:
-            return @"SHARED";
+            return @"SHARED TASKS";
             break;
         default:
-            return @"COMPLETED";
+            return @"DONE";
             break;
     }
 }

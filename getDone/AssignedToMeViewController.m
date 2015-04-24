@@ -30,9 +30,15 @@
     [[TaskController sharedInstance] loadDeniedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];
+    [self.tableView reloadData];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
@@ -45,7 +51,7 @@
     [[TaskController sharedInstance] loadDeniedTasks:^(BOOL completion) {
         [self.tableView reloadData];
     }];
-
+    [self.tableView reloadData];
 }
 
 #pragma mark - TABLEVIEW DATASOURCE
@@ -148,6 +154,7 @@
             task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
             [alertController addAction:[UIAlertAction actionWithTitle:@"ACCEPT TASK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [[TaskController sharedInstance]updateTask:task andStatus:StatusAccepted];
+                
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"DENY" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

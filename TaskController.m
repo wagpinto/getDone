@@ -179,7 +179,12 @@
 }
 - (void)updateTask:(Task *)task andStatus:(NSString *)status {
     
-    task.Status = status;
+    if ([status isEqual:StatusCreated]) {
+        task.Status = StatusCreated;
+        task.taskAssignee = nil;
+    }else {
+        task.Status = status;
+    }
     
     [task saveInBackground];
     [task save];

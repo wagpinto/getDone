@@ -10,7 +10,7 @@
 #import "TaskController.h"
 #import "FindFriendViewController.h"
 
-@interface myTaskDetailViewController : UITableViewController <FindFriendsDelegate>
+@interface myTaskDetailViewController : UITableViewController <FindFriendsDelegate, UITextFieldDelegate>
 
 @property (nonatomic,strong) User *assignedUser;
 

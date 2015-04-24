@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *assignedUserLabel;
 @property (weak, nonatomic) IBOutlet UIButton *completeTaskButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareTaskButton;
 
 //@property (nonatomic, assign) BOOL important;
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
@@ -36,25 +37,44 @@
     
     [self setupViewController];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [self setupViewController];
+}
+
 - (void)setupViewController {
     //setup the picture image:
+    if (!self.assignedUser) {
+        self.assignedUserLabel.text = @"Not Assinged";
+    }else {
+        self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
+    }
+
     self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
     self.userPhotoImageView.clipsToBounds = YES;
     
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
+    
     if (self.task.taskImportant == YES) {
         [self.importantSwitch setOn:YES];
     }else {
         [self.importantSwitch setOn:NO];
     }
     
-    if ([self.task.Status isEqual: @"Completed"]) {
+    //Task = Satatus = Completed (DONE):
+    if ([self.task.Status isEqual:StatusCompleted]) {
         [self.completeTaskButton setTitle: @"COMPLETED" forState: UIControlStateNormal];
         self.completeTaskButton.backgroundColor = [UIColor darkGrayColor];
+        self.completeTaskButton.enabled = NO;
+        self.shareTaskButton.enabled = NO;
+        self.importantSwitch.enabled = NO;
+        self.assignedUserLabel.text = @" ";
+        self.userPhotoImageView.highlighted = NO;
+        self.taskTitleField.enabled = NO;
+        self.taskDescriptionField.editable = NO;
+        self.taskAddressField.enabled = NO;
     }
-    
     
     [self.tableView reloadData];
 }
@@ -68,6 +88,7 @@
     
 }
 - (IBAction)CompleteTask:(id)sender {
+
     [[TaskController sharedInstance]updateTask:self.task andStatus:StatusCompleted];
     [self.navigationController popToRootViewControllerAnimated:YES];
     
@@ -83,10 +104,10 @@
     saveTask.taskAssignee = self.assignedUser;
 
     //Save status upon selection
-    if (self.assignedUser != nil) {
-        saveTask.Status = StatusAssigned;
-    }else {
+    if ([self.assignedUserLabel.text isEqual:@"Not Assinged"]) {
         saveTask.Status = StatusCreated;
+    }else {
+        saveTask.Status = StatusAssigned;
     }
     //UISwitch value save.
     if ([self.importantSwitch isOn]) {
@@ -117,5 +138,11 @@
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+# pragma mark - TextFieldDelegate:
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}//dismiss the keyboard.
 
 @end

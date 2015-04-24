@@ -50,6 +50,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *today = [NSDate date];
     [dateFormat setDateFormat:@"E-MM/dd"];
+    
     NSString *todayString = [dateFormat stringFromDate:today];
     self.dueDateLabel.text = todayString;
     self.dueTimeLabel.text = @"9:00 am";
@@ -57,7 +58,7 @@
     if (!self.assignedUser) {
         self.assignedLabel.text = @"Not Assinged";
     }else {
-        self.assignedLabel.text = self.assignedUser.userFullName;
+        self.assignedLabel.text = self.assignedUser[@"userFullName"];
     }
     
 } //setup all the properties as the view load.
@@ -88,7 +89,7 @@
                                                   Owner:[PFUser currentUser]
                                                Assignee:self.assignedUser
                                               Important:importantValue
-                                                Current:nil
+                                                Current:NO
                                                 Address:self.taskAddressField.text
                                                  Status:self.status
                                                   Group:nil];
