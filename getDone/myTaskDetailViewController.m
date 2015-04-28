@@ -43,15 +43,17 @@
 
 - (void)setupViewController {
     //setup the picture image:
-    if (!self.assignedUser) {
-        self.assignedUserLabel.text = @"Not Assinged";
-    }else {
-        self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
-    }
-
     self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
     self.userPhotoImageView.clipsToBounds = YES;
     
+    if (self.task.taskAssignee == nil) {
+        self.assignedUserLabel.text = @"Not Assinged";
+        self.userPhotoImageView.highlighted = NO;
+    }else {
+        self.assignedUserLabel.text = self.task.taskAssignee[@"userFullName"];
+        self.userPhotoImageView.highlighted = YES;
+    }
+
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
@@ -95,29 +97,27 @@
 }
 - (IBAction)save:(id)sender {
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-    Task *saveTask = [query getObjectWithId:self.task.objectId];
+    self.task.taskName = self.taskTitleField.text;
+    self.task.taskAddress = self.taskAddressField.text;
+    self.task.taskDescription = self.taskDescriptionField.text;
     
-    saveTask.taskName = self.taskTitleField.text;
-    saveTask.taskAddress = self.taskAddressField.text;
-    saveTask.taskDescription = self.taskDescriptionField.text;
-    saveTask.taskAssignee = self.assignedUser;
-
-    //Save status upon selection
-    if ([self.assignedUserLabel.text isEqual:@"Not Assinged"]) {
-        saveTask.Status = StatusCreated;
+    if (self.task.taskAssignee == nil) {
+        self.task.Status = StatusCreated;
+        self.task.taskAssignee = nil;
     }else {
-        saveTask.Status = StatusAssigned;
+        self.task.Status = StatusAssigned;
+        self.task.taskAssignee = self.assignedUser;
     }
+
     //UISwitch value save.
     if ([self.importantSwitch isOn]) {
-        saveTask.taskImportant = YES;
+        self.task.taskImportant = YES;
     }else {
-        saveTask.taskImportant = NO;
+        self.task.taskImportant = NO;
     }
     
-    [saveTask pinInBackground];
-    [saveTask save];
+    [self.task pinInBackground];
+    [self.task save];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

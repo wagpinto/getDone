@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface SignUpViewController ()
 
@@ -20,26 +21,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
 
-    
 }
-
 - (void)keyboardWillShow {
-
     // Animate the current view out of the way
     [UIView animateWithDuration:0.3f animations:^ {
-        self.view.frame = CGRectMake(0, -160, 320, 600);
+        self.view.frame = CGRectMake(0, -160, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
-
 - (void)keyboardWillHide {
     // Animate the current view back to its original position
     [UIView animateWithDuration:0.3f animations:^ {
-        self.view.frame = CGRectMake(0, 0, 320, 600);
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
-
-
-
 - (IBAction)SignIn:(id)sender {
 
     if (self.confirmPassSingIn.text != nil &&
@@ -60,8 +54,7 @@
     }
     
 }
-
--(void)registerNewUser {
+- (void)registerNewUser {
     
     // Passwords match
     if ([self.passwordSignIn.text isEqualToString:self.confirmPassSingIn.text]){
@@ -97,8 +90,21 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
-
 - (IBAction)cancelSignIn:(id)sender {
     [self performSegueWithIdentifier:@"cancel" sender:self];
 }
+
+# pragma mark - TextFieldDelegate:
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}//dismiss the keyboard.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.userNameSignIn resignFirstResponder];
+    [self.fullNameSignIn resignFirstResponder];
+    [self.emailSignIn resignFirstResponder];
+    [self.passwordSignIn resignFirstResponder];
+    [self.confirmPassSingIn resignFirstResponder];
+}
+
 @end

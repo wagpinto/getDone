@@ -8,7 +8,7 @@
 
 #import "CustomLoginViewController.h"
 
-@interface CustomLoginViewController ()
+@interface CustomLoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -17,9 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-//-(UIStatusBarStyle)preferredStatusBarStyle{
-//    return UIStatusBarStyleLightContent;
-//}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
@@ -50,5 +47,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+# pragma mark - TextFieldDelegate:
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.userNameLogin resignFirstResponder];
+    [self.passwordLogin resignFirstResponder];
+    
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}//dismiss the keyboard.
 
 @end
