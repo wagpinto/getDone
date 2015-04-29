@@ -36,7 +36,7 @@
             [self performSegueWithIdentifier:@"loggedIn" sender:self];
         }
         else {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Username and Password must be greater then 5 characters" delegate:self cancelButtonTitle:@"CANCEL" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please try again and check your network connection" delegate:self cancelButtonTitle:@"CANCEL" otherButtonTitles:nil];
             [alert show];
             NSString *errorString = [error userInfo][@"error"];
             NSLog(@"%@",errorString);

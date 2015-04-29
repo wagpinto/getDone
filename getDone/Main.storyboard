@@ -1187,7 +1187,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3V-2F-sKL" id="LnZ-sM-f8B">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="4Gt-NV-CV8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-off-50" highlightedImage="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="4Gt-NV-CV8">
                                                     <rect key="frame" x="15" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="5Ns-uM-DGN"/>

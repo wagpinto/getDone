@@ -76,6 +76,8 @@
         self.taskTitleField.enabled = NO;
         self.taskDescriptionField.editable = NO;
         self.taskAddressField.enabled = NO;
+        UIAlertView *completeAlert = [[UIAlertView alloc]initWithTitle:@"Alert"message:@"This Task will be removed from your app in 3 days" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+        [completeAlert show];
     }
     
     [self.tableView reloadData];
@@ -101,7 +103,7 @@
     self.task.taskAddress = self.taskAddressField.text;
     self.task.taskDescription = self.taskDescriptionField.text;
     
-    if (self.task.taskAssignee == nil) {
+    if ([self.assignedUserLabel.text isEqualToString:@"Not Assigned"]) {
         self.task.Status = StatusCreated;
         self.task.taskAssignee = nil;
     }else {
