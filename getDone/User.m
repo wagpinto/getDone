@@ -12,7 +12,7 @@ static NSString * const UserClassName = @"User";
 
 @implementation User
 
-@dynamic userName;
+@dynamic username;
 @dynamic userFullName;
 @dynamic email;
 @dynamic passwork;

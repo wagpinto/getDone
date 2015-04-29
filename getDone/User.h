@@ -10,7 +10,7 @@
 
 @interface User : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *passwork;
 @property (nonatomic, strong) NSString *userFullName;
 @property (nonatomic, strong) NSString *email;

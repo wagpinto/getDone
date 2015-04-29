@@ -53,9 +53,10 @@ static NSString *cellID = @"cellID";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    PFUser *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
-    NSString *userName = [NSString stringWithFormat:@"%@ - (%@)",user[@"userFullName"], user[@"username"]];
-    cell.textLabel.text = userName;
+    User *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
+    cell.textLabel.text = user[@"userFullName"];
+    cell.detailTextLabel.text = user.username;
+
     return cell;
     
 }

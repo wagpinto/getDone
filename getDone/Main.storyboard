@@ -167,6 +167,9 @@
                                                     <rect key="frame" x="10" y="8" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="ha4-tw-P2M" id="yq8-ot-dSi"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -186,6 +189,9 @@
                                                     <rect key="frame" x="10" y="2" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="ha4-tw-P2M" id="cd1-6F-h6b"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -209,6 +215,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="ha4-tw-P2M" id="LH6-No-NNT"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -401,6 +410,7 @@
                         <outlet property="dueTimeLabel" destination="33t-lN-5GJ" id="TdK-ub-PIi"/>
                         <outlet property="hourSegment" destination="SE1-lJ-Ifc" id="bJ1-lc-W97"/>
                         <outlet property="importantButton" destination="I59-Fa-S0u" id="XOh-aI-3wK"/>
+                        <outlet property="shareButton" destination="cTB-Vb-kBl" id="cwS-Wh-OBJ"/>
                         <outlet property="taskAddressField" destination="mJZ-nV-xzR" id="I96-Ee-2nw"/>
                         <outlet property="taskDescriptionField" destination="cbD-80-Epn" id="6P3-Bn-WF3"/>
                         <outlet property="taskNameField" destination="1IB-sN-kaA" id="dy1-hQ-WFa"/>
@@ -426,10 +436,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="605"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellID" id="WZ4-pb-ciC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellID" textLabel="voS-43-6M1" detailTextLabel="XAj-Ul-ALo" style="IBUITableViewCellStyleSubtitle" id="WZ4-pb-ciC">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WZ4-pb-ciC" id="Di9-7N-cS2">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="voS-43-6M1">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XAj-Ul-ALo">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -546,12 +570,11 @@
                                     <segue destination="bnE-7i-9oc" kind="presentation" identifier="logout" id="U7H-eu-YvY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-DG-UKW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="getDONE The Social ToDo Tracker was developed by Weeblu App Solutions. contact us at: weeblu.co@gmail.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-DG-UKW">
                                 <rect key="frame" x="65" y="423" width="470" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="5ZG-84-f2c"/>
                                 </constraints>
-                                <string key="text">weeblu.co all registrans alloed. This project was aimed to allow users to simplify their lifes with sharing their tasks with friends.</string>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1092,6 +1115,9 @@
                                                     <rect key="frame" x="15" y="0.0" width="579" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vIx-BK-9hb" id="9JO-ki-1NF"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1111,6 +1137,9 @@
                                                     <rect key="frame" x="8" y="2" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vIx-BK-9hb" id="Ubk-cW-FVy"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1135,6 +1164,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vIx-BK-9hb" id="HAN-Oy-SWU"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -1188,14 +1220,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-off-50" highlightedImage="User-on-50" translatesAutoresizingMaskIntoConstraints="NO" id="4Gt-NV-CV8">
-                                                    <rect key="frame" x="15" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="8" y="10" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="5Ns-uM-DGN"/>
-                                                        <constraint firstAttribute="width" constant="40" id="APP-fb-zbZ"/>
+                                                        <constraint firstAttribute="width" constant="40" id="adg-Vm-jaw"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THS-lx-Ur1">
-                                                    <rect key="frame" x="71" y="14" width="125" height="32"/>
+                                                    <rect key="frame" x="52" y="14" width="125" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="HhY-UG-vEF"/>
                                                         <constraint firstAttribute="height" constant="32" id="si8-Pn-zdC"/>
@@ -1221,15 +1252,15 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="THS-lx-Ur1" firstAttribute="leading" secondItem="4Gt-NV-CV8" secondAttribute="trailing" constant="16" id="5bS-gm-G9W"/>
-                                                <constraint firstItem="4Gt-NV-CV8" firstAttribute="leading" secondItem="LnZ-sM-f8B" secondAttribute="leadingMargin" constant="7" id="89v-6w-pDs"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="U28-MP-0Ur" secondAttribute="bottom" constant="4" id="HnP-Ed-zEM"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4Gt-NV-CV8" secondAttribute="bottom" constant="1" id="KTp-c1-8Y1"/>
+                                                <constraint firstItem="4Gt-NV-CV8" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="2" id="Mcj-NH-onR"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="THS-lx-Ur1" secondAttribute="bottom" constant="5" id="Odx-kT-5Vm"/>
                                                 <constraint firstItem="U28-MP-0Ur" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="4" id="V8A-P1-6lO"/>
                                                 <constraint firstItem="U28-MP-0Ur" firstAttribute="trailing" secondItem="LnZ-sM-f8B" secondAttribute="trailingMargin" id="csB-1s-jLW"/>
+                                                <constraint firstItem="4Gt-NV-CV8" firstAttribute="leading" secondItem="LnZ-sM-f8B" secondAttribute="leadingMargin" id="dac-ua-3q0"/>
+                                                <constraint firstItem="4Gt-NV-CV8" firstAttribute="centerY" secondItem="THS-lx-Ur1" secondAttribute="centerY" id="lLh-zy-P7E"/>
+                                                <constraint firstItem="THS-lx-Ur1" firstAttribute="leading" secondItem="4Gt-NV-CV8" secondAttribute="trailing" constant="4" id="nVi-JG-yMl"/>
                                                 <constraint firstItem="THS-lx-Ur1" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="6" id="t0z-Yh-nYk"/>
-                                                <constraint firstItem="4Gt-NV-CV8" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="2" id="vh1-FB-67R"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1288,6 +1319,7 @@
                         <outlet property="assignedUserLabel" destination="THS-lx-Ur1" id="hRh-Vo-3JA"/>
                         <outlet property="completeTaskButton" destination="DtP-Uw-b33" id="ngT-fK-ShG"/>
                         <outlet property="importantSwitch" destination="6nD-s0-2Dx" id="3YW-fG-jIU"/>
+                        <outlet property="saveButton" destination="krM-8k-L7X" id="UT9-gP-yxG"/>
                         <outlet property="shareTaskButton" destination="U28-MP-0Ur" id="2Qn-0F-gGo"/>
                         <outlet property="taskAddressField" destination="J96-Ex-1gg" id="tfX-XH-iLy"/>
                         <outlet property="taskDescriptionField" destination="fbq-4O-7vm" id="8ki-vu-fi5"/>
@@ -1342,7 +1374,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="njq-Ia-LdM"/>
-        <segue reference="698-kZ-KVB"/>
+        <segue reference="U7H-eu-YvY"/>
         <segue reference="VwE-L2-aGS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,9 +24,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *assignedUserLabel;
 @property (weak, nonatomic) IBOutlet UIButton *completeTaskButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareTaskButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
-//@property (nonatomic, assign) BOOL important;
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
+@property (nonatomic, strong) NSString *getStatus;
+
 
 @end
 
@@ -36,9 +38,33 @@
     [super viewDidLoad];
     
     [self setupViewController];
+    [self setupTaskStatus];
+    [self setupCompletedTask];
+    
+    //set the local property as current Status:
+    self.getStatus = self.task.Status;
+
+
 }
 - (void)viewDidAppear:(BOOL)animated {
     [self setupViewController];
+    [self setupTaskStatus];
+
+}
+
+- (void)setupTaskStatus {
+    //set the status labels
+    if ([self.getStatus isEqual:StatusCreated]) {
+        self.assignedUserLabel.text = @"Not Assinged";
+        self.userPhotoImageView.highlighted = NO;
+    }else {
+        self.assignedUserLabel.text = self.task.taskAssignee.username;
+        self.assignedUserLabel.tintColor = [UIColor redColor];
+        self.userPhotoImageView.highlighted = YES;
+        self.shareTaskButton.backgroundColor = [UIColor redColor];
+        [self.shareTaskButton setTitle:@"SHARED" forState:UIControlStateNormal];
+    }
+    
 }
 
 - (void)setupViewController {
@@ -46,14 +72,6 @@
     self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
     self.userPhotoImageView.clipsToBounds = YES;
     
-    if (self.task.taskAssignee == nil) {
-        self.assignedUserLabel.text = @"Not Assinged";
-        self.userPhotoImageView.highlighted = NO;
-    }else {
-        self.assignedUserLabel.text = self.task.taskAssignee[@"userFullName"];
-        self.userPhotoImageView.highlighted = YES;
-    }
-
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
@@ -64,6 +82,10 @@
         [self.importantSwitch setOn:NO];
     }
     
+//    [self.tableView reloadData];
+
+}
+- (void)setupCompletedTask {
     //Task = Satatus = Completed (DONE):
     if ([self.task.Status isEqual:StatusCompleted]) {
         [self.completeTaskButton setTitle: @"COMPLETED" forState: UIControlStateNormal];
@@ -76,12 +98,14 @@
         self.taskTitleField.enabled = NO;
         self.taskDescriptionField.editable = NO;
         self.taskAddressField.enabled = NO;
+        self.saveButton.enabled = NO;
+        self.saveButton.title = @"";
+
         UIAlertView *completeAlert = [[UIAlertView alloc]initWithTitle:@"Alert"message:@"This Task will be removed from your app in 3 days" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
         [completeAlert show];
     }
-    
-    [self.tableView reloadData];
 }
+
 - (void)updateWithTask:(Task *)task {
     
     self.task = task;
@@ -102,14 +126,8 @@
     self.task.taskName = self.taskTitleField.text;
     self.task.taskAddress = self.taskAddressField.text;
     self.task.taskDescription = self.taskDescriptionField.text;
-    
-    if ([self.assignedUserLabel.text isEqualToString:@"Not Assigned"]) {
-        self.task.Status = StatusCreated;
-        self.task.taskAssignee = nil;
-    }else {
-        self.task.Status = StatusAssigned;
-        self.task.taskAssignee = self.assignedUser;
-    }
+
+    self.task.Status = self.getStatus;
 
     //UISwitch value save.
     if ([self.importantSwitch isOn]) {
@@ -131,9 +149,18 @@
 
 }
 # pragma mark - Custom Delegate (Find Friend)
+//custom delegate
 - (void)didSelectFriend:(User *)user {
-    self.assignedUser = user;
-} //custom delegate
+    
+    if ([user.userFullName isEqualToString:@"NONE"]) {
+        self.assignedUser = nil;
+        self.getStatus = StatusCreated;
+    }else {
+        self.assignedUser = user;
+        self.getStatus = StatusAssigned;
+    }
+    
+}
 
 #pragma mark - TABLEVIEW DELEGATE
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

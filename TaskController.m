@@ -212,11 +212,11 @@
     [user save];
 }
 - (void)loadAllUser:(void (^)(BOOL completion))completion {
-    PFQuery *query = [PFUser query];
-   [query whereKey:@"ObjectId" notEqualTo:[PFUser currentUser]];
+    PFQuery *queryUser = [PFUser query];
+    [queryUser orderByAscending:@"updatedAt"];
     
     __block NSArray *loadUsers = [NSArray new];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [queryUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (User *user in objects) {
                 loadUsers = [loadUsers arrayByAddingObject:user];

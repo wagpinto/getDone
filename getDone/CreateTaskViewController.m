@@ -24,6 +24,8 @@
 @property (nonatomic) NSDate *DueDate;
 
 @property (weak, nonatomic) IBOutlet UISwitch *importantButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *hourSegment;
 
@@ -39,10 +41,19 @@
     [super viewDidLoad];
     
     [self setupViewController];
+    [self setupTaskStatus];
+
+    //DELEGATES
     self.taskNameField.delegate = self;
     self.taskDescriptionField.delegate = self;
+
+    //INSTANCES
     self.timeDate = [[NSDateComponents alloc] init];
     self.dayDate = [NSDate date];
+    
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [self setupTaskStatus];
 }
 - (void)setupViewController {
     
@@ -55,13 +66,20 @@
     self.dueDateLabel.text = todayString;
     self.dueTimeLabel.text = @"9:00 am";
     
+}
+- (void)setupTaskStatus {
+    //set the status labels
     if (!self.assignedUser) {
         self.assignedLabel.text = @"Not Assinged";
+        self.assignedLabel.tintColor = [UIColor grayColor];
     }else {
         self.assignedLabel.text = self.assignedUser[@"userFullName"];
+        self.assignedLabel.textColor = [UIColor redColor];
+        self.shareButton.backgroundColor = [UIColor redColor];
+        [self.shareButton setTitle: @"SHARED" forState: UIControlStateNormal];
     }
-    
-} //setup all the properties as the view load.
+
+}
 - (IBAction)SaveTask:(id)sender {
     NSDate *combinedDate = [NSDate dateByCombiningDay:self.dayDate time:[[NSCalendar currentCalendar] dateFromComponents:self.timeDate]];
     
