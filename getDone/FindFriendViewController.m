@@ -13,7 +13,6 @@ static NSString *cellID = @"cellID";
 
 @interface FindFriendViewController ()
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -32,10 +31,6 @@ static NSString *cellID = @"cellID";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - SEARCH BAR
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-}
 
 #pragma mark - TABLE VIEW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,8 +55,5 @@ static NSString *cellID = @"cellID";
     return cell;
     
 }
-
-
-
 
 @end

@@ -36,29 +36,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //set the local property as current Status:
+    self.getStatus = self.task.Status;
     
     [self setupViewController];
     [self setupTaskStatus];
     [self setupCompletedTask];
-    
-    //set the local property as current Status:
-    self.getStatus = self.task.Status;
 
 
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [self setupViewController];
     [self setupTaskStatus];
 
+    
 }
 
 - (void)setupTaskStatus {
+    
     //set the status labels
     if ([self.getStatus isEqual:StatusCreated]) {
         self.assignedUserLabel.text = @"Not Assinged";
         self.userPhotoImageView.highlighted = NO;
     }else {
-        self.assignedUserLabel.text = self.task.taskAssignee.username;
+        self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
         self.assignedUserLabel.tintColor = [UIColor redColor];
         self.userPhotoImageView.highlighted = YES;
         self.shareTaskButton.backgroundColor = [UIColor redColor];
@@ -75,6 +75,7 @@
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
     self.taskDescriptionField.text = self.task.taskDescription;
+    self.assignedUser = self.task.taskAssignee;
     
     if (self.task.taskImportant == YES) {
         [self.importantSwitch setOn:YES];
@@ -82,8 +83,6 @@
         [self.importantSwitch setOn:NO];
     }
     
-//    [self.tableView reloadData];
-
 }
 - (void)setupCompletedTask {
     //Task = Satatus = Completed (DONE):
@@ -126,6 +125,7 @@
     self.task.taskName = self.taskTitleField.text;
     self.task.taskAddress = self.taskAddressField.text;
     self.task.taskDescription = self.taskDescriptionField.text;
+    self.task.taskAssignee = self.assignedUser;
 
     self.task.Status = self.getStatus;
 
@@ -142,6 +142,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
     if ([segue.identifier isEqualToString:@"shareTask"]) {
         FindFriendViewController *friendsVC = [segue destinationViewController];
         friendsVC.delegate = self;
@@ -152,19 +153,18 @@
 //custom delegate
 - (void)didSelectFriend:(User *)user {
     
-    if ([user.userFullName isEqualToString:@"NONE"]) {
+    if ([user.username isEqualToString:@"NONE"]) {
         self.assignedUser = nil;
         self.getStatus = StatusCreated;
     }else {
         self.assignedUser = user;
         self.getStatus = StatusAssigned;
     }
-    
+    [self setupTaskStatus];
 }
 
 #pragma mark - TABLEVIEW DELEGATE
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
