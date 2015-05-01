@@ -37,9 +37,9 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [self.tableView reloadData];
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    [self.tableView reloadData];
+//}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
     [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
@@ -145,25 +145,29 @@
             [alertController addAction:[UIAlertAction actionWithTitle:@"DONE" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [[TaskController sharedInstance]updateTask:task andStatus:StatusCompleted];
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                [self viewDidLoad];
             }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }]];
+
         }break;
         case 1:{
             task = [TaskController sharedInstance].loadAssignedTask[indexPath.row];
             [alertController addAction:[UIAlertAction actionWithTitle:@"ACCEPT TASK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [[TaskController sharedInstance]updateTask:task andStatus:StatusAccepted];
-                
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                [self viewDidLoad];
             }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"DENY" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [[TaskController sharedInstance]updateTask:task andStatus:StatusCreated];
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                [self viewDidLoad];
             }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }]];
+
         }break;
         default:{
             [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

@@ -22,12 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //check if the device has a camera.
-    [self checkDevice];
-    
     //set the view controller properties:
     [self setupViewController];
+    //check if the device has a camera.
+    [self checkDevice];
     
 }
 

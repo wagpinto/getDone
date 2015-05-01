@@ -14,7 +14,7 @@
 @interface myTaskViewController ()
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic, strong) Task *selectedTask;
+//@property (nonatomic, strong) Task *selectedTask;
 
 @end
 
@@ -186,9 +186,8 @@
     }
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
     return YES;
-}// Override to support editing the table view.
+}
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete){
