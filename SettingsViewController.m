@@ -26,21 +26,34 @@
     //check if the device has a camera.
     [self checkDevice];
     
+    //set the view controller properties:
+    [self setupViewController];
+    
+}
+
+- (void)setupViewController {
     self.userPictureView.layer.cornerRadius = self.userPictureView.frame.size.height / 2;
     self.userPictureView.clipsToBounds = YES;
     self.userPictureView.layer.borderColor = [UIColor grayColor].CGColor;
     self.userPictureView.layer.borderWidth = 0.5f;
     
-    User *user = [PFUser currentUser];
+    PFUser *user = [PFUser currentUser];
     
     self.userNameLabel.text = user[@"userFullName"];
     self.emailLabel.text = user[@"email"];
-
+    
     if (user[@"userPic"] != nil) {
         self.userPictureView.image = user[@"userPic"];
+    }else {
+        [user[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                self.userPictureView.image = image;
+            }
+        }];
     }
+    
 }
-
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
 }
@@ -50,7 +63,7 @@
     UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //code
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-        //picker.delegate = self;
+        picker.delegate = self;
         picker.allowsEditing = YES; //if you want to edit you need to change the delegate method to allow save the edit image
         picker.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
         
@@ -62,7 +75,7 @@
         //code
         UIImagePickerController *cameraPicker = [[UIImagePickerController alloc]init];
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
-          //  cameraPicker.delegate = self;
+            cameraPicker.delegate = self;
             cameraPicker.allowsEditing = YES;
             cameraPicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
             cameraPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
@@ -92,11 +105,28 @@
     }
 }
 
+- (void)savePicture: (UIImage *)picture {
+
+    PFFile *image = [PFFile fileWithData:UIImageJPEGRepresentation(picture,0.9)];
+    [image saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            if (succeeded) {
+                PFUser *user = [PFUser currentUser];
+                user[@"UserPicture"] = image;
+                [user saveInBackground];
+            }
+        } else {
+            NSLog(@"%@",error);
+        }        
+    }];
+}
+
 #pragma mark - PICKERVIEW DELEGATE
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.userPictureView.image = chosenImage;
+    [self savePicture:self.userPictureView.image];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     

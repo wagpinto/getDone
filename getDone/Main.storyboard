@@ -523,7 +523,7 @@
                                     <constraint firstAttribute="height" constant="130" id="kVo-BD-hs9"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlt-HO-Tpe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlt-HO-Tpe">
                                 <rect key="frame" x="183" y="257" width="234" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="G4N-Wa-7na"/>
@@ -533,7 +533,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logedin Since" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06D-pp-YVI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logedin Since" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06D-pp-YVI">
                                 <rect key="frame" x="192" y="319" width="217" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="217" id="0TN-3p-nYC"/>
@@ -570,7 +570,7 @@
                                     <segue destination="bnE-7i-9oc" kind="presentation" identifier="logout" id="U7H-eu-YvY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="getDONE The Social ToDo Tracker was developed by Weeblu App Solutions. contact us at: weeblu.co@gmail.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-DG-UKW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="getDONE The Social ToDo Tracker was developed by Weeblu App Solutions. contact us at: weeblu.co@gmail.com" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-DG-UKW">
                                 <rect key="frame" x="65" y="423" width="470" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="5ZG-84-f2c"/>
