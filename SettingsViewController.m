@@ -31,9 +31,10 @@
 
 - (void)setupViewController {
     self.userPictureView.layer.cornerRadius = self.userPictureView.frame.size.height / 2;
+    self.userPictureView.contentMode = UIViewContentModeScaleAspectFit;
     self.userPictureView.clipsToBounds = YES;
-    self.userPictureView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.userPictureView.layer.borderWidth = 0.5f;
+    self.userPictureView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.userPictureView.layer.borderWidth = 0.8f;
     
     PFUser *user = [PFUser currentUser];
     

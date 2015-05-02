@@ -156,8 +156,7 @@
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(NSString *)status
-                  Group:(GroupTask *)group {
+                 Status:(NSString *)status {
     
     Task *newTask = [Task new];
     
@@ -170,10 +169,10 @@
     newTask.Status = status;
     newTask.taskAddress = address;
     newTask.taskRecurring = recurring;
-    newTask.taskGRoup = group;
     
     self.recentlyCreatedTask = newTask;
 
+    [newTask saveInBackground];
     [newTask save];
     
 }

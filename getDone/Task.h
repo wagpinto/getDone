@@ -8,7 +8,6 @@
 
 #import <Parse/Parse.h>
 #import "User.h"
-#import "GroupTask.h"
 
 @interface Task : PFObject <PFSubclassing>
 
@@ -20,7 +19,6 @@
 @property (nonatomic, assign) BOOL taskImportant;
 @property (nonatomic, strong) NSString *taskLocation;
 @property (nonatomic, strong) NSString *Status;
-@property (nonatomic, strong) GroupTask *taskGRoup;
 @property (nonatomic, assign) BOOL taskRecurring;
 @property (nonatomic, strong) NSString *taskAddress;
 

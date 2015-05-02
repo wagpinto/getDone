@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1C156E1AF5284300A8DEBF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C15681AF5284300A8DEBF /* Bolts.framework */; };
+		BC1C156F1AF5284300A8DEBF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C15691AF5284300A8DEBF /* Parse.framework */; };
+		BC1C15701AF5284300A8DEBF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C156A1AF5284300A8DEBF /* ParseCrashReporting.framework */; };
+		BC1C15711AF5284300A8DEBF /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C156B1AF5284300A8DEBF /* ParseFacebookUtils.framework */; };
+		BC1C15721AF5284300A8DEBF /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C156C1AF5284300A8DEBF /* ParseFacebookUtilsV4.framework */; };
+		BC1C15731AF5284300A8DEBF /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C156D1AF5284300A8DEBF /* ParseUI.framework */; };
+		BC1C15761AF53CD600A8DEBF /* FindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1C15751AF53CD600A8DEBF /* FindFriendsCell.m */; };
 		BC699D5A1ACDDDB300A9989F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC699D591ACDDDB300A9989F /* Main.storyboard */; };
 		BC7BA4FF1AE747C900B354AB /* AssingedToMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA4FE1AE747C900B354AB /* AssingedToMeTableViewCell.m */; };
 		BC7BA5031AE748AB00B354AB /* AssignedToMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7BA5021AE748AB00B354AB /* AssignedToMeViewController.m */; };
@@ -14,19 +21,12 @@
 		BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEB1AC601B500B61301 /* TaskController.m */; };
 		BCBDDCEF1AC6041200B61301 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCEE1AC6041200B61301 /* Task.m */; };
 		BCBDDCF21AC606E600B61301 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF11AC606E600B61301 /* User.m */; };
-		BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCF41AC606F300B61301 /* GroupTask.m */; };
 		BCBDDCFE1AC8D3C000B61301 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */; };
 		BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */; };
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
 		BCC31BC21AE82148002E004A /* NSDate+CombiningDates.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */; };
 		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
 		BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Constants.m */; };
-		BCCA53F01AE577BE00508372 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EA1AE577BE00508372 /* Bolts.framework */; };
-		BCCA53F11AE577BE00508372 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EB1AE577BE00508372 /* Parse.framework */; };
-		BCCA53F21AE577BE00508372 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EC1AE577BE00508372 /* ParseCrashReporting.framework */; };
-		BCCA53F31AE577BE00508372 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53ED1AE577BE00508372 /* ParseFacebookUtils.framework */; };
-		BCCA53F41AE577BE00508372 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EE1AE577BE00508372 /* ParseFacebookUtilsV4.framework */; };
-		BCCA53F51AE577BE00508372 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA53EF1AE577BE00508372 /* ParseUI.framework */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
@@ -46,7 +46,6 @@
 		BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */; };
 		BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */; };
 		BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FF421AC3DCDB0073E3B1 /* SignUpViewController.m */; };
-		BCFDBFE81ADEDCF7000983CB /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC1C15681AF5284300A8DEBF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		BC1C15691AF5284300A8DEBF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		BC1C156A1AF5284300A8DEBF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		BC1C156B1AF5284300A8DEBF /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		BC1C156C1AF5284300A8DEBF /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		BC1C156D1AF5284300A8DEBF /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		BC1C15741AF53CD600A8DEBF /* FindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsCell.h; sourceTree = "<group>"; };
+		BC1C15751AF53CD600A8DEBF /* FindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsCell.m; sourceTree = "<group>"; };
 		BC699D591ACDDDB300A9989F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BC7BA4FD1AE747C900B354AB /* AssingedToMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssingedToMeTableViewCell.h; sourceTree = "<group>"; };
 		BC7BA4FE1AE747C900B354AB /* AssingedToMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssingedToMeTableViewCell.m; sourceTree = "<group>"; };
@@ -73,8 +80,6 @@
 		BCBDDCEE1AC6041200B61301 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		BCBDDCF01AC606E600B61301 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		BCBDDCF11AC606E600B61301 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		BCBDDCF31AC606F300B61301 /* GroupTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTask.h; sourceTree = "<group>"; };
-		BCBDDCF41AC606F300B61301 /* GroupTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTask.m; sourceTree = "<group>"; };
 		BCBDDCFC1AC8D3C000B61301 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ../SettingsViewController.h; sourceTree = "<group>"; };
 		BCBDDCFD1AC8D3C000B61301 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ../SettingsViewController.m; sourceTree = "<group>"; };
 		BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -86,12 +91,6 @@
 		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
 		BCC74C211AE1EC6D00B3613C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BCC74C221AE1EC6D00B3613C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		BCCA53EA1AE577BE00508372 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = getDone/Bolts.framework; sourceTree = "<group>"; };
-		BCCA53EB1AE577BE00508372 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = getDone/Parse.framework; sourceTree = "<group>"; };
-		BCCA53EC1AE577BE00508372 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = getDone/ParseCrashReporting.framework; sourceTree = "<group>"; };
-		BCCA53ED1AE577BE00508372 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = getDone/ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		BCCA53EE1AE577BE00508372 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = getDone/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		BCCA53EF1AE577BE00508372 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = getDone/ParseUI.framework; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,8 +119,6 @@
 		BCF7FF3E1AC3D7630073E3B1 /* CustomLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLoginViewController.m; sourceTree = "<group>"; };
 		BCF7FF411AC3DCDB0073E3B1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		BCF7FF421AC3DCDB0073E3B1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		BCFDBFE61ADEDCF7000983CB /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
-		BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,20 +128,20 @@
 			files = (
 				BCF7FF3B1AC3D6BF0073E3B1 /* libsqlite3.dylib in Frameworks */,
 				BCF7FF391AC3D6AF0073E3B1 /* libz.dylib in Frameworks */,
-				BCCA53F51AE577BE00508372 /* ParseUI.framework in Frameworks */,
 				BCBDDD001AC8D64D00B61301 /* AVFoundation.framework in Frameworks */,
-				BCCA53F21AE577BE00508372 /* ParseCrashReporting.framework in Frameworks */,
+				BC1C156E1AF5284300A8DEBF /* Bolts.framework in Frameworks */,
 				BCF7FF371AC3D6A60073E3B1 /* SystemConfiguration.framework in Frameworks */,
+				BC1C15701AF5284300A8DEBF /* ParseCrashReporting.framework in Frameworks */,
 				BCF7FF331AC3D68B0073E3B1 /* Security.framework in Frameworks */,
+				BC1C156F1AF5284300A8DEBF /* Parse.framework in Frameworks */,
+				BC1C15711AF5284300A8DEBF /* ParseFacebookUtils.framework in Frameworks */,
+				BC1C15731AF5284300A8DEBF /* ParseUI.framework in Frameworks */,
 				BCF7FF311AC3D6840073E3B1 /* QuartzCore.framework in Frameworks */,
-				BCCA53F01AE577BE00508372 /* Bolts.framework in Frameworks */,
+				BC1C15721AF5284300A8DEBF /* ParseFacebookUtilsV4.framework in Frameworks */,
 				BCF7FF2F1AC3D6790073E3B1 /* MobileCoreServices.framework in Frameworks */,
 				BCF7FF2D1AC3D6720073E3B1 /* CoreLocation.framework in Frameworks */,
-				BCCA53F11AE577BE00508372 /* Parse.framework in Frameworks */,
 				BCF7FF2B1AC3D65F0073E3B1 /* CoreGraphics.framework in Frameworks */,
 				BCF7FF291AC3D6570073E3B1 /* CFNetwork.framework in Frameworks */,
-				BCCA53F41AE577BE00508372 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				BCCA53F31AE577BE00508372 /* ParseFacebookUtils.framework in Frameworks */,
 				BCF7FF271AC3D64A0073E3B1 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +161,8 @@
 			children = (
 				BCF7FEFB1AC3D5980073E3B1 /* FindFriendViewController.h */,
 				BCF7FEFC1AC3D5980073E3B1 /* FindFriendViewController.m */,
+				BC1C15741AF53CD600A8DEBF /* FindFriendsCell.h */,
+				BC1C15751AF53CD600A8DEBF /* FindFriendsCell.m */,
 				BCBDDDA01ACB537F00B61301 /* CreateTaskViewController.h */,
 				BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */,
 				BCC31BC01AE82148002E004A /* NSDate+CombiningDates.h */,
@@ -188,8 +187,6 @@
 			children = (
 				BCBDDCED1AC6041200B61301 /* Task.h */,
 				BCBDDCEE1AC6041200B61301 /* Task.m */,
-				BCFDBFE61ADEDCF7000983CB /* TaskStatus.h */,
-				BCFDBFE71ADEDCF7000983CB /* TaskStatus.m */,
 				BCBDDCF01AC606E600B61301 /* User.h */,
 				BCBDDCF11AC606E600B61301 /* User.m */,
 			);
@@ -259,8 +256,6 @@
 		BCF7FEF11AC3D5980073E3B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BCBDDCF31AC606F300B61301 /* GroupTask.h */,
-				BCBDDCF41AC606F300B61301 /* GroupTask.m */,
 				BCF7FF3C1AC3D6CD0073E3B1 /* Frameworks */,
 				BCF7FEF21AC3D5980073E3B1 /* Info.plist */,
 				BCF7FEF31AC3D5980073E3B1 /* main.m */,
@@ -290,12 +285,12 @@
 			children = (
 				BCF7FF3A1AC3D6BF0073E3B1 /* libsqlite3.dylib */,
 				BCF7FF381AC3D6AF0073E3B1 /* libz.dylib */,
-				BCCA53EA1AE577BE00508372 /* Bolts.framework */,
-				BCCA53EB1AE577BE00508372 /* Parse.framework */,
-				BCCA53EC1AE577BE00508372 /* ParseCrashReporting.framework */,
-				BCCA53ED1AE577BE00508372 /* ParseFacebookUtils.framework */,
-				BCCA53EE1AE577BE00508372 /* ParseFacebookUtilsV4.framework */,
-				BCCA53EF1AE577BE00508372 /* ParseUI.framework */,
+				BC1C15681AF5284300A8DEBF /* Bolts.framework */,
+				BC1C15691AF5284300A8DEBF /* Parse.framework */,
+				BC1C156A1AF5284300A8DEBF /* ParseCrashReporting.framework */,
+				BC1C156B1AF5284300A8DEBF /* ParseFacebookUtils.framework */,
+				BC1C156C1AF5284300A8DEBF /* ParseFacebookUtilsV4.framework */,
+				BC1C156D1AF5284300A8DEBF /* ParseUI.framework */,
 				BCBDDCFF1AC8D64D00B61301 /* AVFoundation.framework */,
 				BCF7FF361AC3D6A60073E3B1 /* SystemConfiguration.framework */,
 				BCF7FF321AC3D68B0073E3B1 /* Security.framework */,
@@ -439,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF7FEFD1AC3D5980073E3B1 /* FindFriendViewController.m in Sources */,
-				BCFDBFE81ADEDCF7000983CB /* TaskStatus.m in Sources */,
 				BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */,
 				BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */,
 				BCBDDCF21AC606E600B61301 /* User.m in Sources */,
@@ -451,9 +445,9 @@
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
 				BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
+				BC1C15761AF53CD600A8DEBF /* FindFriendsCell.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
-				BCBDDCF51AC606F300B61301 /* GroupTask.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
 				BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */,
 				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,
@@ -576,8 +570,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/wagppinto/Downloads/parse-library-1",
-					"$(PROJECT_DIR)/getDone",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -595,8 +588,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/wagppinto/Downloads/parse-library-1",
-					"$(PROJECT_DIR)/getDone",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = getDone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;

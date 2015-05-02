@@ -8,6 +8,7 @@
 
 #import "FindFriendViewController.h"
 #import "CreateTaskViewController.h"
+#import "FindFriendsCell.h"
 
 static NSString *cellID = @"cellID";
 
@@ -46,14 +47,32 @@ static NSString *cellID = @"cellID";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    
+    FindFriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     User *user = [[TaskController sharedInstance].loadAllUser objectAtIndex:indexPath.row];
-    cell.textLabel.text = user[@"userFullName"];
-    cell.detailTextLabel.text = user.username;
+    UIImage *noImage = [UIImage imageNamed:@"User-off-50"];
+
+    //set cell properties:
+    cell.userPictureView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.userPictureView.layer.cornerRadius = cell.userPictureView.frame.size.height / 2;
+    cell.userPictureView.clipsToBounds = YES;
+    cell.userPictureView.layer.borderColor = [UIColor orangeColor].CGColor;
+    cell.userPictureView.layer.borderWidth = 0.8f;
+    
+    if (user[@"UserPicture"] == nil) {
+        [cell.userPictureView setImage: noImage];
+    }else {
+        [user[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                [cell.userPictureView setImage: image];
+            }
+        }];
+    }
+
+    cell.userFullNameLabel.text = user[@"userFullName"];
+    cell.usernameLabel.text = user.username;
 
     return cell;
-    
 }
 
 @end

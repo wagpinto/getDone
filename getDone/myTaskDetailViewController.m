@@ -55,6 +55,8 @@
     if ([self.getStatus isEqual:StatusCreated]) {
         self.assignedUserLabel.text = @"Not Assinged";
         [self.userPhotoImageView setImage:userOFFPic];
+        self.shareTaskButton.backgroundColor = [UIColor blueColor];
+        [self.shareTaskButton setTitle:@"FIND USER" forState:UIControlStateNormal];
     }else {
         [self setupAssignedInfo];
         self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
@@ -66,6 +68,9 @@
 - (void)setupAssignedInfo {
 
     UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
+    self.userPhotoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.userPhotoImageView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.userPhotoImageView.layer.borderWidth = 0.9f;
     
     if (!self.assignedUser[@"UserPicture"] || !self.task.taskAssignee[@"UserPicture"]) {
         [self.userPhotoImageView setImage:userOFFPic];

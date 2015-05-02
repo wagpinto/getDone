@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 #import "Task.h"
 #import "User.h"
-#import "GroupTask.h"
 
 @interface TaskController : NSObject
 
@@ -30,8 +29,7 @@
               Important:(BOOL)important
                 Current:(BOOL)recurring
                 Address:(NSString *)address
-                 Status:(NSString *)status
-                  Group:(GroupTask *)group;
+                 Status:(NSString *)status;
 
 - (void)updateTask:(Task *)task andStatus:(NSString *)status;
 - (void)deleteMyTask:(NSInteger)index andCompletion:(void (^)(BOOL completion))completion;

@@ -69,9 +69,11 @@
 }
 - (void)setupTaskStatus {
     //set the status labels
-    if (!self.assignedUser) {
+    if ([self.status isEqual:StatusCreated] || self.status == nil) {
         self.assignedLabel.text = @"Not Assinged";
         self.assignedLabel.tintColor = [UIColor grayColor];
+        self.shareButton.backgroundColor = [UIColor blueColor];
+        [self.shareButton setTitle: @"FIND FRIEND" forState: UIControlStateNormal];
     }else {
         self.assignedLabel.text = self.assignedUser[@"userFullName"];
         self.assignedLabel.textColor = [UIColor redColor];
@@ -109,8 +111,7 @@
                                               Important:importantValue
                                                 Current:NO
                                                 Address:self.taskAddressField.text
-                                                 Status:self.status
-                                                  Group:nil];
+                                                 Status:self.status];
         //create a custom delegate to allow the close button to dismiss the view.
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else {
@@ -224,8 +225,15 @@
 
 # pragma mark - Custom Delegate (Find Friend)
 - (void)didSelectFriend:(User *)user {
-    self.assignedUser = user;
-} //custom delegate
+    if ([user.username isEqualToString:@"NONE"]) {
+        self.assignedUser = nil;
+        self.status = StatusCreated;
+    }else {
+        self.assignedUser = user;
+        self.status = StatusAssigned;
+    }
+    [self setupTaskStatus];
+}
 
 # pragma mark - TextFieldDelegate:
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

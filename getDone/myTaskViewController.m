@@ -126,8 +126,9 @@
                 }else {
                     cell.sharedIcon.layer.cornerRadius = cell.sharedIcon.frame.size.height / 2;
                     cell.sharedIcon.clipsToBounds = YES;
-                    cell.sharedIcon.layer.borderColor = [UIColor grayColor].CGColor;
-                    cell.sharedIcon.layer.borderWidth = 0.5f;
+                    cell.sharedIcon.contentMode = UIViewContentModeScaleAspectFit;
+                    cell.sharedIcon.layer.borderColor = [UIColor orangeColor].CGColor;
+                    cell.sharedIcon.layer.borderWidth = 0.8f;
 
                     [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                         if (!error) {

@@ -22,6 +22,7 @@
 
     //Register Classes;
     [Task registerSubclass];
+    [User registerSubclass];
     
     // Parse localDataStore
     [Parse enableLocalDatastore];
