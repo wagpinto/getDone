@@ -11,15 +11,6 @@
 @implementation CustomTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
-    self.userLabel.text = @"...";
-    
-}
-- (void)setImageView:(BOOL)important recurring:(BOOL)recurring status:(NSString *)status {
-//this method will change the imageview as the parameter is called
-    
-
-    
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

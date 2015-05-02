@@ -14,7 +14,6 @@
 @interface myTaskViewController ()
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-//@property (nonatomic, strong) Task *selectedTask;
 
 @end
 
@@ -83,6 +82,9 @@
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     Task *task = [Task new];
 
+    //set user image to OFF:
+    UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
+    
     //format date on the taskDueDate:
     NSDateFormatter *dateFormat = [NSDateFormatter new];
     [dateFormat setDateFormat:@"E-MM/dd"];
@@ -96,7 +98,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = @"";
-                cell.sharedIcon.highlighted = NO;
+                [cell.sharedIcon setImage:userOFFPic];
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
@@ -118,7 +120,22 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = task[@"taskAssignee"][@"userFullName"];
-                cell.sharedIcon.highlighted = YES;
+
+                if (!task.taskAssignee[@"UserPicture"]) {
+                    [cell.sharedIcon setImage:userOFFPic];
+                }else {
+                    cell.sharedIcon.layer.cornerRadius = cell.sharedIcon.frame.size.height / 2;
+                    cell.sharedIcon.clipsToBounds = YES;
+                    cell.sharedIcon.layer.borderColor = [UIColor grayColor].CGColor;
+                    cell.sharedIcon.layer.borderWidth = 0.5f;
+
+                    [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            UIImage *image = [UIImage imageWithData:data];
+                            cell.sharedIcon.image = image;
+                        }
+                    }];
+                }
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
