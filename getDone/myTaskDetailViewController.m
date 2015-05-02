@@ -29,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
 @property (nonatomic, strong) NSString *getStatus;
 
-
 @end
 
 @implementation myTaskDetailViewController
@@ -43,29 +42,43 @@
     [self setupTaskStatus];
     [self setupCompletedTask];
 
-
 }
 - (void)viewDidAppear:(BOOL)animated {
     [self setupTaskStatus];
-
     
 }
 
 - (void)setupTaskStatus {
+    UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
     
     //set the status labels
     if ([self.getStatus isEqual:StatusCreated]) {
         self.assignedUserLabel.text = @"Not Assinged";
-        self.userPhotoImageView.highlighted = NO;
+        [self.userPhotoImageView setImage:userOFFPic];
     }else {
+        [self setupAssignedInfo];
         self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
         self.assignedUserLabel.tintColor = [UIColor redColor];
-        self.userPhotoImageView.highlighted = YES;
         self.shareTaskButton.backgroundColor = [UIColor redColor];
         [self.shareTaskButton setTitle:@"SHARED" forState:UIControlStateNormal];
     }
-    
 }
+- (void)setupAssignedInfo {
+
+    UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
+    
+    if (!self.assignedUser[@"UserPicture"] || !self.task.taskAssignee[@"UserPicture"]) {
+        [self.userPhotoImageView setImage:userOFFPic];
+    }else {
+        [self.task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                self.userPhotoImageView.image = image;
+            }
+        }];
+    }
+}
+
 
 - (void)setupViewController {
     //setup the picture image:
