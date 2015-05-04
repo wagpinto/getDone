@@ -156,9 +156,11 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pwf-s1-7c6">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection footerTitle="Task Information" id="Of0-CD-T2L">
+                            <tableViewSection footerTitle="Schedule your task" id="Of0-CD-T2L">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YD8-ZZ-Pb6">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -231,7 +233,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="4Ok-xm-uhf">
+                            <tableViewSection footerTitle="Share your task here &gt;" id="4Ok-xm-uhf">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="GND-TZ-8A4">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1148,9 +1150,65 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ekZ-Zt-MPy">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="XyN-1E-35Q">
+                            <rect key="frame" x="0.0" y="313" width="600" height="285"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtP-Uw-b33" customClass="APRoundedButton">
+                                    <rect key="frame" x="175" y="242" width="250" height="35"/>
+                                    <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="mXp-D0-EHr"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="COMPLETE">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="CompleteTask:" destination="vIx-BK-9hb" eventType="touchUpInside" id="l1F-sE-bvE"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U28-MP-0Ur" customClass="APRoundedButton">
+                                    <rect key="frame" x="175" y="199" width="250" height="35"/>
+                                    <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="250" id="Lds-JX-oGQ"/>
+                                        <constraint firstAttribute="height" constant="35" id="mso-e7-YXm"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <state key="normal" title="Share Task">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <segue destination="MfA-2u-UUJ" kind="show" identifier="shareTask" id="VwE-L2-aGS"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="DtP-Uw-b33" firstAttribute="trailing" secondItem="U28-MP-0Ur" secondAttribute="trailing" id="NRf-Bj-VN6"/>
+                                <constraint firstItem="DtP-Uw-b33" firstAttribute="top" secondItem="U28-MP-0Ur" secondAttribute="bottom" constant="8" id="Vg6-r6-VsS"/>
+                                <constraint firstItem="U28-MP-0Ur" firstAttribute="leading" secondItem="DtP-Uw-b33" secondAttribute="leading" id="dmF-cc-Mbi"/>
+                                <constraint firstItem="DtP-Uw-b33" firstAttribute="centerX" secondItem="XyN-1E-35Q" secondAttribute="centerX" id="q6r-6Y-6fz"/>
+                                <constraint firstItem="DtP-Uw-b33" firstAttribute="bottom" secondItem="XyN-1E-35Q" secondAttribute="bottomMargin" id="vga-pL-aNZ"/>
+                            </constraints>
+                        </view>
                         <sections>
-                            <tableViewSection id="B75-JM-peA">
+                            <tableViewSection footerTitle="Task Status:" id="B75-JM-peA">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Task Title" id="pgR-WX-FWy">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1258,7 +1316,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="ACTIONS" id="N1N-Uc-QXk">
+                            <tableViewSection id="N1N-Uc-QXk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="U3V-2F-sKL" userLabel="Share Task">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1281,61 +1339,27 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U28-MP-0Ur">
-                                                    <rect key="frame" x="442" y="12" width="150" height="35"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGD-LG-k2f">
+                                                    <rect key="frame" x="500" y="0.0" width="100" height="59"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="5wT-pt-m1C"/>
-                                                        <constraint firstAttribute="height" constant="35" id="aaL-0z-BmN"/>
+                                                        <constraint firstAttribute="width" constant="100" id="vec-A0-KA7"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="Share Task">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="MfA-2u-UUJ" kind="show" identifier="shareTask" id="VwE-L2-aGS"/>
-                                                    </connections>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="U28-MP-0Ur" secondAttribute="bottom" constant="4" id="HnP-Ed-zEM"/>
                                                 <constraint firstItem="4Gt-NV-CV8" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="2" id="Mcj-NH-onR"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="THS-lx-Ur1" secondAttribute="bottom" constant="5" id="Odx-kT-5Vm"/>
-                                                <constraint firstItem="U28-MP-0Ur" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="4" id="V8A-P1-6lO"/>
-                                                <constraint firstItem="U28-MP-0Ur" firstAttribute="trailing" secondItem="LnZ-sM-f8B" secondAttribute="trailingMargin" id="csB-1s-jLW"/>
+                                                <constraint firstItem="JGD-LG-k2f" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="top" id="Uhp-BC-x8t"/>
+                                                <constraint firstAttribute="bottom" secondItem="JGD-LG-k2f" secondAttribute="bottom" id="a2E-Jc-JuM"/>
                                                 <constraint firstItem="4Gt-NV-CV8" firstAttribute="leading" secondItem="LnZ-sM-f8B" secondAttribute="leadingMargin" id="dac-ua-3q0"/>
                                                 <constraint firstItem="4Gt-NV-CV8" firstAttribute="centerY" secondItem="THS-lx-Ur1" secondAttribute="centerY" id="lLh-zy-P7E"/>
                                                 <constraint firstItem="THS-lx-Ur1" firstAttribute="leading" secondItem="4Gt-NV-CV8" secondAttribute="trailing" constant="4" id="nVi-JG-yMl"/>
+                                                <constraint firstAttribute="trailing" secondItem="JGD-LG-k2f" secondAttribute="trailing" id="pHT-q4-u7V"/>
                                                 <constraint firstItem="THS-lx-Ur1" firstAttribute="top" secondItem="LnZ-sM-f8B" secondAttribute="topMargin" constant="6" id="t0z-Yh-nYk"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="6LJ-iz-yQS" userLabel="Complete">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6LJ-iz-yQS" id="qkb-Gb-m7C">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtP-Uw-b33">
-                                                    <rect key="frame" x="442" y="12" width="150" height="35"/>
-                                                    <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="9GY-GF-dAf"/>
-                                                        <constraint firstAttribute="height" constant="35" id="Uw3-KU-NAv"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="COMPLETE">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="CompleteTask:" destination="vIx-BK-9hb" eventType="touchUpInside" id="l1F-sE-bvE"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="DtP-Uw-b33" firstAttribute="top" secondItem="qkb-Gb-m7C" secondAttribute="topMargin" constant="4" id="5mZ-sI-tUV"/>
-                                                <constraint firstItem="DtP-Uw-b33" firstAttribute="trailing" secondItem="qkb-Gb-m7C" secondAttribute="trailingMargin" id="71E-lH-o6x"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="DtP-Uw-b33" secondAttribute="bottom" constant="4" id="kyN-oj-bvv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1361,12 +1385,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="assignedUserLabel" destination="THS-lx-Ur1" id="hRh-Vo-3JA"/>
                         <outlet property="completeTaskButton" destination="DtP-Uw-b33" id="ngT-fK-ShG"/>
                         <outlet property="importantSwitch" destination="6nD-s0-2Dx" id="3YW-fG-jIU"/>
                         <outlet property="saveButton" destination="krM-8k-L7X" id="UT9-gP-yxG"/>
                         <outlet property="shareTaskButton" destination="U28-MP-0Ur" id="2Qn-0F-gGo"/>
+                        <outlet property="statusLabel" destination="JGD-LG-k2f" id="IMI-xk-hyh"/>
                         <outlet property="taskAddressField" destination="J96-Ex-1gg" id="tfX-XH-iLy"/>
                         <outlet property="taskDescriptionField" destination="fbq-4O-7vm" id="8ki-vu-fi5"/>
                         <outlet property="taskTitleField" destination="GkU-pF-HGk" id="Z2T-Yn-wlY"/>

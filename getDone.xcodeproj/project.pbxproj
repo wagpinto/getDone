@@ -27,6 +27,7 @@
 		BCC31BC21AE82148002E004A /* NSDate+CombiningDates.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */; };
 		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
 		BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Constants.m */; };
+		BCD94C711AF8156F007F511F /* APRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD94C701AF8156F007F511F /* APRoundedButton.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
 		BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF91AC3D5980073E3B1 /* myTaskViewController.m */; };
@@ -91,6 +92,8 @@
 		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
 		BCC74C211AE1EC6D00B3613C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BCC74C221AE1EC6D00B3613C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		BCD94C6F1AF8156F007F511F /* APRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRoundedButton.h; sourceTree = "<group>"; };
+		BCD94C701AF8156F007F511F /* APRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRoundedButton.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF7FEF21AC3D5980073E3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF7FEF31AC3D5980073E3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 		BCF7FEF11AC3D5980073E3B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCD94C6F1AF8156F007F511F /* APRoundedButton.h */,
+				BCD94C701AF8156F007F511F /* APRoundedButton.m */,
 				BCF7FF3C1AC3D6CD0073E3B1 /* Frameworks */,
 				BCF7FEF21AC3D5980073E3B1 /* Info.plist */,
 				BCF7FEF31AC3D5980073E3B1 /* main.m */,
@@ -449,6 +454,7 @@
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,
 				BCF7FF3F1AC3D7630073E3B1 /* CustomLoginViewController.m in Sources */,
 				BCBDDCEC1AC601B500B61301 /* TaskController.m in Sources */,
+				BCD94C711AF8156F007F511F /* APRoundedButton.m in Sources */,
 				BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */,
 				BCB967FF1ACCB3E500BC9CC4 /* CustomTableViewCell.m in Sources */,
 			);

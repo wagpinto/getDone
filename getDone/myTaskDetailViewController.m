@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *completeTaskButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareTaskButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @property (weak, nonatomic) IBOutlet UISwitch *importantSwitch;
 @property (nonatomic, strong) NSString *getStatus;
@@ -57,17 +58,38 @@
         [self.userPhotoImageView setImage:userOFFPic];
         self.shareTaskButton.backgroundColor = [UIColor blueColor];
         [self.shareTaskButton setTitle:@"FIND USER" forState:UIControlStateNormal];
-    }else {
-        [self setupAssignedInfo];
-        self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
-        self.assignedUserLabel.tintColor = [UIColor redColor];
-        self.shareTaskButton.backgroundColor = [UIColor redColor];
-        [self.shareTaskButton setTitle:@"SHARED" forState:UIControlStateNormal];
+        self.statusLabel.text = StatusCreated;
+        self.statusLabel.backgroundColor = [UIColor lightGrayColor];
     }
+
+    if ([self.getStatus isEqual:StatusAssigned]) {
+        [self setupAssignedInfo];
+        self.statusLabel.text = StatusAssigned;
+        self.statusLabel.backgroundColor = [UIColor orangeColor];
+    }
+    
+    if ([self.getStatus isEqual:StatusAccepted]) {
+        [self setupAssignedInfo];
+        self.statusLabel.text = StatusAccepted;
+        self.statusLabel.backgroundColor = [UIColor greenColor];
+    }
+    
+    if ([self.getStatus isEqual:StatusCompleted]) {
+        [self setupAssignedInfo];
+        self.statusLabel.text = @"DONE";
+        self.statusLabel.backgroundColor = [UIColor blackColor];
+    }
+    
+    
 }
 - (void)setupAssignedInfo {
 
     UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
+
+    self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
+    self.shareTaskButton.backgroundColor = [UIColor redColor];
+    [self.shareTaskButton setTitle:@"SHARED" forState:UIControlStateNormal];
+
     self.userPhotoImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.userPhotoImageView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.userPhotoImageView.layer.borderWidth = 0.9f;
@@ -100,7 +122,7 @@
     }else {
         [self.importantSwitch setOn:NO];
     }
-    
+
 }
 - (void)setupCompletedTask {
     //Task = Satatus = Completed (DONE):
