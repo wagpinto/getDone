@@ -11,10 +11,12 @@
 @interface AssingedToMeTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *taskAddressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *taskAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userFullNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dueTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userPicView;
 
 
 @end

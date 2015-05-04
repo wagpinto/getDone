@@ -24,8 +24,6 @@
     
     [self setupRefreshControl];
     
-
-    
 }
 - (void)viewDidAppear:(BOOL)animated {
 //   [self setupRefreshControl];

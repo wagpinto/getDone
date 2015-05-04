@@ -33,13 +33,6 @@
     [self.tableView reloadData];
 
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-//- (void)viewDidAppear:(BOOL)animated {
-//    [self.tableView reloadData];
-//}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
     [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
@@ -52,6 +45,9 @@
         [self.tableView reloadData];
     }];
     [self.tableView reloadData];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - TABLEVIEW DATASOURCE
@@ -88,10 +84,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AssingedToMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assignedTask" forIndexPath:indexPath];
+    UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
     Task *task = [Task new];
 
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"E-MM/dd"];
+    NSDateFormatter *timeFormat = [NSDateFormatter new];
+    [timeFormat setDateFormat:@"hh:mm a"];
+
 
     switch (indexPath.section) {
         case 0:
@@ -105,6 +105,19 @@
 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
                 cell.dueDateLabel.text = dateString;
+                NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
+                cell.dueTimeLabel.text = timeString;
+                
+                if (!task.taskOwner[@"UserPicture"]) {
+                    [cell.userPicView setImage:userOFFPic];
+                }else {
+                    [task.taskOwner[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            UIImage *image = [UIImage imageWithData:data];
+                            cell.userPicView.image = image;
+                        }
+                    }];
+                }
             }
             break;
         case 1:
@@ -116,8 +129,19 @@
                 cell.userFullNameLabel.text = task[@"taskOwner"][@"userFullName"];
                 cell.usernameLabel.text = task[@"taskOwner"][@"username"];
 
-                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
-                cell.dueDateLabel.text = dateString;
+                NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
+                cell.dueTimeLabel.text = timeString;
+                
+                if (!task.taskOwner[@"UserPicture"]) {
+                    [cell.userPicView setImage:userOFFPic];
+                }else {
+                    [task.taskOwner[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            UIImage *image = [UIImage imageWithData:data];
+                            cell.userPicView.image = image;
+                        }
+                    }];
+                }
             }
             break;
         default:
