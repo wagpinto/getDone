@@ -111,11 +111,11 @@
 }
 - (void)loadAcceptedTasks:(void (^)(BOOL completion))completion {
     PFQuery*query = [Task query];
-    [query whereKey:@"taskAssignee" equalTo:[PFUser currentUser]];
+    [query whereKey:@"taskOwner" equalTo:[PFUser currentUser]];
     [query whereKey:@"Status" equalTo:StatusAccepted];
     
     __block NSArray *loadTasks = [NSArray new];
-    [query includeKey:@"taskOwner"];
+    [query includeKey:@"taskAssignee"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (Task *task in objects) {

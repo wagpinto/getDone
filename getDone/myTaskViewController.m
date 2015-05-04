@@ -37,17 +37,13 @@
     [[TaskController sharedInstance] loadSharedTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
+    [[TaskController sharedInstance] loadAcceptedTasks:^(BOOL completion) {
+        [self reloadTableView];
+    }];
     
 }
 - (IBAction)addNewTask:(id)sender {
-    //create and present a small view on top of the current view.
-    //instaciate the new view as the one created on the storyboard.
     CreateTaskViewController *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"createTask"];
-    
-    //present the new view (from storyboard) modal and Over Current Context
-    createVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [createVC.view setBackgroundColor:[UIColor clearColor]];
-    
     [self.parentViewController presentViewController:createVC animated:YES completion:nil];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
@@ -62,6 +58,9 @@
                 break;
             case 1:
                 [detailViewController updateWithTask:[TaskController sharedInstance].loadSharedTask[indexPath.row]];
+                break;
+            case 2:
+                [detailViewController updateWithTask:[TaskController sharedInstance].loadAcceptedTask[indexPath.row]];
                 break;
             default:
                 [detailViewController updateWithTask:[TaskController sharedInstance].loadCompletedTask[indexPath.row]];
@@ -118,7 +117,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
                 cell.userLabel.text = task[@"taskAssignee"][@"userFullName"];
-
+                
                 if (!task.taskAssignee[@"UserPicture"]) {
                     [cell.sharedIcon setImage:userOFFPic];
                 }else {
@@ -127,7 +126,7 @@
                     cell.sharedIcon.contentMode = UIViewContentModeScaleAspectFit;
                     cell.sharedIcon.layer.borderColor = [UIColor orangeColor].CGColor;
                     cell.sharedIcon.layer.borderWidth = 0.8f;
-
+                    
                     [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                         if (!error) {
                             UIImage *image = [UIImage imageWithData:data];
@@ -141,7 +140,45 @@
                 
                 NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
                 cell.dueTimeLabel.text = timeString;
-
+                
+                //set the cell icons to reflect the importance and status:
+                if (task.taskImportant == YES) {
+                    cell.importantIcon.highlighted = YES;
+                }else {
+                    cell.importantIcon.highlighted = NO;
+                }
+            }
+            break;
+        case 2:
+            if (cell != nil) {
+                task = [TaskController sharedInstance].loadAcceptedTask[indexPath.row];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.taskNameLabel.text = task.taskName;
+                cell.userLabel.text = task[@"taskAssignee"][@"userFullName"];
+                
+                if (!task.taskAssignee[@"UserPicture"]) {
+                    [cell.sharedIcon setImage:userOFFPic];
+                }else {
+                    cell.sharedIcon.layer.cornerRadius = cell.sharedIcon.frame.size.height / 2;
+                    cell.sharedIcon.clipsToBounds = YES;
+                    cell.sharedIcon.contentMode = UIViewContentModeScaleAspectFit;
+                    cell.sharedIcon.layer.borderColor = [UIColor orangeColor].CGColor;
+                    cell.sharedIcon.layer.borderWidth = 0.8f;
+                    
+                    [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            UIImage *image = [UIImage imageWithData:data];
+                            cell.sharedIcon.image = image;
+                        }
+                    }];
+                }
+                
+                NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
+                cell.dueDateLabel.text = dateString;
+                
+                NSString *timeString = [timeFormat stringFromDate:task.taskDueDate];
+                cell.dueTimeLabel.text = timeString;
+                
                 //set the cell icons to reflect the importance and status:
                 if (task.taskImportant == YES) {
                     cell.importantIcon.highlighted = YES;
@@ -155,13 +192,14 @@
                 task = [TaskController sharedInstance].loadCompletedTask[indexPath.row];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.taskNameLabel.text = task.taskName;
-                cell.taskNameLabel.tintColor = [UIColor grayColor];
                 cell.userLabel.text = @"";
                 cell.dueDateLabel.text = @"DONE";
+                cell.dueDateLabel.backgroundColor = [UIColor darkGrayColor];
                 cell.dueTimeLabel.text = @"";
-                cell.dueTimeLabel.backgroundColor = [UIColor whiteColor];
+                cell.dueTimeLabel.backgroundColor = [UIColor clearColor];
                 cell.importantIcon.image = nil;
                 cell.sharedIcon.image = nil;
+                cell.sharedIcon.layer.borderWidth = 0;
             }
         }
     }
@@ -179,13 +217,16 @@
         case 1:
             return @"SHARED TASKS";
             break;
+        case 2:
+            return @"ACCEPTED HELP";
+            break;
         default:
             return @"DONE";
             break;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -195,6 +236,9 @@
             break;
         case 1:
             return [TaskController sharedInstance].loadSharedTask.count;
+            break;
+        case 2:
+            return [TaskController sharedInstance].loadAcceptedTask.count;
             break;
         default:
             return [TaskController sharedInstance].loadCompletedTask.count;
@@ -222,7 +266,11 @@
                     }];
                 }];
                 break;}
-            {case 2:
+            case 2:{
+                UIAlertView *alertDelete = [[UIAlertView alloc]initWithTitle:@"Can't Delete Accepted Messages" message:@"If the task has been accepted by another user, only that user can complete the task" delegate:self cancelButtonTitle:@"CANCEL" otherButtonTitles: nil];
+            }
+                break;
+            {default:
                 [[TaskController sharedInstance] deleteCompletedTask:indexPath.row andCompletion:^(BOOL completion) {
                     [[TaskController sharedInstance] loadCompletedTasks:^(BOOL completion) {
                         [self reloadTableView];

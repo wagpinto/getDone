@@ -71,7 +71,7 @@
     if ([self.getStatus isEqual:StatusAccepted]) {
         [self setupAssignedInfo];
         self.statusLabel.text = StatusAccepted;
-        self.statusLabel.backgroundColor = [UIColor greenColor];
+        self.statusLabel.backgroundColor = [UIColor blueColor];
     }
     
     if ([self.getStatus isEqual:StatusCompleted]) {
