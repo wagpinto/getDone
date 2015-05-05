@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "TaskController.h"
+#import "Settings.h"
 #import "User.h"
 
 @interface SettingsViewController ()
@@ -30,11 +31,7 @@
 }
 
 - (void)setupViewController {
-    self.userPictureView.layer.cornerRadius = self.userPictureView.frame.size.height / 2;
-    self.userPictureView.contentMode = UIViewContentModeScaleAspectFit;
-    self.userPictureView.clipsToBounds = YES;
-    self.userPictureView.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.userPictureView.layer.borderWidth = 0.8f;
+    [Settings setupUserImage:self.userPictureView];
     
     PFUser *user = [PFUser currentUser];
     
@@ -120,7 +117,7 @@
     }];
 }
 
-#pragma mark - PICKERVIEW DELEGATE
+#pragma mark - IMAGE PICKER DELEGATE
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];

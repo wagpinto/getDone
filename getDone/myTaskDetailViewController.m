@@ -11,7 +11,7 @@
 
 
 #import "myTaskDetailViewController.h"
-#import "Constants.h"
+#import "Settings.h"
 
 @interface myTaskDetailViewController () 
 
@@ -84,33 +84,18 @@
 }
 - (void)setupAssignedInfo {
 
-    UIImage *userOFFPic = [UIImage imageNamed:@"User-off-50"];
-
     self.assignedUserLabel.text = self.assignedUser[@"userFullName"];
     self.shareTaskButton.backgroundColor = [UIColor redColor];
     [self.shareTaskButton setTitle:@"SHARED" forState:UIControlStateNormal];
 
-    self.userPhotoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.userPhotoImageView.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.userPhotoImageView.layer.borderWidth = 0.9f;
-    
-    if (!self.assignedUser[@"UserPicture"] || !self.task.taskAssignee[@"UserPicture"]) {
-        [self.userPhotoImageView setImage:userOFFPic];
-    }else {
-        [self.task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            if (!error) {
-                UIImage *image = [UIImage imageWithData:data];
-                self.userPhotoImageView.image = image;
-            }
-        }];
-    }
+    [Settings getUserImage:self.assignedUser toImageView:self.userPhotoImageView];
+    [Settings setupUserImage:self.userPhotoImageView];
 }
 
 
 - (void)setupViewController {
     //setup the picture image:
-    self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.height / 2;
-    self.userPhotoImageView.clipsToBounds = YES;
+    [Settings setupUserImage:self.userPhotoImageView];
     
     self.taskTitleField.text = self.task.taskName;
     self.taskAddressField.text = self.task.taskAddress;
@@ -144,7 +129,6 @@
         [completeAlert show];
     }
 }
-
 - (void)updateWithTask:(Task *)task {
     
     self.task = task;
@@ -213,5 +197,13 @@
     [textField resignFirstResponder];
     return YES;
 }//dismiss the keyboard.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.taskTitleField resignFirstResponder];
+    [self.taskAddressField resignFirstResponder];
+    [self.taskDescriptionField resignFirstResponder];
+    [self.statusLabel resignFirstResponder];
+    [self.assignedUserLabel resignFirstResponder];
+}
+
 
 @end

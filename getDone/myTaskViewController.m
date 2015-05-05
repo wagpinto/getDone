@@ -10,6 +10,7 @@
 #import "myTaskDetailViewController.h"
 #import "CreateTaskViewController.h"
 #import "TaskController.h"
+#import "Settings.h"
 
 @interface myTaskViewController ()
 
@@ -25,9 +26,7 @@
     [self setupRefreshControl];
     
 }
-- (void)viewDidAppear:(BOOL)animated {
-//   [self setupRefreshControl];
-    
+- (void)viewDidAppear:(BOOL)animated {    
     [[TaskController sharedInstance] loadTasks:^(BOOL completion) {
         [self reloadTableView];
     }];
@@ -121,18 +120,8 @@
                 if (!task.taskAssignee[@"UserPicture"]) {
                     [cell.sharedIcon setImage:userOFFPic];
                 }else {
-                    cell.sharedIcon.layer.cornerRadius = cell.sharedIcon.frame.size.height / 2;
-                    cell.sharedIcon.clipsToBounds = YES;
-                    cell.sharedIcon.contentMode = UIViewContentModeScaleAspectFit;
-                    cell.sharedIcon.layer.borderColor = [UIColor orangeColor].CGColor;
-                    cell.sharedIcon.layer.borderWidth = 0.8f;
-                    
-                    [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (!error) {
-                            UIImage *image = [UIImage imageWithData:data];
-                            cell.sharedIcon.image = image;
-                        }
-                    }];
+                    [Settings getUserImage:task.taskAssignee toImageView:cell.sharedIcon];
+                    [Settings setupUserImage:cell.sharedIcon];
                 }
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
@@ -159,18 +148,8 @@
                 if (!task.taskAssignee[@"UserPicture"]) {
                     [cell.sharedIcon setImage:userOFFPic];
                 }else {
-                    cell.sharedIcon.layer.cornerRadius = cell.sharedIcon.frame.size.height / 2;
-                    cell.sharedIcon.clipsToBounds = YES;
-                    cell.sharedIcon.contentMode = UIViewContentModeScaleAspectFit;
-                    cell.sharedIcon.layer.borderColor = [UIColor orangeColor].CGColor;
-                    cell.sharedIcon.layer.borderWidth = 0.8f;
-                    
-                    [task.taskAssignee[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (!error) {
-                            UIImage *image = [UIImage imageWithData:data];
-                            cell.sharedIcon.image = image;
-                        }
-                    }];
+                    [Settings getUserImage:task.taskAssignee toImageView:cell.sharedIcon];
+                    [Settings setupUserImage:cell.sharedIcon];
                 }
                 
                 NSString *dateString = [dateFormat stringFromDate:task.taskDueDate];
@@ -268,6 +247,7 @@
                 break;}
             case 2:{
                 UIAlertView *alertDelete = [[UIAlertView alloc]initWithTitle:@"Can't Delete Accepted Messages" message:@"If the task has been accepted by another user, only that user can complete the task" delegate:self cancelButtonTitle:@"CANCEL" otherButtonTitles: nil];
+                [alertDelete show];
             }
                 break;
             {default:

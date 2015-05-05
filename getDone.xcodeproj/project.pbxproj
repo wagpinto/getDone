@@ -26,7 +26,7 @@
 		BCBDDDA21ACB537F00B61301 /* CreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBDDDA11ACB537F00B61301 /* CreateTaskViewController.m */; };
 		BCC31BC21AE82148002E004A /* NSDate+CombiningDates.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */; };
 		BCC4EF7C1AD352E700D7C6DC /* myTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */; };
-		BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Constants.m */; };
+		BCC74C231AE1EC6D00B3613C /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC74C221AE1EC6D00B3613C /* Settings.m */; };
 		BCD94C711AF8156F007F511F /* APRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD94C701AF8156F007F511F /* APRoundedButton.m */; };
 		BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF31AC3D5980073E3B1 /* main.m */; };
 		BCF7FEF71AC3D5980073E3B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7FEF61AC3D5980073E3B1 /* AppDelegate.m */; };
@@ -90,8 +90,8 @@
 		BCC31BC11AE82148002E004A /* NSDate+CombiningDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CombiningDates.m"; sourceTree = "<group>"; };
 		BCC4EF7A1AD352E700D7C6DC /* myTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTaskDetailViewController.h; sourceTree = "<group>"; };
 		BCC4EF7B1AD352E700D7C6DC /* myTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTaskDetailViewController.m; sourceTree = "<group>"; };
-		BCC74C211AE1EC6D00B3613C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		BCC74C221AE1EC6D00B3613C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		BCC74C211AE1EC6D00B3613C /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		BCC74C221AE1EC6D00B3613C /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		BCD94C6F1AF8156F007F511F /* APRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRoundedButton.h; sourceTree = "<group>"; };
 		BCD94C701AF8156F007F511F /* APRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRoundedButton.m; sourceTree = "<group>"; };
 		BCF7FEEE1AC3D5980073E3B1 /* getDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,8 +313,8 @@
 		BCF7FF401AC3D76A0073E3B1 /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
-				BCC74C211AE1EC6D00B3613C /* Constants.h */,
-				BCC74C221AE1EC6D00B3613C /* Constants.m */,
+				BCC74C211AE1EC6D00B3613C /* Settings.h */,
+				BCC74C221AE1EC6D00B3613C /* Settings.m */,
 				BCBDDCEA1AC601B500B61301 /* TaskController.h */,
 				BCBDDCEB1AC601B500B61301 /* TaskController.m */,
 			);
@@ -448,7 +448,7 @@
 				BC7BA5031AE748AB00B354AB /* AssignedToMeViewController.m in Sources */,
 				BCF7FF431AC3DCDB0073E3B1 /* SignUpViewController.m in Sources */,
 				BCF7FEFA1AC3D5980073E3B1 /* myTaskViewController.m in Sources */,
-				BCC74C231AE1EC6D00B3613C /* Constants.m in Sources */,
+				BCC74C231AE1EC6D00B3613C /* Settings.m in Sources */,
 				BCBDDCEF1AC6041200B61301 /* Task.m in Sources */,
 				BC1C15761AF53CD600A8DEBF /* FindFriendsCell.m in Sources */,
 				BCF7FEF41AC3D5980073E3B1 /* main.m in Sources */,

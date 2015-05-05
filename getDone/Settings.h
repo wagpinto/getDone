@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "User.h"
 
 extern NSString *const StatusCreated;
 extern NSString *const StatusAssigned;
@@ -15,6 +17,9 @@ extern NSString *const StatusDenied;
 extern NSString *const StatusCompleted;
 
 
-@interface Constants : NSObject
+@interface Settings : NSObject
+
++ (void)setupUserImage:(UIImageView *)userImage;
++ (void)getUserImage:(User *)userPic toImageView:(UIImageView *)imageView;
 
 @end

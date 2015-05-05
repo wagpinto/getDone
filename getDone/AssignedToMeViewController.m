@@ -9,7 +9,7 @@
 #import "AssignedToMeViewController.h"
 #import "AssingedToMeTableViewCell.h"
 #import "TaskController.h"
-#import "Constants.h"
+#import "Settings.h"
 
 @interface AssignedToMeViewController ()
 

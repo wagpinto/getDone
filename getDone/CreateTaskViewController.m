@@ -9,7 +9,7 @@
 #import "CreateTaskViewController.h"
 #import "TaskController.h"
 #import "FindFriendViewController.h"
-#import "Constants.h"
+#import "Settings.h"
 #import "NSDate+CombiningDates.h"
 
 @interface CreateTaskViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, FindFriendsDelegate>
@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *dueDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dueTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *assignedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userPictureView;
 
 @property (nonatomic) NSDate *DueDate;
 
@@ -56,7 +58,6 @@
     [self setupTaskStatus];
 }
 - (void)setupViewController {
-    
     //set the dates:
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *today = [NSDate date];
@@ -68,17 +69,29 @@
     
 }
 - (void)setupTaskStatus {
+    //Set the assigned user picture.
+    UIImage *noPicture = [UIImage imageNamed:@"User-off-50"];
+    [Settings setupUserImage:self.userPictureView];
+
     //set the status labels
     if ([self.status isEqual:StatusCreated] || self.status == nil) {
         self.assignedLabel.text = @"Not Assinged";
         self.assignedLabel.tintColor = [UIColor grayColor];
         self.shareButton.backgroundColor = [UIColor blueColor];
         [self.shareButton setTitle: @"FIND FRIEND" forState: UIControlStateNormal];
+        [self.userPictureView setImage:noPicture];
     }else {
         self.assignedLabel.text = self.assignedUser[@"userFullName"];
         self.assignedLabel.textColor = [UIColor redColor];
         self.shareButton.backgroundColor = [UIColor redColor];
         [self.shareButton setTitle: @"SHARED" forState: UIControlStateNormal];
+        [self.assignedUser[@"UserPicture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                self.userPictureView.image = image;
+            }
+        }];
+        
     }
 
 }
@@ -240,5 +253,12 @@
     [textField resignFirstResponder];
     return YES;
 }//dismiss the keyboard.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.taskNameField resignFirstResponder];
+    [self.taskDescriptionField resignFirstResponder];
+    [self.taskAddressField resignFirstResponder];
+    [self.view resignFirstResponder];
+}
+
 
 @end
